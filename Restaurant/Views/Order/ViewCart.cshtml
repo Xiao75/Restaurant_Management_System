@@ -59,7 +59,16 @@ else
 
     <div class="text-center mt-4">
         <form asp-action="PlaceOrder" method="post">
+            <div class="mb-3">
+                <label for="paymentMethod" class="form-label fw-bold">Select Payment Method:</label>
+                <select class="form-select" name="paymentMethod" required>
+                    <option value="Cash">Cash</option>
+                    <option value="Online">Online</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
         </form>
+
     </div>
 }

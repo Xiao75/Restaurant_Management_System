@@ -24,6 +24,11 @@ public partial class Payment
     [Column(TypeName = "datetime")]
     public DateTime? PaidAt { get; set; }
 
+    [Column(TypeName = "varchar(20)")]
+    [StringLength(20)]
+    public string? Status { get; set; }
+
+
     [ForeignKey("OrderId")]
     [InverseProperty("Payments")]
     public virtual Order? Order { get; set; }

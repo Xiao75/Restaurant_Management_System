@@ -48,6 +48,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/devra/source/repos/Restaurant/Restaurant/Views/FakePayment/FakePay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFrZVBheW1lbnRcRmFrZVBheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/devra/source/repos/Restaurant/Restaurant/Views/FakePayment/Process.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFrZVBheW1lbnRcUHJvY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/devra/source/repos/Restaurant/Restaurant/Views/FakePayment/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFrZVBheW1lbnRcUmVzdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/devra/source/repos/Restaurant/Restaurant/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

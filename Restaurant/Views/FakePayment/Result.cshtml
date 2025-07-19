@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Payment Result";
+}
+
+<div class="text-center mt-5">
+    <h2>@ViewBag.Status</h2>
+    <p>Order ID: @ViewBag.OrderId</p>
+    <a href="@Url.Action("Index", "Menu")" class="btn btn-primary">Back to Menu</a>
+</div>

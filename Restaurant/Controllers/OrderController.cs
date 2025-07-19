@@ -5,6 +5,10 @@ using Restaurant.Data;
 using Restaurant.Extensions;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Restaurant.Controllers
 {
@@ -17,7 +21,6 @@ namespace Restaurant.Controllers
             _context = context;
         }
 
-        // ✅ Add item to cart
         [HttpPost]
         public IActionResult AddToCart(int itemId, int quantity = 1)
         {
@@ -25,20 +28,17 @@ namespace Restaurant.Controllers
                 return RedirectToAction("Login", "Account");
 
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
-
             var existing = cart.FirstOrDefault(i => i.ItemId == itemId);
+
             if (existing != null)
                 existing.Quantity += quantity;
             else
                 cart.Add(new CartItem { ItemId = itemId, Quantity = quantity });
 
             HttpContext.Session.SetObjectAsJson("Cart", cart);
-
             TempData["Message"] = "Item added to cart!";
             return RedirectToAction("Index", "Menu");
         }
-
-        //Increase Quantity
 
         [HttpPost]
         public IActionResult IncreaseQuantity(int itemId)
@@ -47,16 +47,12 @@ namespace Restaurant.Controllers
             var item = cart.FirstOrDefault(i => i.ItemId == itemId);
 
             if (item != null)
-            {
                 item.Quantity++;
-            }
 
             HttpContext.Session.SetObjectAsJson("Cart", cart);
             return RedirectToAction("ViewCart");
         }
 
-
-        // Decrease Quantity
         [HttpPost]
         public IActionResult DecreaseQuantity(int itemId)
         {
@@ -66,7 +62,7 @@ namespace Restaurant.Controllers
             if (item != null)
             {
                 item.Quantity--;
-                if (item.Quantity < 0)
+                if (item.Quantity <= 0)
                     cart.Remove(item);
             }
 
@@ -74,7 +70,6 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        // Remove Item
         [HttpPost]
         public IActionResult RemoveFromCart(int itemId)
         {
@@ -85,7 +80,6 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        // ✅ View cart
         public async Task<IActionResult> ViewCart()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
@@ -109,9 +103,8 @@ namespace Restaurant.Controllers
             return View(cartItems);
         }
 
-        // ✅ Place order and redirect to payment
         [HttpPost]
-        public IActionResult PlaceOrder(string source = "Online")
+        public IActionResult PlaceOrder(string source = "Online", string paymentMethod = "Cash")
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
             if (customerId == null)
@@ -125,24 +118,24 @@ namespace Restaurant.Controllers
             }
 
             decimal totalAmount = 0;
-
             foreach (var item in cart)
             {
                 var menuItem = _context.MenuItems.FirstOrDefault(m => m.ItemId == item.ItemId);
                 if (menuItem != null && menuItem.Price.HasValue)
                 {
-                    decimal itemTotal = (menuItem.Price ?? 0) * item.Quantity;
-                    totalAmount += itemTotal;
+                    totalAmount += menuItem.Price.Value * item.Quantity;
                 }
             }
+
             var order = new Order
             {
                 CustomerId = customerId.Value,
                 OrderDate = DateTime.Now,
-                Status = "Pending",
+                Status = paymentMethod == "Online" ? "Pending" : "Confirmed",
                 Source = source,
                 TotalAmount = totalAmount,
-                InvoiceId = GenerateInvoiceId()
+                InvoiceId = GenerateInvoiceId(),
+                PaymentMethod = paymentMethod
             };
 
             _context.Orders.Add(order);
@@ -158,22 +151,40 @@ namespace Restaurant.Controllers
                 });
             }
 
-            _context.SaveChanges();
+            // Insert Payment entry for both Online and Cash
+            _context.Payments.Add(new Payment
+            {
+                OrderId = order.OrderId,
+                Amount = totalAmount,
+                PaymentMethod = paymentMethod,
+                PaidAt = DateTime.Now,
+                Status = paymentMethod == "Online" ? "Processing" : "Paid"
+            });
 
-            // Clear cart
+            _context.SaveChanges();
             HttpContext.Session.Remove("Cart");
 
-            // 🔁 Redirect to Payment page with orderId
-            return RedirectToAction("Payment", "Payment", new { orderId = order.OrderId });
+            if (paymentMethod == "Online")
+            {
+                return RedirectToAction("FakePay", "FakePayment", new { orderId = order.OrderId });
+            }
+
+            return RedirectToAction("OrderConfirmation", new { orderId = order.OrderId });
         }
 
-        // ✅ Order confirmation page
-        public IActionResult OrderConfirmation()
+        public IActionResult OrderConfirmation(int orderId)
         {
-            return View();
+            var order = _context.Orders.FirstOrDefault(o => o.OrderId == orderId);
+            if (order == null) return NotFound();
+
+            if (order.PaymentMethod == "Online" && order.Status != "Paid")
+            {
+                return RedirectToAction("Process", "FakePayment", new { orderId = orderId, result = 1 });
+            }
+
+            return View(order);
         }
 
-        // ✅ View past orders
         public async Task<IActionResult> MyOrders()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
@@ -190,7 +201,6 @@ namespace Restaurant.Controllers
             return View(orders);
         }
 
-        // ✅ View order details
         public async Task<IActionResult> Details(int id)
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
@@ -208,7 +218,6 @@ namespace Restaurant.Controllers
             return View(order);
         }
 
-        // ✅ Generates a unique invoice ID
         private string GenerateInvoiceId()
         {
             var date = DateTime.Now.ToString("yyyyMMdd");

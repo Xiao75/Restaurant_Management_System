@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Data;
+using Restaurant.Models;
 
 namespace Restaurant.Controllers
 {
@@ -37,17 +38,30 @@ namespace Restaurant.Controllers
 
             return RedirectToAction("Index");
         }
-
         [HttpPost]
         public async Task<IActionResult> MarkasPaid(int orderId)
         {
             var order = await _context.Orders.FindAsync(orderId);
-            if (order != null && order.Status != "Paid")
+
+            if (order != null && order.Status != "Paid" && order.Source == "Offline")
             {
                 order.Status = "Paid";
+
+                var payment = new Payment
+                {
+                    OrderId = order.OrderId,
+                    Amount = order.TotalAmount, // assuming TotalAmount is nullable
+                    PaidAt = DateTime.Now,
+                  //  PaymentMethod = "Offline", // or your preferred label
+                    Status = "Success"
+                };
+
+                _context.Payments.Add(payment); // <-- this is what was missing!
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction("Index");
         }
+
     }
 }

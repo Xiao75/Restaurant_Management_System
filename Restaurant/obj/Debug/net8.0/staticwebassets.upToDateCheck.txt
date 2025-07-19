@@ -2,6 +2,7 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\Blue Mojito.jpg
 wwwroot\images\Chicken-Fried-Rice.jpg
+wwwroot\images\Chicken-Momo.jpg
 wwwroot\images\chickenburger.webp
 wwwroot\images\Coca-Cola.png
 wwwroot\images\Dark Forest Pastries.jpg

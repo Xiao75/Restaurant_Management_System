@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Fake Payment";
+    var orderId = ViewBag.OrderId;
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Simulate Payment</h2>
+
+    <form asp-action="Process" method="post">
+        <input type="hidden" name="orderId" value="@orderId" />
+
+        <div class="form-group">
+            <label for="result">Choose Result</label>
+            <select name="result" id="result" class="form-control">
+                <option value="1">Success</option>
+                <option value="0">Fail</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3"></button>
+    </form>
+</div>

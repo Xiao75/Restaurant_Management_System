@@ -1,0 +1,19 @@
+﻿@*
+  FakePay.cshtml — lets you simulate success or failure for an order
+*@
+@{
+    ViewData["Title"] = "Fake Payment";
+    int orderId = (int)ViewBag.OrderId;
+}
+
+<div class="text-center mt-5">
+    <h2>Simulate Payment for Order #@orderId</h2>
+    <form asp-action="Process" method="post">
+        <input type="hidden" name="orderId" value="@orderId" />
+
+        <div class="mt-3">
+            <button type="submit" name="result" value="1" class="btn btn-success">Simulate Success</button>
+            <button type="submit" name="result" value="0" class="btn btn-danger">Simulate Failure</button>
+        </div>
+    </form>
+</div>

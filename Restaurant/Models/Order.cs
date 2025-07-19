@@ -31,6 +31,9 @@ namespace Restaurant.Models
         [Column(TypeName ="decimal(18,2)")]
         public decimal TotalAmount { get; set; }
 
+        public string? PaymentMethod { get; set; }
+
+
         // Navigation property to Customer
         [ForeignKey("CustomerId")]
         public virtual Customer? Customer { get; set; }
