@@ -1,0 +1,29 @@
+﻿@model Restaurant.Models.Customer
+@{
+    ViewData["Title"] = "My Account";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">My Account</h2>
+
+            <!-- Description List for Customer Info -->
+            <dl class="row">
+                <dt class="col-sm-4">Name</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+
+                <dt class="col-sm-4">Email</dt>
+                <dd class="col-sm-8">@Model.Email</dd>
+
+                <dt class="col-sm-4">Phone</dt>
+                <dd class="col-sm-8">@Model.Phone</dd>
+            </dl>
+
+            <!-- Logout Button -->
+            <div class="text-center mt-4">
+                <a asp-action="Logout" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>

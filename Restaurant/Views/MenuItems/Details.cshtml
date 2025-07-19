@@ -1,0 +1,40 @@
+﻿@model Restaurant.Models.MenuItem
+
+@{
+    ViewData["Title"] = "Menu Item Details";
+}
+
+<h1>Menu Item Details</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Name</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Description</dt>
+            <dd class="col-sm-8">@Model.Description</dd>
+
+            <dt class="col-sm-4">Price</dt>
+            <dd class="col-sm-8">@string.Format("{0:C}", Model.Price ?? 0)</dd>
+
+            <dt class="col-sm-4">Category</dt>
+            <dd class="col-sm-8">@Model.Category</dd>
+
+            <dt class="col-sm-4">Available</dt>
+            <dd class="col-sm-8">@(Model.Available == true ? "Yes" : "No")</dd>
+
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <dt class="col-sm-4">Image</dt>
+                <dd class="col-sm-8">
+                    <img src="~/images/@Model.ImagePath" width="150" class="img-thumbnail" />
+                </dd>
+            }
+        </dl>
+
+        <a asp-action="Edit" asp-route-id="@Model.ItemId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

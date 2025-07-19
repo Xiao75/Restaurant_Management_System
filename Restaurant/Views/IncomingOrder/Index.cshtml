@@ -1,0 +1,77 @@
+﻿@model List<Restaurant.Models.Order>
+
+@{
+    ViewData["Title"] = "Incoming Orders (Kitchen) ";
+}
+
+<h2>Counter</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No tablet orders found.</div>
+}
+else
+{
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Order ID</th>
+                <th>Table</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Items</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>Table @order.TableNumber</td>
+                    <td>@order.OrderDate?.ToString("g")</td>
+                    <td>
+                        <span class="badge bg-@GetStatusColor(order.Status)">
+                            @order.Status
+                        </span>
+                    </td>
+                    <td>@order.TotalAmount.ToString("C")</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            @foreach (var item in order.OrderItems)
+                            {
+                                <li>@item.Item?.Name x @item.Quantity</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                       <!--
+                           <form method="post" asp-action="Confirm" asp-controller="IncomingOrder" style="display:inline">
+                            <input type="hidden" name="orderId" value="@order.OrderId" />
+                            <button type="submit" class="btn btn-warning btn-sm" @(order.Status != "Pending" ? "disabled" : "")>Confirm</button>
+                        </form>
+                       -->
+                        <form method="post" asp-action="MarkAsPaid" asp-controller="IncomingOrder" style="display:inline">
+                            <input type="hidden" name="orderId" value="@order.OrderId" />
+                            <button type="submit" class="btn btn-success btn-sm" @(order.Status == "Paid" ? "disabled" : "")>Mark Paid</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@functions {
+    string GetStatusColor(string status)
+    {
+        return status switch
+        {
+            "Pending" => "secondary",
+            "Confirmed" => "warning",
+            "Paid" => "success",
+            _ => "dark"
+        };
+    }
+}

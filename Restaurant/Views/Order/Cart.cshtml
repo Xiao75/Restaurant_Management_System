@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Your Cart";
+    var cartItems = ViewBag.CartItems as dynamic;
+}
+
+<h2>Your Cart</h2>
+
+@if (cartItems == null || !cartItems.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in cartItems)
+            {
+                <tr>
+                    <td>@item.Item.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@string.Format("{0:C}", item.Item.Price)</td>
+                    <td>@string.Format("{0:C}", item.Total)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form asp-action="PlaceOrder" method="post">
+        <button type="submit" class="btn -btn-success">Place order</button>
+    </form>
+}

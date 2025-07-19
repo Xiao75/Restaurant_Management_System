@@ -1,0 +1,81 @@
+﻿@model Restaurant.Models.MenuItem
+
+@{
+    ViewData["Title"] = "Edit Menu Item";
+}
+
+<h1>Edit Menu Item</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @* Hidden ID *@
+            <input type="hidden" asp-for="ItemId" />
+
+            @* Name *@
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            @* Description *@
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            @* Price *@
+            <div class="form-group mb-3">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            @* Category *@
+            <div class="form-group mb-3">
+                <label asp-for="Category" class="control-label"></label>
+                <select asp-for="Category" class="form-select" asp-items="@(new SelectList(ViewBag.Categories))">
+                    <option value="">-- Select Category --</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            @* Available *@
+            <div class="form-group form-check mb-3">
+                <input asp-for="Available" class="form-check-input" type="checkbox" />
+                <label asp-for="Available" class="form-check-label"></label>
+                <span asp-validation-for="Available" class="text-danger"></span>
+            </div>
+
+            @* Image Upload *@
+            <div class="form-group mb-3">
+                <label for="ImageFile">Upload New Image (optional)</label>
+                <input type="file" name="ImageFile" class="form-control" />
+            </div>
+
+            @* Current Image *@
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <div class="form-group mb-3">
+                    <label>Current Image:</label><br />
+                    <img src="~/images/@Model.ImagePath" width="120" class="img-thumbnail" />
+                </div>
+            }
+
+            @* Buttons *@
+            <div class="form-group mt-3">
+                <input type="submit" value="Save Changes" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

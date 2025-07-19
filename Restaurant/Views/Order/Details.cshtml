@@ -1,0 +1,31 @@
+﻿@model Restaurant.Models.Order
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h2>Order #@Model.OrderId</h2>
+
+<p><strong>Date:</strong> @Model.OrderDate?.ToString("f")</p>
+<p><strong>Status:</strong> @Model.Status</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderItems)
+        {
+            <tr>
+                <td>@item.Item?</td>
+                <td>@item.Quantity</td>
+                <td>@string.Format("{0:C}", item.Item?.Price)</td>
+                <td>@string.Format("{0:C}", (item.Item?.Price ?? 0) * item.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+</table>

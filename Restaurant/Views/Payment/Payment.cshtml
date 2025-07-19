@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+    var total = ViewBag.TotalAmount;
+    var orderId = ViewBag.OrderId;
+}
+
+<h2>Payment</h2>
+
+<p>Total Amount to Pay: <strong>@string.Format("{0:C}", total)</strong></p>
+
+
+<form asp-action="CompletePayment" method="post">
+    <input type="hidden" name="orderId" value="@orderId" />
+
+    <div class="form-check-group">
+        <label>Select Payment Method</label>
+        <select class="form-control" name="PaymentMethod">
+            <option value="Online">Online</option>
+            <option value="Cash">Cash</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Complete Payment</button>
+</form>

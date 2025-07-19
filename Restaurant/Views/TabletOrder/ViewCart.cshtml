@@ -1,0 +1,74 @@
+﻿@model List<Restaurant.Models.ViewModels.CartItemViewModel>
+
+@{
+    ViewData["Title"] = "Tablet Cart";
+    var grandTotal = Model.Sum(item => item.Price * item.Quantity);
+}
+
+<h2 class="text-center">Your Table's Order</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        No items have been added yet.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@((item.Price * item.Quantity).ToString("C"))</td>
+                    <td>
+                        <form asp-action="DecreaseQuantity" method="post" style="display:inline">
+                            <input type="hidden" name="itemId" value="@item.ItemId" />
+                            <button type="submit" class="btn btn-sm btn-warning">-</button>
+                        </form>
+                        <form asp-action="IncreaseQuantity" method="post" style="display:inline">
+                            <input type="hidden" name="itemId" value="@item.ItemId" />
+                            <button type="submit" class="btn btn-sm btn-success">+</button>
+                        </form>
+                        <form asp-action="RemoveFromCart" method="post" style="display:inline">
+                            <input type="hidden" name="itemId" value="@item.ItemId" />
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3" class="text-end fw-bold">Total:</td>
+                <td colspan="2" class="fw-bold">@grandTotal.ToString("C")</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <form asp-controller="TabletOrder" asp-action="PlaceOrder" method="post">
+            <div class="mb-3">
+                <label for="tableNumber" class="form-label">Select Table Number:</label>
+                <select name="tableNumber" id="tableNumber" class="form-select" required>
+                    <option value="">--Select Table--</option>
+                    @for (int i=1; i <=20; i++)
+                    {
+                        <option value="@i">Table @i</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Confirm Order</button>
+        </form>
+    </div>
+}

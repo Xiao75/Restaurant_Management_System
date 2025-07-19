@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Restaurant.Models.MenuItem>
+
+@{
+    ViewData["Title"] = "Our Menu";
+    var categories = ViewBag.Categories as List<string>;
+    var selectedCategory = ViewBag.SelectedCategory as string;
+}
+
+<h2 class="text-center mb-4">Our Menu</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["Message"]</div>
+}
+
+<!-- Category Filter -->
+<div class="mb-4 d-flex justify-content-end">
+    <form method="get" asp-action="Index" class="d-flex align-items-center">
+        <label class="me-2 mb-0">Filter:</label>
+        <select name="category" onchange="this.form.submit()" class="form-select w-auto">
+            <option value="">All Categories</option>
+            @foreach (var cat in ViewBag.Categories as List<string>)
+            {
+                @:<option value="@cat" @(ViewBag.SelectedCategory == cat ? "selected" : "")>@cat</option>
+            }
+        </select>
+    </form>
+</div>
+
+
+<!-- Menu Items -->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                @if (!string.IsNullOrEmpty(item.ImagePath))
+                {
+                    <img src="~/images/@item.ImagePath" class="card-img-top" alt="@item.Name" style="height:200px; object-fit:cover;" />
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    <p class="text-muted">@string.Format("{0:C}", item.Price ?? 0)</p>
+                    <span class="badge bg-secondary">@item.Category</span>
+
+                    @if (!item.Available)
+                    {
+                        <span class="badge bg-danger ms-2">Out of Stock</span>
+                    }
+                </div>
+
+                @if (item.Available)
+                {
+                    <div class="card-footer text-center">
+                        <form asp-controller="Order" asp-action="AddToCart" method="post" class="d-flex justify-content-between align-items-center">
+                            <input type="hidden" name="itemId" value="@item.ItemId" />
+                            <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm me-2" style="width: 60px;" />
+                            <button type="submit" class="btn btn-primary btn-sm">Add to Order</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

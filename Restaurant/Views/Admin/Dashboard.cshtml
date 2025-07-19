@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Restaurant.Models.Order>
+@{
+    ViewData["Title"] = " Admin Dashboard";
+}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row text-center mb-4">
+    <div class="col-md-3">
+        <div class="class bg-primary text-white">
+            <div class="card-body">
+                <h5>Total Orders</h5>
+                <p class="display-6">@ViewBag.TotalOrders</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5>Total Revenue</h5>
+                <p class="display-6">@String.Format("{0:C}", ViewBag.TotalRevenue)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5>Menu Items</h5>
+                <p class="display-6">@ViewBag.TotalMenuItems</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>Recent Orders</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.Customer?.Name</td>
+                <td>@order.OrderDate?.ToString("dd MMM yyyy hh:mm tt")</td>
+                <td>@order.Status</td>
+                <td>@string.Format("{0:C}", order.TotalAmount)</td>
+            </tr>
+        }
+    </tbody>
+</table>

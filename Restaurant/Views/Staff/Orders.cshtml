@@ -1,0 +1,39 @@
+﻿@model List<Restaurant.Models.Order>
+
+<h2>Incoming Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Invoice</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.InvoiceId</td>
+                <td>@order.OrderDate?.ToString("g")</td>
+                <td>
+                    <ul>
+                        @foreach (var item in order.OrderItems)
+                        {
+                            <li>@item.Item.Name x @item.Quantity</li>
+                        }
+                    </ul>
+                </td>
+                <td>@string.Format("{0:C}", order.TotalAmount)</td>
+                <td>
+                    <form asp-action="ConfirmOrder" method="post">
+                        <input type="hidden" name="orderId" value="@order.OrderId" />
+                        <button class="btn btn-success btn-sm">Confirm</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
