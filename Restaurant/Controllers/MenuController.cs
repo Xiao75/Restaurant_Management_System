@@ -4,6 +4,7 @@ using Restaurant.Data;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Restaurant.Extensions;
 
 namespace Restaurant.Controllers
 {
@@ -36,7 +37,6 @@ namespace Restaurant.Controllers
             return View(filteredItems);
         }
 
-
         // GET: Menu/PlaceOrder
         public async Task<IActionResult> PlaceOrder()
         {
@@ -63,6 +63,74 @@ namespace Restaurant.Controllers
             return View(viewModel);
         }
 
+        public IActionResult GetCart()
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
+            return PartialView("~/Views/Shared/PartialCart.cshtml", cart);
+        }
+
+        [HttpPost]
+        public IActionResult AddToCart([FromBody] CartAddViewModel model)
+        {
+            var item = _context.MenuItems.FirstOrDefault(m => m.ItemId == model.ItemId);
+            if (item == null) return NotFound();
+
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
+
+            var existing = cart.FirstOrDefault(i => i.ItemId == model.ItemId);
+            if (existing != null)
+                existing.Quantity += model.Quantity;
+            else
+                cart.Add(new CartItemViewModel
+                {
+                    ItemId = item.ItemId,
+                    Name = item.Name,
+                    Price = item.Price ?? 0,
+                    Quantity = model.Quantity
+                });
+
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult IncreaseQuantity(int itemId)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
+            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+                item.Quantity++;
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+            return RedirectToAction("Index", "Menu");
+        }
+
+        [HttpPost]
+        public IActionResult DecreaseQuantity(int itemId)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
+            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+            {
+                item.Quantity--;
+                if (item.Quantity <= 0)
+                    cart.Remove(item);
+            }
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+            return RedirectToAction("Index", "Menu");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveItem(int itemId)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
+            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+                cart.Remove(item);
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+            return RedirectToAction("Index", "Menu");
+        }
+
+
         // POST: Menu/PlaceOrder
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,7 +151,7 @@ namespace Restaurant.Controllers
                 CustomerId = customerId.Value,
                 OrderDate = DateTime.Now,
                 Status = "Pending",
-                InvoiceId = GenerateInvoiceId() // ✅ Generate invoice
+                InvoiceId = GenerateInvoiceId()
             };
 
             _context.Orders.Add(order);
@@ -105,7 +173,7 @@ namespace Restaurant.Controllers
 
             _context.SaveChanges();
 
-            TempData["InvoiceId"] = order.InvoiceId; // ✅ Pass to view
+            TempData["InvoiceId"] = order.InvoiceId;
 
             return RedirectToAction("OrderConfirmation");
         }
@@ -115,7 +183,7 @@ namespace Restaurant.Controllers
             return View();
         }
 
-        // ✅ Helper method for unique invoice ID
+        // Helper method for unique invoice ID
         private string GenerateInvoiceId()
         {
             return "INV-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + "-" + Guid.NewGuid().ToString().Substring(0, 4).ToUpper();

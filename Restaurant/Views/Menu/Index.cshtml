@@ -19,49 +19,91 @@
         <label class="me-2 mb-0">Filter:</label>
         <select name="category" onchange="this.form.submit()" class="form-select w-auto">
             <option value="">All Categories</option>
-            @foreach (var cat in ViewBag.Categories as List<string>)
+            @foreach (var cat in categories)
             {
-                @:<option value="@cat" @(ViewBag.SelectedCategory == cat ? "selected" : "")>@cat</option>
+                <option value="@cat" selected="@(cat == selectedCategory ? "selected" : null)">@cat</option>
             }
         </select>
+
     </form>
 </div>
 
 
-<!-- Menu Items -->
+<!-- Main Layout: Menu + Cart Side-by-Side -->
 <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow">
-                @if (!string.IsNullOrEmpty(item.ImagePath))
-                {
-                    <img src="~/images/@item.ImagePath" class="card-img-top" alt="@item.Name" style="height:200px; object-fit:cover;" />
-                }
+    <!-- Menu Section -->
+    <div class="col-md-8">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow">
+                        @if (!string.IsNullOrEmpty(item.ImagePath))
+                        {
+                            <img src="~/images/@item.ImagePath" class="card-img-top" alt="@item.Name" style="height:200px; object-fit:cover;" />
+                        }
 
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                    <p class="card-text">@item.Description</p>
-                    <p class="text-muted">@string.Format("{0:C}", item.Price ?? 0)</p>
-                    <span class="badge bg-secondary">@item.Category</span>
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">@item.Description</p>
+                            <p class="text-muted">@string.Format("{0:C}", item.Price ?? 0)</p>
+                            <span class="badge bg-secondary">@item.Category</span>
 
-                    @if (!item.Available)
-                    {
-                        <span class="badge bg-danger ms-2">Out of Stock</span>
-                    }
-                </div>
+                            @if (!item.Available)
+                            {
+                                <span class="badge bg-danger ms-2">Out of Stock</span>
+                            }
+                        </div>
 
-                @if (item.Available)
-                {
-                    <div class="card-footer text-center">
-                        <form asp-controller="Order" asp-action="AddToCart" method="post" class="d-flex justify-content-between align-items-center">
-                            <input type="hidden" name="itemId" value="@item.ItemId" />
-                            <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm me-2" style="width: 60px;" />
-                            <button type="submit" class="btn btn-primary btn-sm">Add to Order</button>
-                        </form>
+                        @if (item.Available)
+                        {
+                            <div class="card-footer text-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <input type="number" id="qty-@item.ItemId" value="1" min="1" class="form-control form-control-sm me-2" style="width: 60px;" />
+                                    <button onclick="addToCart(@item.ItemId)" class="btn btn-primary btn-sm">Add to Order</button>
+                                </div>
+                            </div>
+                        }
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
-    }
+    </div>
+
+    <!-- Cart Section -->
+    <div class="col-md-4" id="cart-panel">
+        <!-- Cart will be loaded here -->
+    </div>
 </div>
+
+@section Scripts {
+    <script>
+        function loadCart() {
+            fetch('/Menu/GetCart')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("cart-panel").innerHTML = html;
+                });
+        }
+
+        function addToCart(itemId) {
+            const qty = document.getElementById("qty-" + itemId).value || 1;
+
+            fetch('/Menu/AddToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ itemId: itemId, quantity: parseInt(qty) })
+            }).then(res => {
+                if (res.ok) {
+                    loadCart();
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadCart();
+        });
+    </script>
+}
