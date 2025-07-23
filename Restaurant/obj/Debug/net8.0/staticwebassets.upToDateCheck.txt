@@ -1,3 +1,4 @@
+wwwroot\css\menu.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\Blue Mojito.jpg
@@ -13,6 +14,7 @@ wwwroot\images\Kimbap.webp
 wwwroot\images\Mountain Dew.jpeg
 wwwroot\images\pizza.jpg
 wwwroot\images\Ramen.jpg
+wwwroot\images\red_lemon_tea.jpg
 wwwroot\images\sprite.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
