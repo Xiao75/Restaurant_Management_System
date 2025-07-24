@@ -218,6 +218,30 @@ namespace Restaurant.Controllers
             return View(order);
         }
 
+        public async Task<IActionResult> CartPartial()
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var cartItems = new List<CartItemViewModel>();
+
+            foreach (var item in cart)
+            {
+                var menuItem = await _context.MenuItems.FindAsync(item.ItemId);
+                if (menuItem != null)
+                {
+                    cartItems.Add(new CartItemViewModel
+                    {
+                        ItemId = menuItem.ItemId,
+                        Name = menuItem.Name,
+                        Price = menuItem.Price ?? 0,
+                        Quantity = item.Quantity
+                    });
+                }
+            }
+
+            return PartialView("_CartPartial", cartItems);
+        }
+
+
         private string GenerateInvoiceId()
         {
             var date = DateTime.Now.ToString("yyyyMMdd");

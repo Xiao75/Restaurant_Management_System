@@ -6,10 +6,148 @@
 
 <h2 class="text-center mb-4">Restaurant Menu</h2>
 
+<!-- 🔹 CSS for Floating Cart -->
+<style>
+    .menu-hamburger {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1100;
+        background: #0d6efd;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 12px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+        transition: background .3s ease;
+    }
+
+        .menu-hamburger:hover {
+            background: #0b5ed7;
+        }
+
+    .menu-sidebar {
+        position: fixed;
+        top: -100%;
+        right: 20px;
+        width: 360px;
+        max-height: 80vh;
+        background: #fff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
+        border-radius: 10px;
+        overflow-y: auto;
+        transition: top 0.4s ease;
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .menu-sidebar.open {
+            top: 80px;
+        }
+
+    .menu-sidebar-close {
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        line-height: 1;
+        color: #6c757d;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+        .menu-sidebar-close:hover {
+            color: #0d6efd;
+        }
+
+    .menu-sidebar-header {
+        padding: 1rem;
+        font-weight: 600;
+        font-size: 1.15rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .menu-sidebar-body {
+        flex: 1 1 auto;
+        padding: 1rem;
+    }
+
+    .menu-sidebar-footer {
+        padding: 1rem;
+        border-top: 1px solid #dee2e6;
+        text-align: right;
+    }
+
+    .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        z-index: 1040;
+        display: none;
+    }
+
+     #cartPanel.show {
+            display: block;
+        }
+
+        
+</style>
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 2000">
+    <div id="cart-toast" class="toast align-items-center text-bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">
+                Item added to cart!
+            </div>
+            @*@<button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>*@
+            <style>
+                .btn-close.red-bg {
+                    background-color: red;
+                    color: ghostwhite
+                    border-radius: 20%;
+                    opacity: 1;
+                }
+            </style>
+
+            <button type="button" class="btn-close red-bg me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 🔹 Hamburger trigger -->
+<button class="menu-hamburger" id="cart-toggle">
+    <i class="bi bi-cart3"></i> 
+</button>
+
+<!-- 🔹 Overlay backdrop -->
+<div class="menu-overlay" id="menu-overlay"></div>
+
+<!-- 🔹 Floating cart panel -->
+<div class="menu-sidebar" id="cart-panel">
+    <button class="menu-sidebar-close" onclick="closeSidebar()">×</button>
+    <div class="menu-sidebar-header">Your Cart</div>
+    <div class="menu-sidebar-body">
+        <!-- /Menu/GetCart content will be injected here -->
+        <p>Loading cart...</p>
+    </div>
+    <div class="menu-sidebar-footer">
+        <!-- Optional footer like checkout button -->
+    </div>
+</div>
+
+<!-- 🔹 Page Heading -->
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success text-center">@TempData["Message"]</div>
 }
+
 
 <!-- Category Filter -->
 <div class="mb-4 d-flex justify-content-end">

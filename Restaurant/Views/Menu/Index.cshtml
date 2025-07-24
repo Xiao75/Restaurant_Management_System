@@ -279,6 +279,50 @@
             });
         }
 
+                // Cart action buttons logic for increase, decrease, remove
+        document.body.addEventListener('click', async (e) => {
+            if (e.target.classList.contains('cart-action')) {
+                e.preventDefault();
+                const itemId = e.target.getAttribute('data-id');
+                const action = e.target.getAttribute('data-action');
+
+                let url = '';
+                switch (action) {
+                    case 'increase':
+                        url = '/Menu/IncreaseQuantity';
+                        break;
+                    case 'decrease':
+                        url = '/Menu/DecreaseQuantity';
+                        break;
+                    case 'remove':
+                        url = '/Menu/RemoveItem';
+                        break;
+                }
+
+                if (url) {
+                    await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `itemId=${itemId}`
+                    });
+
+                    loadCart();  // Refresh cart after action
+                }
+            }
+        });
+
+        // Ensure cart reloads after any change
+        function loadCart() {
+            fetch('/Menu/GetCart')
+                .then(res => res.text())
+                .then(html => {
+                    const body = document.querySelector('.menu-sidebar-body');
+                    if (body) body.innerHTML = html;
+                });
+        }
+
+
+
 
 
         document.addEventListener("DOMContentLoaded", loadCart);

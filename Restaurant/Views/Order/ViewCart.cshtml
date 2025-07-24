@@ -69,6 +69,26 @@ else
 
             <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
         </form>
-
     </div>
+}
+
+<!-- 🔹 Script to refresh floating cart after page reload -->
+@section Scripts {
+    <script>
+        // On page load, refresh the floating sidebar cart
+        document.addEventListener('DOMContentLoaded', function () {
+            loadCart();
+        });
+
+        function loadCart() {
+            fetch('/Menu/GetCart')
+                .then(response => response.text())
+                .then(html => {
+                    const sidebarBody = document.querySelector('.menu-sidebar-body');
+                    if (sidebarBody) {
+                        sidebarBody.innerHTML = html;
+                    }
+                });
+        }
+    </script>
 }

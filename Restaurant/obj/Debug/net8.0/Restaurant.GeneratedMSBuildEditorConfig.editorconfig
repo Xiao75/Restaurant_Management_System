@@ -152,6 +152,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGV0T3JkZXJcT3JkZXJDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/devra/source/repos/Restaurant/Restaurant/Views/TabletOrder/TabletPartialCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGV0T3JkZXJcVGFibGV0UGFydGlhbENhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/devra/source/repos/Restaurant/Restaurant/Views/TabletOrder/ViewCart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGV0T3JkZXJcVmlld0NhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

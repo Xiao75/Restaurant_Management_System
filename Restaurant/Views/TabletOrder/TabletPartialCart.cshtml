@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <span>
-                        @( (item.Price * item.Quantity).ToString("C", CultureInfo.GetCultureInfo("en-IN")) )
+                        @((item.Price * item.Quantity).ToString("C", CultureInfo.GetCultureInfo("en-IN")))
                     </span>
                 </li>
             }
@@ -33,13 +33,14 @@
             Subtotal: @subtotal.ToString("C", CultureInfo.GetCultureInfo("en-IN"))
         </div>
 
-        <a href="/Order/ViewCart" class="btn btn-primary w-100">Checkout</a>
+        <a href="/TabletOrder/ViewCart" class="btn btn-primary w-100">View Full Cart</a>
     </div>
 }
 else
 {
     <div class="alert alert-info">Your cart is empty.</div>
 }
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         document.body.addEventListener('click', async (e) => {
@@ -50,9 +51,9 @@ else
                 const action = e.target.getAttribute('data-action');
 
                 let url = '';
-                if (action === 'increase') url = '/Menu/IncreaseQuantity';
-                else if (action === 'decrease') url = '/Menu/DecreaseQuantity';
-                else if (action === 'remove') url = '/Menu/RemoveItem';
+                if (action === 'increase') url = '/TabletOrder/IncreaseQuantity';
+                else if (action === 'decrease') url = '/TabletOrder/DecreaseQuantity';
+                else if (action === 'remove') url = '/TabletOrder/RemoveItem';
 
                 if (url) {
                     await fetch(url, {
@@ -62,7 +63,7 @@ else
                     });
 
                     // Refresh cart after action
-                    loadCart(); // Assuming loadCart() is already defined
+                    loadTabletCart(); // Function defined in Index.cshtml for tablet
                 }
             }
         });

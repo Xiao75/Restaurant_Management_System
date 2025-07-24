@@ -1,4 +1,3 @@
-wwwroot\css\menu.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\Blue Mojito.jpg

@@ -66,8 +66,24 @@ namespace Restaurant.Controllers
         public IActionResult GetCart()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
+
+            // 🔥 Reload prices from DB
+            foreach (var cartItem in cart)
+            {
+                var dbItem = _context.MenuItems.FirstOrDefault(m => m.ItemId == cartItem.ItemId);
+                if (dbItem != null)
+                {
+                    cartItem.Price = dbItem.Price ?? 0;
+                    cartItem.Name = dbItem.Name; // Optional: refresh name
+                }
+            }
+
+            // 🔄 Save back updated cart with correct prices
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+
             return PartialView("~/Views/Shared/PartialCart.cshtml", cart);
         }
+
 
         [HttpPost]
         public IActionResult AddToCart([FromBody] CartAddViewModel model)
@@ -97,38 +113,81 @@ namespace Restaurant.Controllers
         public IActionResult IncreaseQuantity(int itemId)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
-            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
-            if (item != null)
-                item.Quantity++;
+
+            var dbItem = _context.MenuItems.FirstOrDefault(m => m.ItemId == itemId);
+            if (dbItem == null) return NotFound();
+
+            var cartItem = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (cartItem != null)
+            {
+                cartItem.Quantity++;
+                cartItem.Price = dbItem.Price ?? 0;  // 🟢 Always refresh price here
+                cartItem.Name = dbItem.Name;         // 🟢 Optional: refresh name in case it changed
+            }
+            else
+            {
+                cart.Add(new CartItemViewModel
+                {
+                    ItemId = dbItem.ItemId,
+                    Name = dbItem.Name,
+                    Price = dbItem.Price ?? 0,
+                    Quantity = 1
+                });
+            }
+
             HttpContext.Session.SetObjectAsJson("Cart", cart);
             return RedirectToAction("Index", "Menu");
         }
+
+
 
         [HttpPost]
         public IActionResult DecreaseQuantity(int itemId)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
-            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
-            if (item != null)
+
+            var dbItem = _context.MenuItems.FirstOrDefault(m => m.ItemId == itemId);
+            if (dbItem == null) return NotFound();
+
+            var cartItem = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (cartItem != null)
             {
-                item.Quantity--;
-                if (item.Quantity <= 0)
-                    cart.Remove(item);
+                cartItem.Quantity--;
+                cartItem.Price = dbItem.Price ?? 0;  // 🟢 Refresh price again
+                cartItem.Name = dbItem.Name;
+
+                if (cartItem.Quantity <= 0)
+                    cart.Remove(cartItem);
             }
+
             HttpContext.Session.SetObjectAsJson("Cart", cart);
             return RedirectToAction("Index", "Menu");
         }
+
 
         [HttpPost]
         public IActionResult RemoveItem(int itemId)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
-            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
-            if (item != null)
-                cart.Remove(item);
+
+            var dbItem = _context.MenuItems.FirstOrDefault(m => m.ItemId == itemId);
+            if (dbItem == null) return NotFound();
+
+            var cartItem = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (cartItem != null)
+            {
+                // Optional: Refresh name/price just like other actions
+                cartItem.Name = dbItem.Name;
+                cartItem.Price = dbItem.Price ?? 0;
+
+                cart.Remove(cartItem);  // Actually remove the item
+            }
+
             HttpContext.Session.SetObjectAsJson("Cart", cart);
-            return RedirectToAction("Index", "Menu");
+            return Ok(); // Allows JS to handle the reload
         }
+
+
 
 
         // POST: Menu/PlaceOrder

@@ -184,6 +184,14 @@ namespace Restaurant.Controllers
             return RedirectToAction("OrderConfirmation");
         }
 
+        //partial tablet cart
+        public IActionResult GetTabletCart()
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("TabletCart") ?? new List<CartItemViewModel>();
+            return PartialView("~/Views/TabletOrder/TabletPartialCart.cshtml", cart);
+        }
+
+
         // ✅ Confirmation page
         public IActionResult OrderConfirmation()
         {
