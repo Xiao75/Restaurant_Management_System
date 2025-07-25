@@ -13,9 +13,21 @@
                     <div>
                         @($"{item.Name} (x{item.Quantity})")
                         <div class="btn-group btn-group-sm mt-1" role="group">
-                            <button class="btn btn-warning cart-action" data-id="@item.ItemId" data-action="decrease">-</button>
-                            <button class="btn btn-success cart-action" data-id="@item.ItemId" data-action="increase">+</button>
-                            <button class="btn btn-danger cart-action" data-id="@item.ItemId" data-action="remove">x</button>
+                            <button class="btn btn-warning cart-action"
+                                    data-id="@item.ItemId"
+                                    data-action="decrease">
+                                -
+                            </button>
+                            <button class="btn btn-success cart-action"
+                                    data-id="@item.ItemId"
+                                    data-action="increase">
+                                +
+                            </button>
+                            <button class="btn btn-danger cart-action"
+                                    data-id="@item.ItemId"
+                                    data-action="remove">
+                                x
+                            </button>
                         </div>
                     </div>
                     <span>
@@ -33,7 +45,7 @@
             Subtotal: @subtotal.ToString("C", CultureInfo.GetCultureInfo("en-IN"))
         </div>
 
-        <a href="/TabletOrder/ViewCart" class="btn btn-primary w-100">View Full Cart</a>
+        <a href="/TabletOrder/ViewCart" class="btn btn-primary w-100">Checkout</a>
     </div>
 }
 else
@@ -44,28 +56,29 @@ else
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         document.body.addEventListener('click', async (e) => {
-            if (e.target.classList.contains('cart-action')) {
-                e.preventDefault();
+            if (!e.target.classList.contains('cart-action')) return;
+            e.preventDefault();
 
-                const itemId = e.target.getAttribute('data-id');
-                const action = e.target.getAttribute('data-action');
+            const itemId = e.target.dataset.id;
+            const action = e.target.dataset.action;
 
-                let url = '';
-                if (action === 'increase') url = '/TabletOrder/IncreaseQuantity';
-                else if (action === 'decrease') url = '/TabletOrder/DecreaseQuantity';
-                else if (action === 'remove') url = '/TabletOrder/RemoveItem';
-
-                if (url) {
-                    await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams({ itemId })
-                    });
-
-                    // Refresh cart after action
-                    loadTabletCart(); // Function defined in Index.cshtml for tablet
-                }
+            let url = '';
+            switch (action) {
+                case 'increase': url = '/TabletOrder/IncreaseQuantity'; break;
+                case 'decrease': url = '/TabletOrder/DecreaseQuantity'; break;
+                case 'remove':   url = '/TabletOrder/RemoveFromCart';   break;
             }
+
+            if (!url) return;
+
+            await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ itemId })
+            });
+
+            // Call the refresh function defined in TabletOrder/Index
+            if (typeof loadTabletCart === 'function') loadTabletCart();
         });
     });
 </script>

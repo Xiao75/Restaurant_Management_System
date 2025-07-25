@@ -1,0 +1,121 @@
+﻿@model Restaurant.Models.ViewModels.SuperAdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Super Admin Dashboard";
+    var selectedRange = Context.Request.Query["range"].ToString().ToLower();
+}
+
+<style>
+    .summary-grid {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .summary-card {
+        flex: 1;
+        min-width: 200px;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+        .summary-card h5 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .summary-card p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+    .dropdown-form {
+        margin-bottom: 1.5rem;
+    }
+
+        .dropdown-form select {
+            padding: 0.3rem 0.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #eaeaea;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+</style>
+
+<h2>Super Admin Sales Summary</h2>
+
+<div class="dropdown-form">
+    <form method="get" asp-action="Index" asp-controller="Dashboard" asp-area="SuperAdmin">
+        <label for="range">Select Time Range:</label>
+        <select id="range" name="range" onchange="this.form.submit()">
+            <option value="daily" @(selectedRange == "daily" ? "selected" : "")>Today</option>
+            <option value="weekly" @(selectedRange == "weekly" ? "selected" : "")>Last 7 days</option>
+            <option value="monthly" @(selectedRange == "monthly" ? "selected" : "")>Last 30 days</option>
+            <option value="yearly" @(selectedRange == "yearly" ? "selected" : "")>Yearly</option>
+            <option value="all" @(selectedRange == "all" ? "selected" : "")>All Time</option>
+        </select>
+    </form>
+</div>
+
+<div class="summary-grid">
+    <div class="summary-card">
+        <h5>Total Revenue</h5>
+        <p>@Model.TotalRevenue.ToString("C")</p>
+    </div>
+    <div class="summary-card">
+        <h5>Total Items Sold</h5>
+        <p>@Model.TotalItemsSold</p>
+    </div>
+    <div class="summary-card">
+        <h5>Best-Selling Item</h5>
+        <p>@Model.BestSellingItem (@Model.BestSellingQuantity sold)</p>
+    </div>
+    <div class="summary-card">
+        <h5>Worst-Selling Item</h5>
+        <p>@Model.WorstSellingItem (@Model.WorstSellingQuantity sold)</p>
+    </div>
+</div>
+
+<h3>Item-wise Sales Details</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Quantity Sold</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ItemSalesSummary)
+        {
+            <tr>
+                <td>@item.ItemName</td>
+                <td>@item.QuantitySold</td>
+                <td>@(item.SubTotal.GetValueOrDefault().ToString("C"))</td>
+            </tr>
+        }
+    </tbody>
+</table>

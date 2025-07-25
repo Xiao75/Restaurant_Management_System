@@ -185,10 +185,42 @@ namespace Restaurant.Controllers
         }
 
         //partial tablet cart
-        public IActionResult GetTabletCart()
+        // Helper – builds view-models from the tablet cart
+        private async Task<List<CartItemViewModel>> BuildTabletCartViewModelsAsync()
         {
-            var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("TabletCart") ?? new List<CartItemViewModel>();
-            return PartialView("~/Views/TabletOrder/TabletPartialCart.cshtml", cart);
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("TabletCart")
+                       ?? new List<CartItem>();
+            var result = new List<CartItemViewModel>();
+
+            foreach (var ci in cart)
+            {
+                var menuItem = await _context.MenuItems.FindAsync(ci.ItemId);
+                if (menuItem != null)
+                {
+                    result.Add(new CartItemViewModel
+                    {
+                        ItemId = menuItem.ItemId,
+                        Name = menuItem.Name,
+                        Price = menuItem.Price ?? 0,
+                        Quantity = ci.Quantity
+                    });
+                }
+            }
+            return result;
+        }
+
+        // Action that returns the partial (for AJAX or <partial> tag)
+        public async Task<IActionResult> CartPartial()
+        {
+            var vm = await BuildTabletCartViewModelsAsync();
+            return PartialView("_CartPartial", vm);
+        }
+
+        // Action that returns the tablet-specific partial view you already created
+        public async Task<IActionResult> GetTabletCart()
+        {
+            var vm = await BuildTabletCartViewModelsAsync();
+            return PartialView("~/Views/TabletOrder/TabletPartialCart.cshtml", vm);
         }
 
 

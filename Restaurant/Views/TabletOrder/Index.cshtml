@@ -22,7 +22,6 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
         transition: background .3s ease;
     }
-
         .menu-hamburger:hover {
             background: #0b5ed7;
         }
@@ -42,7 +41,6 @@
         display: flex;
         flex-direction: column;
     }
-
         .menu-sidebar.open {
             top: 80px;
         }
@@ -58,7 +56,6 @@
         top: 10px;
         right: 15px;
     }
-
         .menu-sidebar-close:hover {
             color: #0d6efd;
         }
@@ -88,57 +85,46 @@
         z-index: 1040;
         display: none;
     }
-
-     #cartPanel.show {
+        .menu-overlay.show {
             display: block;
         }
 
-        
+    .btn-close.red-bg {
+        background-color: red;
+        color: ghostwhite;
+        border-radius: 20%;
+        opacity: 1;
+    }
 </style>
 
+<!-- 🔹 Toast -->
 <div class="position-fixed top-0 end-0 p-3" style="z-index: 2000">
     <div id="cart-toast" class="toast align-items-center text-bg-success border-0" role="alert">
         <div class="d-flex">
-            <div class="toast-body">
-                Item added to cart!
-            </div>
-            @*@<button type="button" class="btn-close btn-close-white me-2 m-auto"
-                    data-bs-dismiss="toast" aria-label="Close"></button>*@
-            <style>
-                .btn-close.red-bg {
-                    background-color: red;
-                    color: ghostwhite
-                    border-radius: 20%;
-                    opacity: 1;
-                }
-            </style>
-
+            <div class="toast-body">Item added to cart!</div>
             <button type="button" class="btn-close red-bg me-2 m-auto"
                     data-bs-dismiss="toast" aria-label="Close"></button>
-
         </div>
     </div>
 </div>
 
-
 <!-- 🔹 Hamburger trigger -->
 <button class="menu-hamburger" id="cart-toggle">
-    <i class="bi bi-cart3"></i> 
+    <i class="bi bi-cart3"></i>
 </button>
 
 <!-- 🔹 Overlay backdrop -->
 <div class="menu-overlay" id="menu-overlay"></div>
 
-<!-- 🔹 Floating cart panel -->
+<!-- 🔹 Floating cart panel (FIXED) -->
 <div class="menu-sidebar" id="cart-panel">
     <button class="menu-sidebar-close" onclick="closeSidebar()">×</button>
     <div class="menu-sidebar-header">Your Cart</div>
     <div class="menu-sidebar-body">
-        <!-- /Menu/GetCart content will be injected here -->
-        <p>Loading cart...</p>
+        <!-- ❶ Use the new partial action instead of ViewComponent -->
+        @await Html.PartialAsync("TabletPartialCart", ViewBag.Cart as List<Restaurant.Models.ViewModels.CartItemViewModel>)
     </div>
     <div class="menu-sidebar-footer">
-        <!-- Optional footer like checkout button -->
     </div>
 </div>
 
@@ -148,22 +134,21 @@
     <div class="alert alert-success text-center">@TempData["Message"]</div>
 }
 
-
 <!-- Category Filter -->
 <div class="mb-4 d-flex justify-content-end">
     <form method="get" asp-action="Index" asp-controller="TabletOrder" class="d-flex align-items-center">
         <label class="me-2 mb-0">Filter:</label>
-       <select name="category" onchange="this.form.submit()" class="form-select w-auto">
-    <option value="">All Categories</option>
-    @foreach (var cat in ViewBag.Categories as List<string>)
-    {
-        bool selected = (ViewBag.SelectedCategory == cat);
-         @:<option value="@cat" @(ViewBag.SelectedCategory == cat ? "selected" : "")>@cat</option>
-    }
-</select>
+        <select name="category" onchange="this.form.submit()" class="form-select w-auto">
+            <option value="">All Categories</option>
+            @foreach (var cat in ViewBag.Categories as List<string>)
+            {
+                <option value="@cat" selected="@(cat == ViewBag.SelectedCategory ? "selected" : null)">@cat</option>
+            }
+        </select>
     </form>
 </div>
 
+<!-- Menu Grid -->
 <div class="row">
     @foreach (var item in Model)
     {
@@ -186,3 +171,38 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script>
+        const toggleBtn = document.getElementById('cart-toggle');
+        const sidebar   = document.getElementById('cart-panel');
+        const overlay   = document.getElementById('menu-overlay');
+
+        let cartOpen = false;
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+            cartOpen = true;
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            cartOpen = false;
+        }
+
+        toggleBtn.addEventListener('click', () => cartOpen ? closeSidebar() : openSidebar());
+        overlay.addEventListener('click', closeSidebar);
+
+        // Refresh the floating cart
+        function loadTabletCart() {
+            fetch('/TabletOrder/GetTabletCart')
+                .then(r => r.text())
+                .then(html => {
+                    document.querySelector('.menu-sidebar-body').innerHTML = html;
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTabletCart);
+    </script>
+}

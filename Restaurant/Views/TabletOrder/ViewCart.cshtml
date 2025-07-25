@@ -34,15 +34,15 @@ else
                     <td>@item.Quantity</td>
                     <td>@((item.Price * item.Quantity).ToString("C"))</td>
                     <td>
-                        <form asp-action="DecreaseQuantity" method="post" style="display:inline">
+                        <form asp-controller="TabletOrder" asp-action="DecreaseQuantity" method="post" style="display:inline">
                             <input type="hidden" name="itemId" value="@item.ItemId" />
                             <button type="submit" class="btn btn-sm btn-warning">-</button>
                         </form>
-                        <form asp-action="IncreaseQuantity" method="post" style="display:inline">
+                        <form asp-controller="TabletOrder" asp-action="IncreaseQuantity" method="post" style="display:inline">
                             <input type="hidden" name="itemId" value="@item.ItemId" />
                             <button type="submit" class="btn btn-sm btn-success">+</button>
                         </form>
-                        <form asp-action="RemoveFromCart" method="post" style="display:inline">
+                        <form asp-controller="TabletOrder" asp-action="RemoveFromCart" method="post" style="display:inline">
                             <input type="hidden" name="itemId" value="@item.ItemId" />
                             <button type="submit" class="btn btn-sm btn-danger">Remove</button>
                         </form>
@@ -62,7 +62,7 @@ else
                 <label for="tableNumber" class="form-label">Select Table Number:</label>
                 <select name="tableNumber" id="tableNumber" class="form-select" required>
                     <option value="">--Select Table--</option>
-                    @for (int i=1; i <=20; i++)
+                    @for (int i = 1; i <= 20; i++)
                     {
                         <option value="@i">Table @i</option>
                     }
@@ -73,3 +73,22 @@ else
     </div>
 }
 
+@section Scripts {
+    <script>
+        // Refresh the floating cart when this page is visited
+        document.addEventListener('DOMContentLoaded', function () {
+            loadTabletCart();
+        });
+
+        function loadTabletCart() {
+            fetch('/TabletOrder/GetTabletCart')
+                .then(response => response.text())
+                .then(html => {
+                    const sidebarBody = document.querySelector('.menu-sidebar-body');
+                    if (sidebarBody) {
+                        sidebarBody.innerHTML = html;
+                    }
+                });
+        }
+    </script>
+}
