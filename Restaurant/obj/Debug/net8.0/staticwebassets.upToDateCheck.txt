@@ -13,7 +13,6 @@ wwwroot\images\Kimbap.webp
 wwwroot\images\Mountain Dew.jpeg
 wwwroot\images\pizza.jpg
 wwwroot\images\Ramen.jpg
-wwwroot\images\red_lemon_tea.jpg
 wwwroot\images\sprite.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -73,3 +72,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\images\red_lemon_tea.jpg

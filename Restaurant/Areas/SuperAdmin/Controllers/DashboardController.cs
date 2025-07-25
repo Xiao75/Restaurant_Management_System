@@ -44,8 +44,8 @@ namespace Restaurant.Areas.SuperAdmin.Controllers
                     endDate = today.AddDays(1);
                     break;
                 case "all":
-                    startDate = DateTime.MinValue;
-                    endDate = DateTime.MaxValue;
+                    startDate = new DateTime(1753, 1, 1);
+                    endDate = DateTime.Today.AddDays(1);
                     break;
                 default:
                     startDate = today;
