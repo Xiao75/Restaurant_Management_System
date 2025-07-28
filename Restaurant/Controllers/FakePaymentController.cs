@@ -13,7 +13,7 @@ namespace Restaurant.Controllers
             _context = context;
         }
 
-        // ✅ Shows the fake payment UI (manual selection of success/fail)
+        //  Shows the fake payment UI (manual selection of success/fail)
         [HttpGet]
         public IActionResult FakePay(int orderId)
         {
@@ -27,7 +27,7 @@ namespace Restaurant.Controllers
             return View(); // Views/FakePayment/FakePay.cshtml
         }
 
-        // ✅ Process based on the fake result input (from FakePay.cshtml)
+        // Process based on the fake result input (from FakePay.cshtml)
         [HttpPost]
         public IActionResult Process(int orderId, int result)
         {
@@ -66,7 +66,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("Result", new { orderId });
         }
 
-        // ✅ Show result (success/fail)
+        //  Show result (success/fail)
         public IActionResult Result(int orderId)
         {
             ViewBag.Status = TempData["Status"];

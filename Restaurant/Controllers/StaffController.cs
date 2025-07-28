@@ -2,12 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Data;
 using Restaurant.Models; // Required for Payment model
+using REstaurant.Filters;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Restaurant.Controllers
 {
+    [StaffOnly]
     public class StaffController : Controller
     {
         private readonly RmsContext _context;
@@ -17,7 +19,7 @@ namespace Restaurant.Controllers
             _context = context;
         }
 
-        // ✅ View all pending online orders
+        //  View all pending online orders
         public async Task<IActionResult> Orders()
         {
             var pendingOrders = await _context.Orders
@@ -30,7 +32,7 @@ namespace Restaurant.Controllers
             return View(pendingOrders);
         }
 
-        // ✅ View all offline (tablet) orders
+        //  View all offline (tablet) orders
         public async Task<IActionResult> OfflineOrders()
         {
             var orders = await _context.Orders
@@ -43,7 +45,7 @@ namespace Restaurant.Controllers
             return View(orders);
         }
 
-        // ✅ Confirm an order
+        //  Confirm an order
         [HttpPost]
         public async Task<IActionResult> ConfirmOrder(int orderId)
         {
@@ -57,7 +59,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("OfflineOrders");
         }
 
-        // ✅ Mark offline order as paid AND insert into Payments table
+        //  Mark offline order as paid AND insert into Payments table
         [HttpPost]
         public async Task<IActionResult> MarkAsPaid(int orderId)
         {

@@ -25,8 +25,16 @@ public partial class Customer
     [StringLength(100)]
     public string Password { get; set; } = "";
 
+    //SuperAdmin 
+
+    public bool IsSuperAdmin { get; set; } = false;
+
     //Admin 
     public bool IsAdmin { get; set; } = false;
+
+    //Staff
+
+    public bool IsStaff { get; set; } = false;
 
     [InverseProperty("Customer")]
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();

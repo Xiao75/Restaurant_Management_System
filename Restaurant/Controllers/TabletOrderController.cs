@@ -11,14 +11,14 @@ namespace Restaurant.Controllers
     public class TabletOrderController : Controller
     {
         private readonly RmsContext _context;
-       // private readonly int TableNumber = 5; // ✅ Set this uniquely per tablet
+       // private readonly int TableNumber = 5; // Set this uniquely per tablet
 
         public TabletOrderController(RmsContext context)
         {
             _context = context;
         }
 
-        // ✅ Show Menu Items for Tablet (like Menu/Index)
+        // Show Menu Items for Tablet (like Menu/Index)
         public IActionResult Index(string category)
         {
             var menuItemsQuery = _context.MenuItems
@@ -47,7 +47,7 @@ namespace Restaurant.Controllers
         }
         
 
-        // ✅ Add item to cart
+        // Add item to cart
         [HttpPost]
         public IActionResult AddToCart(int itemId, int quantity = 1)
         {
@@ -65,7 +65,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("Index", "TabletOrder");
         }
 
-        // ✅ View cart
+        // View cart
         public async Task<IActionResult> ViewCart()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("TabletCart") ?? new List<CartItem>();
@@ -89,7 +89,7 @@ namespace Restaurant.Controllers
             return View(cartItems);
         }
 
-        // ✅ Increase quantity
+        // Increase quantity
         [HttpPost]
         public IActionResult IncreaseQuantity(int itemId)
         {
@@ -103,7 +103,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        // ✅ Decrease quantity
+        // Decrease quantity
         [HttpPost]
         public IActionResult DecreaseQuantity(int itemId)
         {
@@ -121,7 +121,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        // ✅ Remove item
+        // Remove item
         [HttpPost]
         public IActionResult RemoveFromCart(int itemId)
         {
@@ -132,7 +132,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        // ✅ Place order from tablet
+        // Place order from tablet
         [HttpPost]
         public IActionResult PlaceOrder(int tableNumber)
         {
@@ -158,7 +158,7 @@ namespace Restaurant.Controllers
                 TableNumber = tableNumber,
                 OrderDate = DateTime.Now,
                 Status = "Pending",
-                Source = "Offline", // ✅ Always Offline for tablet
+                Source = "Offline", // Always Offline for tablet
                 TotalAmount = totalAmount,
                 InvoiceId = GenerateInvoiceId()
             };
@@ -178,7 +178,7 @@ namespace Restaurant.Controllers
 
             _context.SaveChanges();
 
-            // ✅ Clear tablet cart
+            // Clear tablet cart
             HttpContext.Session.Remove("TabletCart");
 
             return RedirectToAction("OrderConfirmation");
@@ -224,13 +224,13 @@ namespace Restaurant.Controllers
         }
 
 
-        // ✅ Confirmation page
+        // Confirmation page
         public IActionResult OrderConfirmation()
         {
             return View();
         }
 
-        // ✅ Generates invoice ID
+        // Generates invoice ID
         private string GenerateInvoiceId()
         {
             var date = DateTime.Now.ToString("yyyyMMdd");

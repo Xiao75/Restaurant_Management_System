@@ -2,10 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Data;
 using Restaurant.Filters;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Restaurant.Controllers
 {
-    [AdminOnly]
+    [AdminOnly]  // Ensures only Admin and SuperAdmin can access
     public class AdminController : Controller
     {
         private readonly RmsContext _context;
@@ -14,26 +17,28 @@ namespace Restaurant.Controllers
         {
             _context = context;
         }
+
         public async Task<IActionResult> Dashboard()
         {
-            var totalOrders = await _context.Orders.CountAsync();
-            var totalRevenue = await _context.Orders.SumAsync(o => o.TotalAmount);
-            var totalCustomer = await _context.Customers.CountAsync();
+            DateTime today = DateTime.Today;
+            DateTime tomorrow = today.AddDays(1);
+
+            //Filter today's orders
+            var todaysOrders = await _context.Orders
+                .Include(o => o.Customer)
+                .Where(o => o.OrderDate >= today && o.OrderDate < tomorrow)
+                .OrderByDescending(o => o.OrderDate)
+                .ToListAsync();
+
+            var totalOrders = todaysOrders.Count;
+            var totalRevenue = todaysOrders.Sum(o => o.TotalAmount);
             var totalMenuItems = await _context.MenuItems.CountAsync();
 
             ViewBag.TotalOrders = totalOrders;
             ViewBag.TotalRevenue = totalRevenue;
-            ViewBag.TotalCustomer = totalCustomer;
             ViewBag.TotalMenuItems = totalMenuItems;
 
-            var recentOrders = await _context.Orders
-                .Include(o => o.Customer)
-                .OrderByDescending(o => o.OrderDate)
-                .Take(5)
-                .ToListAsync();
-            return View(recentOrders);
-
-            
+            return View(todaysOrders);
         }
     }
 }

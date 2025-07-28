@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Data;
+using Restaurant.Filters;
 using Restaurant.Models.ViewModels;
 using System;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace Restaurant.Areas.SuperAdmin.Controllers
 {
     [Area("SuperAdmin")]
+    [SuperAdminOnly]
     public class DashboardController : Controller
     {
         private readonly RmsContext _context;

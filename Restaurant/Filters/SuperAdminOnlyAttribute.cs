@@ -3,20 +3,20 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Restaurant.Filters
 {
-    public class AdminOnlyAttribute : ActionFilterAttribute
+    public class SuperAdminOnlyAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             var httpContext = context.HttpContext;
-            var isAdmin = httpContext.Session.GetInt32("IsAdmin") == 1;
+            var session = httpContext.Session;
+
             var isSuperAdmin = httpContext.Session.GetInt32("IsSuperAdmin") == 1;
 
-            if (!isAdmin && !isSuperAdmin)
+            if (!isSuperAdmin)
             {
                 context.Result = new RedirectToActionResult("AccessDenied", "Home", null);
 
             }
         }
     }
-
 }

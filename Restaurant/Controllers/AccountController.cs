@@ -84,7 +84,9 @@ namespace Restaurant.Controllers
                     HttpContext.Session.SetInt32("CustomerId", customer.CustomerId);
                     HttpContext.Session.SetString("CustomerName", customer.Name ?? "Guest");
 
-                    HttpContext.Session.SetString("IsAdmin", customer.IsAdmin ? "true" : "false");
+                    HttpContext.Session.SetInt32("IsAdmin", customer.IsAdmin ? 1 : 0);
+                    HttpContext.Session.SetInt32("IsSuperAdmin", customer.IsSuperAdmin ? 1 : 0);
+                    HttpContext.Session.SetInt32("IsStaff", customer.IsStaff ? 1 : 0);
 
                     return RedirectToAction("Index", "Menu");
                 }

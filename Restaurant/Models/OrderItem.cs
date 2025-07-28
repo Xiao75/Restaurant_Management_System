@@ -13,14 +13,14 @@ public partial class OrderItem
     public int OrderItemId { get; set; }
 
     [Column("OrderID")]
-    [Required] // ✅ Not nullable
+    [Required] // Not nullable
     public int OrderId { get; set; }
 
     [Column("ItemID")]
-    [Required] // ✅ Not nullable
+    [Required] // Not nullable
     public int ItemId { get; set; }
 
-    [Required] // ✅ Quantity is always needed
+    [Required] // Quantity is always needed
     public int Quantity { get; set; }
 
     [ForeignKey("ItemId")]

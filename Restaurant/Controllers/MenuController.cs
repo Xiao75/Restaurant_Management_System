@@ -67,7 +67,7 @@ namespace Restaurant.Controllers
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItemViewModel>>("Cart") ?? new List<CartItemViewModel>();
 
-            // 🔥 Reload prices from DB
+            //  Reload prices from DB
             foreach (var cartItem in cart)
             {
                 var dbItem = _context.MenuItems.FirstOrDefault(m => m.ItemId == cartItem.ItemId);
@@ -78,7 +78,7 @@ namespace Restaurant.Controllers
                 }
             }
 
-            // 🔄 Save back updated cart with correct prices
+            // Save back updated cart with correct prices
             HttpContext.Session.SetObjectAsJson("Cart", cart);
 
             return PartialView("~/Views/Shared/PartialCart.cshtml", cart);
@@ -121,8 +121,8 @@ namespace Restaurant.Controllers
             if (cartItem != null)
             {
                 cartItem.Quantity++;
-                cartItem.Price = dbItem.Price ?? 0;  // 🟢 Always refresh price here
-                cartItem.Name = dbItem.Name;         // 🟢 Optional: refresh name in case it changed
+                cartItem.Price = dbItem.Price ?? 0;  //  Always refresh price here
+                cartItem.Name = dbItem.Name;         //  Optional: refresh name in case it changed
             }
             else
             {
@@ -153,7 +153,7 @@ namespace Restaurant.Controllers
             if (cartItem != null)
             {
                 cartItem.Quantity--;
-                cartItem.Price = dbItem.Price ?? 0;  // 🟢 Refresh price again
+                cartItem.Price = dbItem.Price ?? 0;  // Refresh price again
                 cartItem.Name = dbItem.Name;
 
                 if (cartItem.Quantity <= 0)

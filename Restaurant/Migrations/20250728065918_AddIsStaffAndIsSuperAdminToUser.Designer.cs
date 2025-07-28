@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant.Data;
 
@@ -11,9 +12,11 @@ using Restaurant.Data;
 namespace Restaurant.Migrations
 {
     [DbContext(typeof(RmsContext))]
-    partial class RmsContextModelSnapshot : ModelSnapshot
+    [Migration("20250728065918_AddIsStaffAndIsSuperAdminToUser")]
+    partial class AddIsStaffAndIsSuperAdminToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

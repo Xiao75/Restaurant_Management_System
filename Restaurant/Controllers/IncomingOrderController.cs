@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Data;
+using Restaurant.Filters;
 using Restaurant.Models;
 
 namespace Restaurant.Controllers
 {
+    [AdminOnly]
     public class IncomingOrderController : Controller
     {
         private readonly RmsContext _context;
@@ -50,13 +52,12 @@ namespace Restaurant.Controllers
                 var payment = new Payment
                 {
                     OrderId = order.OrderId,
-                    Amount = order.TotalAmount, // assuming TotalAmount is nullable
+                    Amount = order.TotalAmount, 
                     PaidAt = DateTime.Now,
-                  //  PaymentMethod = "Offline", // or your preferred label
                     Status = "Success"
                 };
 
-                _context.Payments.Add(payment); // <-- this is what was missing!
+                _context.Payments.Add(payment); 
                 await _context.SaveChangesAsync();
             }
 
