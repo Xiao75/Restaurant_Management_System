@@ -40,31 +40,3 @@ else
 {
     <div class="alert alert-info">Your cart is empty.</div>
 }
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.addEventListener('click', async (e) => {
-            if (e.target.classList.contains('cart-action')) {
-                e.preventDefault();
-
-                const itemId = e.target.getAttribute('data-id');
-                const action = e.target.getAttribute('data-action');
-
-                let url = '';
-                if (action === 'increase') url = '/Menu/IncreaseQuantity';
-                else if (action === 'decrease') url = '/Menu/DecreaseQuantity';
-                else if (action === 'remove') url = '/Menu/RemoveItem';
-
-                if (url) {
-                    await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams({ itemId })
-                    });
-
-                    // Refresh cart after action
-                    loadCart(); // Assuming loadCart() is already defined
-                }
-            }
-        });
-    });
-</script>

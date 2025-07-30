@@ -1,0 +1,31 @@
+﻿@model Restaurant.Models.Address
+@{
+    ViewData["Title"] = "Edit Address";
+}
+
+<h2>Edit Address</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="AddressID" />
+
+    <div class="mb-3">
+        <label asp-for="Label" class="form-label">Label</label>
+        <input asp-for="Label" class="form-control" />
+        <span asp-validation-for="Label" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FullAddress" class="form-label">Full Address</label>
+        <textarea asp-for="FullAddress" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="FullAddress" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Address</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

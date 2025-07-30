@@ -17,6 +17,7 @@ public partial class RmsContext : DbContext
     }
 
     public virtual DbSet<Customer> Customers { get; set; }
+    public DbSet<Address> Addresses { get; set; }
     public virtual DbSet<MenuItem> MenuItems { get; set; }
     public virtual DbSet<Order> Orders { get; set; }
     public virtual DbSet<OrderItem> OrderItems { get; set; }

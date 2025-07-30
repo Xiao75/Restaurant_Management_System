@@ -21,6 +21,13 @@ namespace Restaurant.Models
         [Column("CustomerID")]
         public int? CustomerId { get; set; }
 
+        [ForeignKey("Address")]
+        public int? AddressID { get; set; }
+
+        public Address Address { get; set; }
+
+
+
         [Column(TypeName = "datetime")]
         public DateTime? OrderDate { get; set; }
 

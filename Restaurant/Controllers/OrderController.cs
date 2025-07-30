@@ -21,6 +21,7 @@ namespace Restaurant.Controllers
             _context = context;
         }
 
+        // ✅ Add to cart
         [HttpPost]
         public IActionResult AddToCart(int itemId, int quantity = 1)
         {
@@ -40,6 +41,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("Index", "Menu");
         }
 
+        // ✅ Increase quantity
         [HttpPost]
         public IActionResult IncreaseQuantity(int itemId)
         {
@@ -53,6 +55,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
+        // ✅ Decrease quantity
         [HttpPost]
         public IActionResult DecreaseQuantity(int itemId)
         {
@@ -70,6 +73,7 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
+        // ✅ Remove from cart
         [HttpPost]
         public IActionResult RemoveFromCart(int itemId)
         {
@@ -80,8 +84,10 @@ namespace Restaurant.Controllers
             return RedirectToAction("ViewCart");
         }
 
+        // ✅ View Cart
         public async Task<IActionResult> ViewCart()
         {
+            var customerId = HttpContext.Session.GetInt32("CustomerId");
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
             var cartItems = new List<CartItemViewModel>();
 
@@ -100,20 +106,61 @@ namespace Restaurant.Controllers
                 }
             }
 
+            if (customerId != null)
+            {
+                var addresses = await _context.Addresses
+                    .Where(a => a.CustomerId == customerId.Value)
+                    .ToListAsync();
+
+                ViewBag.Addresses = addresses;
+            }
+
             return View(cartItems);
         }
 
+        // ✅ Select address for checkout
         [HttpPost]
-        public IActionResult PlaceOrder(string source = "Online", string paymentMethod = "Cash")
+        public IActionResult SelectAddressAndCheckout(int? addressId)
+        {
+            if (addressId == null || addressId == 0)
+            {
+                TempData["Error"] = "Please select a delivery address.";
+                return RedirectToAction("ViewCart");
+            }
+
+            HttpContext.Session.SetInt32("SelectedAddressId", addressId.Value);
+            return RedirectToAction("ViewCart");
+        }
+
+        // ✅ Place order and create records
+        // ✅ Place order from ViewCart with address + payment method
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult PlaceOrderFromCart(int AddressId, string PaymentMethod)
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
             if (customerId == null)
                 return RedirectToAction("Login", "Account");
 
+            if (AddressId == 0)
+            {
+                TempData["Error"] = "Please select a delivery address.";
+                return RedirectToAction("ViewCart");
+            }
+
+            var address = _context.Addresses
+                .FirstOrDefault(a => a.AddressID == AddressId && a.CustomerId == customerId.Value);
+
+            if (address == null)
+            {
+                TempData["Error"] = "Invalid address selected.";
+                return RedirectToAction("ViewCart");
+            }
+
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart");
             if (cart == null || !cart.Any())
             {
-                TempData["Error"] = "Cart is empty.";
+                TempData["Error"] = "Your cart is empty.";
                 return RedirectToAction("ViewCart");
             }
 
@@ -131,11 +178,12 @@ namespace Restaurant.Controllers
             {
                 CustomerId = customerId.Value,
                 OrderDate = DateTime.Now,
-                Status = paymentMethod == "Online" ? "Pending" : "Confirmed",
-                Source = source,
+                Status = PaymentMethod == "Online" ? "Pending" : "Confirmed",
+                Source = "Online",
                 TotalAmount = totalAmount,
                 InvoiceId = GenerateInvoiceId(),
-                PaymentMethod = paymentMethod
+                PaymentMethod = PaymentMethod,
+                AddressID = AddressId
             };
 
             _context.Orders.Add(order);
@@ -151,20 +199,19 @@ namespace Restaurant.Controllers
                 });
             }
 
-            // Insert Payment entry for both Online and Cash
             _context.Payments.Add(new Payment
             {
                 OrderId = order.OrderId,
                 Amount = totalAmount,
-                PaymentMethod = paymentMethod,
+                PaymentMethod = PaymentMethod,
                 PaidAt = DateTime.Now,
-                Status = paymentMethod == "Online" ? "Processing" : "Paid"
+                Status = PaymentMethod == "Online" ? "Processing" : "Paid"
             });
 
             _context.SaveChanges();
             HttpContext.Session.Remove("Cart");
 
-            if (paymentMethod == "Online")
+            if (PaymentMethod == "Online")
             {
                 return RedirectToAction("FakePay", "FakePayment", new { orderId = order.OrderId });
             }
@@ -172,6 +219,8 @@ namespace Restaurant.Controllers
             return RedirectToAction("OrderConfirmation", new { orderId = order.OrderId });
         }
 
+
+        // ✅ Order confirmation page
         public IActionResult OrderConfirmation(int orderId)
         {
             var order = _context.Orders.FirstOrDefault(o => o.OrderId == orderId);
@@ -185,6 +234,7 @@ namespace Restaurant.Controllers
             return View(order);
         }
 
+        // ✅ My Orders list
         public async Task<IActionResult> MyOrders()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
@@ -201,6 +251,7 @@ namespace Restaurant.Controllers
             return View(orders);
         }
 
+        // ✅ Order Details
         public async Task<IActionResult> Details(int id)
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
@@ -218,6 +269,7 @@ namespace Restaurant.Controllers
             return View(order);
         }
 
+        // ✅ Floating Cart Partial View
         public async Task<IActionResult> CartPartial()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
@@ -241,7 +293,7 @@ namespace Restaurant.Controllers
             return PartialView("_CartPartial", cartItems);
         }
 
-
+        // ✅ Invoice helper
         private string GenerateInvoiceId()
         {
             var date = DateTime.Now.ToString("yyyyMMdd");

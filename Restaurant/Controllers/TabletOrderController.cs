@@ -160,7 +160,8 @@ namespace Restaurant.Controllers
                 Status = "Pending",
                 Source = "Offline", // Always Offline for tablet
                 TotalAmount = totalAmount,
-                InvoiceId = GenerateInvoiceId()
+                InvoiceId = GenerateInvoiceId(),
+                //AddressID = null
             };
 
             _context.Orders.Add(order);

@@ -58,18 +58,43 @@ else
     </table>
 
     <div class="text-center mt-4">
-        <form asp-action="PlaceOrder" method="post">
+        <form asp-action="PlaceOrderFromCart" asp-controller="order" method="post">
+            @Html.AntiForgeryToken()
+
+            @if (ViewBag.Addresses != null && ((List<Restaurant.Models.Address>)ViewBag.Addresses).Count > 0)
+            {
+                <div class="mb-3">
+                    <label for="AddressId" class="form-label fw-bold">Select Delivery Address:</label>
+                    <select class="form-select" name="AddressId" required>
+                        @foreach (var addr in ViewBag.Addresses)
+                        {
+                            <option value="@addr.AddressID">@addr.FullAddress</option>
+                        }
+                    </select>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    No saved addresses found. <a href="/Address/Create">Add Address</a>
+                </div>
+            }
+
             <div class="mb-3">
                 <label for="paymentMethod" class="form-label fw-bold">Select Payment Method:</label>
-                <select class="form-select" name="paymentMethod" required>
+                <select class="form-select" name="PaymentMethod" required>
                     <option value="Cash">Cash</option>
                     <option value="Online">Online</option>
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
+            @if (ViewBag.Addresses != null && ((List<Restaurant.Models.Address>)ViewBag.Addresses).Count > 0)
+            {
+                <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
+            }
         </form>
     </div>
+
 }
 
 <!-- 🔹 Script to refresh floating cart after page reload -->

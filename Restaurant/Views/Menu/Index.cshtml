@@ -126,6 +126,36 @@
     <i class="bi bi-cart3"></i> 
 </button>
 
+<!--  Location panel --!>
+<div class="menu-sidebar" id="location-panel">
+    <button class="menu-sidebar-close" onclick="closeLocation()">×</button>
+    <div class="menu-sidebar-header">Select Delivery Location</div>
+    <div class="menu-sidebar-body">
+        @if (User.Identity.IsAuthenticated)
+        {
+                <form method="post" asp-controller="Order" asp-action="SelectAddressAndCheckout">
+                    <select name="addressId" class="form-select mb-3" required>
+                        <option value="">Choose Address</option>
+                        @foreach (var address in ViewBag.Addresses as List<Restaurant.Models.Address>)
+                        {
+                                <option value="@address.AddressID">
+                                           @address.Label - @address.FullAddress
+
+                                </option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-primary w-100">Confirm Address</button>
+                </form>
+                <a href="@Url.Action("Create", "Address")" class="btn btn-link w-100">Add New Address</a>
+        }
+        else
+        {
+                <a href="@Url.Action("Create", "Address")" class="btn btn-warning w-100">Add Delivery Address</a>
+        }
+    </div>
+</div>
+
+
 <!-- 🔹 Overlay backdrop -->
 <div class="menu-overlay" id="menu-overlay"></div>
 
@@ -261,23 +291,27 @@
                 });
         }
 
-                    function addToCart(itemId) {
+                          function addToCart(itemId) {
             const qty = document.getElementById("qty-" + itemId).value || 1;
 
-            fetch('/Menu/AddToCart', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ itemId: itemId, quantity: parseInt(qty) })
-            }).then(res => {
-                if (res.ok) {
-                    loadCart();
+                 fetch('/Menu/AddToCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ itemId: itemId, quantity: parseInt(qty) })
+        })
+        .then(res => {
+            if (res.ok) {
+                loadCart();
+                openSidebar();
+                const toast = new bootstrap.Toast(document.getElementById('cart-toast'));
+                toast.show();
+            }
+        });
 
-                    // 🔥 Show toast
-                    const toast = new bootstrap.Toast(document.getElementById('cart-toast'));
-                    toast.show();
-                }
-            });
+
         }
+
 
                 // Cart action buttons logic for increase, decrease, remove
         document.body.addEventListener('click', async (e) => {
@@ -312,14 +346,35 @@
         });
 
         // Ensure cart reloads after any change
-        function loadCart() {
-            fetch('/Menu/GetCart')
-                .then(res => res.text())
-                .then(html => {
-                    const body = document.querySelector('.menu-sidebar-body');
-                    if (body) body.innerHTML = html;
-                });
+             function loadCart() {
+            fetch('/Menu/GetCart', {
+                credentials: 'same-origin' 
+            })
+            .then(res => res.text())
+            .then(html => {
+                const body = sidebar.querySelector('.menu-sidebar-body');
+                if (body) body.innerHTML = html;
+            });
         }
+
+
+        //location
+
+                const locationBtn = document.getElementById('location-toggle');
+        const locationPanel = document.getElementById('location-panel');
+
+        locationBtn.addEventListener('click', () => {
+            locationPanel.classList.add('open');
+            overlay.classList.add('show');
+        });
+
+        function closeLocation() {
+            locationPanel.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+        overlay.addEventListener('click', closeLocation);
+
 
 
 

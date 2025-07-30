@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Data;
+using Restaurant.Extensions;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
-using Microsoft.AspNetCore.Http;
-using Restaurant.Extensions;
+using System.Net;
 
 namespace Restaurant.Controllers
 {
@@ -18,24 +19,42 @@ namespace Restaurant.Controllers
         }
 
         // Show all available menu items
-        public async Task<IActionResult> Index(string category)
-        {
-            var categories = await _context.MenuItems
-                .Select(m => m.Category)
-                .Distinct()
-                .ToListAsync();
+     public async Task<IActionResult> Index(string category)
+{
+    var categories = await _context.MenuItems
+        .Select(m => m.Category)
+        .Distinct()
+        .ToListAsync();
 
-            ViewBag.Categories = categories;
-            ViewBag.SelectedCategory = category;
+    ViewBag.Categories = categories;
+    ViewBag.SelectedCategory = category;
 
-            var filteredItems = string.IsNullOrEmpty(category)
-                ? await _context.MenuItems.Where(m => m.Available).ToListAsync()
-                : await _context.MenuItems
-                    .Where(m => m.Category == category && m.Available)
-                    .ToListAsync();
+    var filteredItems = string.IsNullOrEmpty(category)
+        ? await _context.MenuItems.Where(m => m.Available).ToListAsync()
+        : await _context.MenuItems
+            .Where(m => m.Category == category && m.Available)
+            .ToListAsync();
 
-            return View(filteredItems);
-        }
+    // Get customerId from session
+    int? customerId = HttpContext.Session.GetInt32("CustomerId");
+    List<Address> addresses = new List<Address>();
+
+    if (customerId != null)
+    {
+        // Fetch addresses for this customer
+        addresses = await _context.Addresses
+                                  .Where(a => a.CustomerId == customerId)
+                                  .ToListAsync();
+    }
+
+    // Pass addresses to the view
+    ViewBag.Addresses = addresses;
+
+    return View(filteredItems);
+}
+
+
+
 
         // GET: Menu/PlaceOrder
         public async Task<IActionResult> PlaceOrder()
@@ -47,6 +66,12 @@ namespace Restaurant.Controllers
             var items = await _context.MenuItems
                 .Where(m => m.Available)
                 .ToListAsync();
+
+            // 🔧 ADD THIS: Load addresses for the view
+            var addresses = await _context.Addresses
+                .Where(a => a.CustomerId == customerId.Value)
+                .ToListAsync();
+            ViewBag.Addresses = addresses;
 
             var viewModel = new PlaceOrderViewModel
             {
@@ -60,8 +85,9 @@ namespace Restaurant.Controllers
                 }).ToList()
             };
 
-            return View(viewModel);
+            return View(viewModel); // ✅ Now ViewBag.Addresses is available
         }
+
 
         public IActionResult GetCart()
         {
@@ -190,18 +216,43 @@ namespace Restaurant.Controllers
 
 
 
-        // POST: Menu/PlaceOrder
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult PlaceOrder(PlaceOrderViewModel model)
+        public IActionResult PlaceOrder( PlaceOrderViewModel model)
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
             if (customerId == null)
                 return RedirectToAction("Login", "Account");
 
+            // Validate addressId
+            if (model.AddressId == 0)
+            {
+                ModelState.AddModelError("", "Please select a delivery address.");
+                var addresses = _context.Addresses
+                    .Where(a => a.CustomerId == customerId.Value).ToList();
+                ViewBag.Addresses = addresses;
+                return View(model);
+            }
+
+            // Validate address existence
+            var address = _context.Addresses
+                .FirstOrDefault(a => a.AddressID == model.AddressId && a.CustomerId == customerId.Value);
+            if (address == null)
+            {
+                ModelState.AddModelError("", "Invalid delivery address.");
+                var addresses = _context.Addresses
+                    .Where(a => a.CustomerId == customerId.Value).ToList();
+                ViewBag.Addresses = addresses;
+                return View(model);
+            }
+
+            // Validate selected menu items
             if (model.MenuItems == null || model.MenuItems.All(i => i.Quantity <= 0))
             {
                 ModelState.AddModelError("", "Please select at least one item to order.");
+                var addresses = _context.Addresses
+                    .Where(a => a.CustomerId == customerId.Value).ToList();
+                ViewBag.Addresses = addresses;
                 return View(model);
             }
 
@@ -210,7 +261,8 @@ namespace Restaurant.Controllers
                 CustomerId = customerId.Value,
                 OrderDate = DateTime.Now,
                 Status = "Pending",
-                InvoiceId = GenerateInvoiceId()
+                InvoiceId = GenerateInvoiceId(),
+                AddressID = model.AddressId
             };
 
             _context.Orders.Add(order);
@@ -220,22 +272,21 @@ namespace Restaurant.Controllers
             {
                 if (item.Quantity > 0)
                 {
-                    var orderItem = new OrderItem
+                    _context.OrderItems.Add(new OrderItem
                     {
                         OrderId = order.OrderId,
                         ItemId = item.ItemId,
                         Quantity = item.Quantity
-                    };
-                    _context.OrderItems.Add(orderItem);
+                    });
                 }
             }
 
             _context.SaveChanges();
 
             TempData["InvoiceId"] = order.InvoiceId;
-
-            return RedirectToAction("OrderConfirmation");
+            return RedirectToAction("OrderConfirmation", new { orderId = order.OrderId });
         }
+
 
         public IActionResult OrderConfirmation()
         {
