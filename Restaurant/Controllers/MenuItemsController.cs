@@ -98,7 +98,7 @@ namespace Restaurant.Controllers
 
             ViewBag.Categories = GetCategories();
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             
             {
                 try

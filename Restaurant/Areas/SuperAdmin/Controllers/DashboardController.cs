@@ -55,11 +55,15 @@ namespace Restaurant.Areas.SuperAdmin.Controllers
                     break;
             }
 
-            // ✅ Get OrderItems within the date range
             var orderItems = _context.OrderItems
-                .Include(oi => oi.Item)
-                .Include(oi => oi.Order)
-                .Where(oi => oi.Order.OrderDate >= startDate && oi.Order.OrderDate < endDate);
+            .Include(oi => oi.Item)
+            .Include(oi => oi.Order)
+            .Where(oi =>
+                oi.Order.OrderDate >= startDate &&
+                oi.Order.OrderDate < endDate &&
+               (oi.Order.Status == "Paid" || oi.Order.Status == "Confirmed"));  // Filter only paid orders
+
+
 
             // ✅ Calculate TotalRevenue by summing OrderItem subtotals
             var totalRevenue = await orderItems.SumAsync(oi => (decimal?)(oi.Quantity * oi.Item.Price)) ?? 0m;
