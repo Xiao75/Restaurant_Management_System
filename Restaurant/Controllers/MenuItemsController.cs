@@ -10,7 +10,7 @@ using Restaurant.Filters;
 
 
 namespace Restaurant.Controllers
-    
+
 {
     [AdminOnly]
     public class MenuItemsController : Controller
@@ -98,48 +98,48 @@ namespace Restaurant.Controllers
 
             ViewBag.Categories = GetCategories();
 
-            if (ModelState.IsValid)
-            
+            if (string.IsNullOrWhiteSpace(menuItem.Name) ||
+                string.IsNullOrWhiteSpace(menuItem.Description) ||
+                string.IsNullOrWhiteSpace(menuItem.Category) ||
+                !menuItem.Price.HasValue)
             {
-                try
-                {
-                    var existingItem = await _Context.MenuItems.FindAsync(id);
-                    if (existingItem == null)
-                        return NotFound();
+                TempData["Error"] = "All fields are required.";
 
-                    // Update fields
-                    existingItem.Name = menuItem.Name;
-                    existingItem.Description = menuItem.Description;
-                    existingItem.Price = menuItem.Price;
-                    existingItem.Category = menuItem.Category;
-                    existingItem.Available = menuItem.Available;
+                // To preserve existing image
+                var existingItemTemp = await _Context.MenuItems.AsNoTracking().FirstOrDefaultAsync(m => m.ItemId == id);
+                if (existingItemTemp != null)
+                    menuItem.ImagePath = existingItemTemp.ImagePath;
 
-                    // Handle image
-                    if (ImageFile != null && ImageFile.Length > 0)
-                    {
-                        var fileName = Path.GetFileName(ImageFile.FileName);
-                        var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
-                        using (var stream = new FileStream(savePath, FileMode.Create))
-                        {
-                            await ImageFile.CopyToAsync(stream);
-                        }
-                        existingItem.ImagePath = fileName;
-                    }
-
-                    await _Context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!_Context.MenuItems.Any(e => e.ItemId == menuItem.ItemId))
-                        return NotFound();
-                    else
-                        throw;
-                }
+                return View(menuItem);
             }
 
-            return View(menuItem);
+            var existingItem = await _Context.MenuItems.FindAsync(id);
+            if (existingItem == null)
+                return NotFound();
+
+            // Update fields safely
+            existingItem.Name = menuItem.Name;
+            existingItem.Description = menuItem.Description;
+            existingItem.Price = menuItem.Price.Value;  // Safe because validated above
+            existingItem.Category = menuItem.Category;
+            existingItem.Available = menuItem.Available;
+
+            // Image upload logic remains same
+            if (ImageFile != null && ImageFile.Length > 0)
+            {
+                var fileName = Path.GetFileName(ImageFile.FileName);
+                var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                using (var stream = new FileStream(savePath, FileMode.Create))
+                {
+                    await ImageFile.CopyToAsync(stream);
+                }
+                existingItem.ImagePath = fileName;
+            }
+
+            await _Context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
 
         // GET: MenuItems/Delete/5
