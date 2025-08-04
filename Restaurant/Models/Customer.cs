@@ -13,13 +13,13 @@ public partial class Customer
     public int CustomerId { get; set; }
 
     [StringLength(100)]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [StringLength(15)]
-    public string? Phone { get; set; }
+    public string Phone { get; set; }
 
     [StringLength(100)]
-    public string? Email { get; set; }
+    public string Email { get; set; }
 
     [Required]
     [StringLength(100)]

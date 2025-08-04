@@ -2,7 +2,67 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    #mainVideo.fade-in {
+        opacity: 1;
+        transition: opacity 1s ease-in;
+    }
+
+    #mainVideo.fade-out {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+    }
+
+</style>
+
+<!-- Video Container -->
+<div class="video-container">
+    <video id="mainVideo" autoplay muted playsinline></video>
+    <div class="overlay"></div>
 </div>
+
+<!-- Home Content -->
+<div class="home-content">
+    <div class="container text-center">
+        <h1>Welcome to Clover</h1>
+        <p>Where fine dining meets timeless elegance.</p>
+        <a class="explore-link mt-4 d-inline-block" href="@Url.Action("Index", "Menu")">Explore Menu</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const videos = [
+            '/videos/intro1.mp4',
+            '/videos/intro2.mp4',
+            '/videos/intro3.mp4'
+        ];
+
+        const videoElement = document.getElementById('mainVideo');
+        let currentIndex = 0;
+
+        function playNextVideo() {
+            videoElement.classList.remove("fade-in");
+            videoElement.classList.add("fade-out");
+
+            setTimeout(() => {
+                videoElement.src = videos[currentIndex];
+                videoElement.load();
+                videoElement.play()
+                    .then(() => {
+                        videoElement.classList.remove("fade-out");
+                        videoElement.classList.add("fade-in");
+                    })
+                    .catch(error => console.error("Video play error:", error));
+
+                currentIndex = (currentIndex + 1) % videos.length;
+            }, 1000); // 1 second transition
+        }
+
+        videoElement.addEventListener('ended', playNextVideo);
+
+        // Start first video after page loads
+        playNextVideo();
+    });
+</script>
+}

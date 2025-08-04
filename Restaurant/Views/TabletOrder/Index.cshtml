@@ -4,8 +4,6 @@
     ViewData["Title"] = "Tablet Menu";
 }
 
-<h2 class="text-center mb-4">Restaurant Menu</h2>
-
 <!-- 🔹 CSS for Floating Cart -->
 <style>
     .menu-hamburger {
@@ -22,6 +20,7 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
         transition: background .3s ease;
     }
+
         .menu-hamburger:hover {
             background: #0b5ed7;
         }
@@ -41,6 +40,7 @@
         display: flex;
         flex-direction: column;
     }
+
         .menu-sidebar.open {
             top: 80px;
         }
@@ -56,6 +56,7 @@
         top: 10px;
         right: 15px;
     }
+
         .menu-sidebar-close:hover {
             color: #0d6efd;
         }
@@ -85,6 +86,7 @@
         z-index: 1040;
         display: none;
     }
+
         .menu-overlay.show {
             display: block;
         }
@@ -121,7 +123,6 @@
     <button class="menu-sidebar-close" onclick="closeSidebar()">×</button>
     <div class="menu-sidebar-header">Your Cart</div>
     <div class="menu-sidebar-body">
-        <!-- ❶ Use the new partial action instead of ViewComponent -->
         @await Html.PartialAsync("TabletPartialCart", ViewBag.Cart as List<Restaurant.Models.ViewModels.CartItemViewModel>)
     </div>
     <div class="menu-sidebar-footer">
@@ -129,54 +130,58 @@
 </div>
 
 <!-- 🔹 Page Heading -->
-@if (TempData["Message"] != null)
-{
-    <div class="alert alert-success text-center">@TempData["Message"]</div>
-}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Restaurant Menu</h1>
 
-<!-- Category Filter -->
-<div class="mb-4 d-flex justify-content-end">
-    <form method="get" asp-action="Index" asp-controller="TabletOrder" class="d-flex align-items-center">
-        <label class="me-2 mb-0">Filter:</label>
-        <select name="category" onchange="this.form.submit()" class="form-select w-auto">
-            <option value="">All Categories</option>
-            @foreach (var cat in ViewBag.Categories as List<string>)
-            {
-                <option value="@cat" selected="@(cat == ViewBag.SelectedCategory ? "selected" : null)">@cat</option>
-            }
-        </select>
-    </form>
-</div>
-
-<!-- Menu Grid -->
-<div class="row">
-    @foreach (var item in Model)
+    @if (TempData["Message"] != null)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow">
-                <img src="~/images/@item.ImagePath" class="card-img-top" alt="@item.Name" style="height:200px; object-fit:cover;" />
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                    <p class="card-text">@item.Description</p>
-                    <p class="text-muted">@string.Format("{0:C}", item.Price ?? 0)</p>
-                </div>
-                <div class="card-footer text-center">
-                    <form asp-controller="TabletOrder" asp-action="AddToCart" method="post" class="d-flex justify-content-between align-items-center">
-                        <input type="hidden" name="itemId" value="@item.ItemId" />
-                        <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm me-2" style="width: 60px;" />
-                        <button type="submit" class="btn btn-primary btn-sm">Add</button>
-                    </form>
+        <div class="alert alert-success text-center">@TempData["Message"]</div>
+    }
+
+    <!-- Category Filter -->
+    <div class="mb-4 d-flex justify-content-end">
+        <form method="get" asp-action="Index" asp-controller="TabletOrder" class="d-flex align-items-center">
+            <label class="me-2 mb-0">Filter:</label>
+            <select name="category" onchange="this.form.submit()" class="form-select w-auto">
+                <option value="">All Categories</option>
+                @foreach (var cat in ViewBag.Categories as List<string>)
+                {
+                    <option value="@cat" selected="@(cat == ViewBag.SelectedCategory ? "selected" : null)">@cat</option>
+                }
+            </select>
+        </form>
+    </div>
+
+    <!-- Menu Grid -->
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <img src="~/images/@item.ImagePath" class="card-img-top" alt="@item.Name" style="height:200px; object-fit:cover;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.Description</p>
+                        <p class="text-muted">@string.Format("{0:C}", item.Price ?? 0)</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <form asp-controller="TabletOrder" asp-action="AddToCart" method="post" class="d-flex justify-content-between align-items-center add-to-cart-form">
+                            <input type="hidden" name="itemId" value="@item.ItemId" />
+                            <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm me-2" style="width: 60px;" />
+                            <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
 
 @section Scripts {
     <script>
         const toggleBtn = document.getElementById('cart-toggle');
-        const sidebar   = document.getElementById('cart-panel');
-        const overlay   = document.getElementById('menu-overlay');
+        const sidebar = document.getElementById('cart-panel');
+        const overlay = document.getElementById('menu-overlay');
 
         let cartOpen = false;
 
@@ -203,6 +208,32 @@
                 });
         }
 
-        document.addEventListener('DOMContentLoaded', loadTabletCart);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTabletCart();
+
+            // AJAX AddToCart
+            document.querySelectorAll('.add-to-cart-form').forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+
+                    fetch('/TabletOrder/AddToCart', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(res => {
+                        if (res.ok) {
+                            // Show toast
+                            const toastEl = document.getElementById('cart-toast');
+                            const toast = new bootstrap.Toast(toastEl);
+                            toast.show();
+
+                            // Refresh cart contents
+                            loadTabletCart();
+                        }
+                    });
+                });
+            });
+        });
     </script>
 }

@@ -173,7 +173,25 @@
 </div>
 
 <!-- 🔹 Page Heading -->
-<h2 class="text-center mb-4">Our Menu</h2>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Our Menu</h1>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["Message"]</div>
+    }
+
+    <!-- 🔹 Category Filter -->
+    <div class="mb-4 d-flex justify-content-end">
+        <!-- filter form -->
+    </div>
+
+    <!-- 🔹 Menu Grid -->
+    <div class="container-fluid mt-4">
+        <!-- menu items here -->
+    </div>
+</div>
+
 
 @if (TempData["Message"] != null)
 {

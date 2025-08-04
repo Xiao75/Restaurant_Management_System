@@ -69,7 +69,6 @@
     <h2>Super Admin Sales Summary</h2>
 </div>
 
-
 <div class="dropdown-form">
     <form method="get" asp-action="Index" asp-controller="Dashboard" asp-area="SuperAdmin">
         <label for="range">Select Time Range:</label>
@@ -117,8 +116,86 @@
             <tr>
                 <td>@item.ItemName</td>
                 <td>@item.QuantitySold</td>
-                <td>@(item.SubTotal.GetValueOrDefault().ToString("C"))</td>
+                <td>@string.Format("{0:C}", item.SubTotal)</td>
             </tr>
         }
     </tbody>
 </table>
+
+<h3>Visual Sales Summary</h3>
+<div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 300px;">
+        <h4>Items Sold (Quantity %)</h4>
+        <canvas id="salesPieChart"></canvas>
+    </div>
+    <div style="flex: 1; min-width: 400px;">
+        <h4>Revenue per Item</h4>
+        <canvas id="revenueBarChart"></canvas>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const itemNames = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.ItemName)));
+        const quantities = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.QuantitySold)));
+        const subtotals = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.SubTotal)));
+
+        // Pie Chart: Quantity of items sold
+        const salesPieChart = new Chart(document.getElementById('salesPieChart'), {
+            type: 'pie',
+            data: {
+                labels: itemNames,
+                datasets: [{
+                    label: 'Items Sold',
+                    data: quantities,
+                    backgroundColor: itemNames.map(() => getRandomColor())
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Bar Chart: Revenue per item
+        const revenueBarChart = new Chart(document.getElementById('revenueBarChart'), {
+            type: 'bar',
+            data: {
+                labels: itemNames,
+                datasets: [{
+                    label: 'Revenue ₹',
+                    data: subtotals,
+                    backgroundColor: '#3f51b5'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Helper: Random color generator for pie chart
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+}

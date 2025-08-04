@@ -1,6 +1,95 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "About Us";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!-- About Us Section Fullscreen -->
+<section class="about-us-section d-flex align-items-center justify-content-center text-center"
+         style="min-height: 100vh; background: url('/images/Logo/clover.jpg') center/cover no-repeat; color: black;">
+    <div class="container">
+        <h1 class="display-4 fw-bold">About Clover</h1>
+        <p class="lead mt-4">
+            At <strong>Clover</strong>, we believe in crafting more than just meals — we create unforgettable experiences. Nestled in the heart of the city, Clover combines timeless elegance with modern culinary artistry.
+        </p>
+        <p class="mt-3">
+            Our chefs work with the finest local ingredients to design a menu that evolves with the seasons. Whether you're visiting for a special celebration or a quiet evening, our team delivers hospitality that feels both luxurious and personal.
+        </p>
+        <p class="mt-3">
+            Discover the harmony of taste, ambiance, and service — only at Clover.
+        </p>
+    </div>
+</section>
+
+<!-- Meet the Team Section -->
+<section id="team" class="py-5 bg-light" style="color: black;">
+    <div class="container fade-in-section">
+        <h2 class="text-center mb-5">Meet the Team</h2>
+
+        <!-- Gordon Ramsay -->
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="~/images/ramsay.jpg" class="img-fluid w-100 team-img" alt="Head Chef Gordon Ramsay">
+            </div>
+            <div class="col-md-6">
+                <h3>Gordon Ramsay</h3>
+                <p class="text-muted">Head Chef</p>
+                <p>Gordon Ramsay, an internationally acclaimed chef and restaurateur, leads Clover’s kitchen with unmatched passion and precision. With 17 Michelin stars to his name and a career spanning the globe, Ramsay brings his signature style — bold flavors, meticulous technique, and uncompromising standards.</p>
+                <p>At Clover, Chef Ramsay curates a menu that blends classical French training with global influences, ensuring each dish is an experience. Beyond the food, he inspires our culinary team to push boundaries and exceed expectations with every service.</p>
+            </div>
+        </div>
+
+        <!-- White Rabbit -->
+        <div class="row align-items-center flex-md-row-reverse fade-in-section">
+            <div class="col-md-6">
+                <img src="~/images/rabbit.jpg" class="img-fluid w-100 team-img" alt="Manager White Rabbit">
+            </div>
+            <div class="col-md-6">
+                <h3>White Rabbit</h3>
+                <p class="text-muted">Restaurant Manager</p>
+                <p>White Rabbit, known for his whimsical charm and precision timing, ensures Clover’s operations run seamlessly. With a flair for hospitality and an eye for detail, he creates a welcoming and magical environment for guests.</p>
+                <p>From managing the floor to training staff, Rabbit brings joy and efficiency to every aspect of service, making sure each visitor leaves with a smile and a memory worth sharing.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Optional CSS -->
+<style>
+    .team-img {
+        max-height: 450px;
+        object-fit: cover;
+    }
+
+    /* Fade-in Animation */
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+</style>
+
+<!-- JavaScript for Scroll Animation -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const faders = document.querySelectorAll('.fade-in-section');
+
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    });
+</script>

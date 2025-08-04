@@ -81,14 +81,45 @@ namespace Restaurant.Controllers
 
                 if (customer != null)
                 {
+                    // Set common session values
                     HttpContext.Session.SetInt32("CustomerId", customer.CustomerId);
                     HttpContext.Session.SetString("CustomerName", customer.Name ?? "Guest");
 
-                    HttpContext.Session.SetInt32("IsAdmin", customer.IsAdmin ? 1 : 0);
-                    HttpContext.Session.SetInt32("IsSuperAdmin", customer.IsSuperAdmin ? 1 : 0);
-                    HttpContext.Session.SetInt32("IsStaff", customer.IsStaff ? 1 : 0);
+                    // Clear all role sessions first
+                    HttpContext.Session.Remove("IsAdmin");
+                    HttpContext.Session.Remove("IsSuperAdmin");
+                    HttpContext.Session.Remove("IsStaff");
+                    HttpContext.Session.Remove("UserRole");
 
-                    return RedirectToAction("Index", "Menu");
+                    string role = "Customer";
+
+                    if (customer.IsSuperAdmin)
+                    {
+                        role = "SuperAdmin";
+                        HttpContext.Session.SetInt32("IsSuperAdmin", 1);
+                    }
+                    else if (customer.IsAdmin)
+                    {
+                        role = "Admin";
+                        HttpContext.Session.SetInt32("IsAdmin", 1);
+                    }
+                    else if (customer.IsStaff)
+                    {
+                        role = "Staff";
+                        HttpContext.Session.SetInt32("IsStaff", 1);
+                    }
+
+                    HttpContext.Session.SetString("UserRole", role);
+
+                    // Redirect based on role
+                    if (role == "SuperAdmin")
+                        return RedirectToAction("Index", "Home");
+                    else if (role == "Admin")
+                        return RedirectToAction("Index", "IncomingOrder"); // NOTE: You don’t use area=Admin, so route here
+                    else if (role == "Staff")
+                        return RedirectToAction("OfflineOrders", "Staff");
+                    else
+                        return RedirectToAction("Index", "Menu");
                 }
 
                 ModelState.AddModelError("", "Invalid email or password.");
@@ -96,6 +127,7 @@ namespace Restaurant.Controllers
 
             return View(model);
         }
+
 
         // Temporary hash utility – REMOVE after use
         [HttpGet]
