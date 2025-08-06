@@ -3,9 +3,23 @@
 @{
     ViewData["Title"] = "Super Admin Dashboard";
     var selectedRange = Context.Request.Query["range"].ToString().ToLower();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .dashboard-wrapper {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+    }
+
     .summary-grid {
         display: flex;
         gap: 1rem;
@@ -15,187 +29,232 @@
 
     .summary-card {
         flex: 1;
-        min-width: 200px;
+        min-width: 220px;
         padding: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-        background-color: #f9f9f9;
+        border-radius: 12px;
+        color: #fff;
         text-align: center;
+        font-weight: 500;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-        .summary-card h5 {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .summary-card p {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+    .card-revenue {
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+
+    .card-items {
+        background: linear-gradient(135deg, #ff6a00, #ee0979);
+    }
+
+    .card-best {
+        background: linear-gradient(135deg, #00b09b, #96c93d);
+    }
+
+    .card-worst {
+        background: linear-gradient(135deg, #b24592, #f15f79);
+    }
+
+    .summary-card h5 {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .summary-card p {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 0;
+    }
 
     .dropdown-form {
         margin-bottom: 1.5rem;
+        text-align: center;
     }
 
         .dropdown-form select {
-            padding: 0.3rem 0.5rem;
+            padding: 0.4rem 0.6rem;
             font-size: 1rem;
             border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
-    table {
+    .dashboard-table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
     }
 
-        table th, table td {
+        .dashboard-table th, .dashboard-table td {
             border: 1px solid #ccc;
             padding: 0.5rem;
             text-align: left;
         }
 
-        table th {
+        .dashboard-table th {
             background-color: #eaeaea;
         }
 
-        table tr:hover {
+        .dashboard-table tr:hover {
             background-color: #f1f1f1;
         }
+
+    .chart-container {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+
+    .chart-box {
+        flex: 1;
+        min-width: 300px;
+        padding: 1rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 </style>
 
-<div style="width: 100%; text-align: center; margin-bottom: 1.5rem;">
-    <h2>Super Admin Sales Summary</h2>
-</div>
+<!-- 🌿 Background Section with Clover Image -->
+<section class="dashboard-section d-flex align-items-center justify-content-center"
+         style="min-height: 100vh; background: url('/images/Logo/clover.jpg') center/cover no-repeat; color: black;">
+    <div class="container dashboard-wrapper">
+        <div class="text-center mb-4">
+            <h2>Super Admin Sales Summary</h2>
+        </div>
 
-<div class="dropdown-form">
-    <form method="get" asp-action="Index" asp-controller="Dashboard" asp-area="SuperAdmin">
-        <label for="range">Select Time Range:</label>
-        <select id="range" name="range" onchange="this.form.submit()">
-            <option value="daily" @(selectedRange == "daily" ? "selected" : "")>Today</option>
-            <option value="weekly" @(selectedRange == "weekly" ? "selected" : "")>Last 7 days</option>
-            <option value="monthly" @(selectedRange == "monthly" ? "selected" : "")>Last 30 days</option>
-            <option value="yearly" @(selectedRange == "yearly" ? "selected" : "")>Yearly</option>
-            <option value="all" @(selectedRange == "all" ? "selected" : "")>All Time</option>
-        </select>
-    </form>
-</div>
+        <div class="dropdown-form">
+            <form method="get" asp-action="Index" asp-controller="Dashboard" asp-area="SuperAdmin">
+                <label for="range">Select Time Range:</label>
+                <select id="range" name="range" onchange="this.form.submit()">
+                    <option value="daily" @(selectedRange == "daily" ? "selected" : "")>Today</option>
+                    <option value="weekly" @(selectedRange == "weekly" ? "selected" : "")>Last 7 days</option>
+                    <option value="monthly" @(selectedRange == "monthly" ? "selected" : "")>Last 30 days</option>
+                    <option value="yearly" @(selectedRange == "yearly" ? "selected" : "")>Yearly</option>
+                    <option value="all" @(selectedRange == "all" ? "selected" : "")>All Time</option>
+                </select>
+            </form>
+        </div>
 
-<div class="summary-grid">
-    <div class="summary-card">
-        <h5>Total Revenue</h5>
-        <p>@Model.TotalRevenue.ToString("C")</p>
-    </div>
-    <div class="summary-card">
-        <h5>Total Items Sold</h5>
-        <p>@Model.TotalItemsSold</p>
-    </div>
-    <div class="summary-card">
-        <h5>Best-Selling Item</h5>
-        <p>@Model.BestSellingItem (@Model.BestSellingQuantity sold)</p>
-    </div>
-    <div class="summary-card">
-        <h5>Worst-Selling Item</h5>
-        <p>@Model.WorstSellingItem (@Model.WorstSellingQuantity sold)</p>
-    </div>
-</div>
+        <div class="summary-grid">
+            <div class="summary-card card-revenue">
+                <h5>Total Revenue</h5>
+                <p>@Model.TotalRevenue.ToString("C")</p>
+            </div>
+            <div class="summary-card card-items">
+                <h5>Total Items Sold</h5>
+                <p>@Model.TotalItemsSold</p>
+            </div>
+            <div class="summary-card card-best">
+                <h5>Best-Selling Item</h5>
+                <p>@Model.BestSellingItem (@Model.BestSellingQuantity sold)</p>
+            </div>
+            <div class="summary-card card-worst">
+                <h5>Worst-Selling Item</h5>
+                <p>@Model.WorstSellingItem (@Model.WorstSellingQuantity sold)</p>
+            </div>
+        </div>
 
-<h3>Item-wise Sales Details</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Item Name</th>
-            <th>Quantity Sold</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ItemSalesSummary)
-        {
-            <tr>
-                <td>@item.ItemName</td>
-                <td>@item.QuantitySold</td>
-                <td>@string.Format("{0:C}", item.SubTotal)</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<h3>Visual Sales Summary</h3>
-<div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 300px;">
-        <h4>Items Sold (Quantity %)</h4>
-        <canvas id="salesPieChart"></canvas>
-    </div>
-    <div style="flex: 1; min-width: 400px;">
-        <h4>Revenue per Item</h4>
-        <canvas id="revenueBarChart"></canvas>
-    </div>
-</div>
-
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const itemNames = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.ItemName)));
-        const quantities = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.QuantitySold)));
-        const subtotals = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.SubTotal)));
-
-        // Pie Chart: Quantity of items sold
-        const salesPieChart = new Chart(document.getElementById('salesPieChart'), {
-            type: 'pie',
-            data: {
-                labels: itemNames,
-                datasets: [{
-                    label: 'Items Sold',
-                    data: quantities,
-                    backgroundColor: itemNames.map(() => getRandomColor())
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
+        <h3>Item-wise Sales Details</h3>
+        <div style="overflow-x:auto;">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity Sold</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ItemSalesSummary)
+                    {
+                        <tr>
+                            <td>@item.ItemName</td>
+                            <td>@item.QuantitySold</td>
+                            <td>@string.Format("{0:C}", item.SubTotal)</td>
+                        </tr>
                     }
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Visual Sales Summary</h3>
+        <div class="chart-container">
+            <div class="chart-box">
+                <h4 class="text-center">Items Sold (Quantity %)</h4>
+                <canvas id="salesPieChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h4 class="text-center">Revenue per Item</h4>
+                <canvas id="revenueBarChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 📊 Script for Charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const itemNames = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.ItemName)));
+    const quantities = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.QuantitySold)));
+    const subtotals = @Html.Raw(Json.Serialize(Model.ItemSalesSummary.Select(i => i.SubTotal)));
+
+    const salesPieChart = new Chart(document.getElementById('salesPieChart'), {
+        type: 'pie',
+        data: {
+            labels: itemNames,
+            datasets: [{
+                label: 'Items Sold',
+                data: quantities,
+                backgroundColor: itemNames.map(() => getRandomColor())
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
                 }
             }
-        });
+        }
+    });
 
-        // Bar Chart: Revenue per item
-        const revenueBarChart = new Chart(document.getElementById('revenueBarChart'), {
-            type: 'bar',
-            data: {
-                labels: itemNames,
-                datasets: [{
-                    label: 'Revenue ₹',
-                    data: subtotals,
-                    backgroundColor: '#3f51b5'
-                }]
+    const revenueBarChart = new Chart(document.getElementById('revenueBarChart'), {
+        type: 'bar',
+        data: {
+            labels: itemNames,
+            datasets: [{
+                label: 'Revenue ₹',
+                data: subtotals,
+                backgroundColor: '#3f51b5'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            plugins: {
+                legend: {
+                    display: false
                 }
             }
-        });
-
-        // Helper: Random color generator for pie chart
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
         }
-    </script>
-}
+    });
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>

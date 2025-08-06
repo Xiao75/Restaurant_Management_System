@@ -5,11 +5,14 @@ using Restaurant.Data;
 using Restaurant.Extensions;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
+using Restaurant.Filters;
 
 namespace Restaurant.Controllers
 {
+    [TabletPinOnly]
     public class TabletOrderController : Controller
     {
+
         private readonly RmsContext _context;
        // private readonly int TableNumber = 5; // Set this uniquely per tablet
 
@@ -237,6 +240,28 @@ namespace Restaurant.Controllers
             var date = DateTime.Now.ToString("yyyyMMdd");
             var random = Guid.NewGuid().ToString().Substring(0, 4).ToUpper();
             return $"INV-{date}-{random}";
+        }
+
+        [HttpGet]
+        public IActionResult EnterPin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EnterPin(string pin)
+        {
+            const string correctPin = "1234";
+
+            if (pin == correctPin) 
+
+                {
+                    HttpContext.Session.SetString("TabletPinVerified", "true");
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.Error = "Invalid PIN";
+                return View();
         }
     }
 }

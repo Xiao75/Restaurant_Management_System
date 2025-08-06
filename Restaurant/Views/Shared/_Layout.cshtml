@@ -1,6 +1,7 @@
 ﻿@{
     var userRole = Context.Session.GetString("UserRole") ?? "Guest";
     var isLoggedIn = Context.Session.GetInt32("CustomerId") != null;
+
 }
 
 <!DOCTYPE html>
@@ -44,8 +45,8 @@
                 const loadingScreen = document.getElementById('loading-screen');
                 if (loadingScreen) {
                 loadingScreen.style.opacity = '0';
-                loadingScreen.style.transition = 'opacity 2.5s ease-in-out';
-                setTimeout(() => loadingScreen.style.display = 'none', 2500);
+                loadingScreen.style.transition = 'opacity 2s ease-in-out';
+                setTimeout(() => loadingScreen.style.display = 'none', 2000);
                 }
                 });
         </script>
@@ -71,21 +72,22 @@
                       
 
                         @* SuperAdmin *@
-                        @if (isSuperAdmin)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="SuperAdmin" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="MenuItems" asp-action="Index">Manage Menu</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
-                        }
+                       @if (isSuperAdmin)
+                    {
+                      <li class="nav-item">
+                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                      </li>
+                      <li class="nav-item">
+                      <a class="nav-link text-dark" asp-area="SuperAdmin" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                      <a class="nav-link text-dark" asp-area="" asp-controller="MenuItems" asp-action="Index">Manage Menu</a>
+                      </li>
+                      <li class="nav-item">
+                      <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                      </li>
+                    }
+
                         @* Admin only *@
                         else if (isAdmin)
                         {
