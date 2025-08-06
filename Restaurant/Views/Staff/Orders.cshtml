@@ -17,7 +17,7 @@
         {
             <tr>
                 <td>@order.InvoiceId</td>
-                <td>@order.OrderDate?.ToString("g")</td>
+                <td>@order.OrderDate.ToString("g")</td>
                 <td>
                     <ul>
                         @foreach (var item in order.OrderItems)

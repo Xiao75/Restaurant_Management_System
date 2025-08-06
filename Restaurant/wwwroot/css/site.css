@@ -152,7 +152,7 @@ a {
     color: black !important;
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 100;
     text-decoration: none;
     display: inline-block;
     overflow: hidden;

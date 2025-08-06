@@ -28,7 +28,7 @@ namespace Restaurant.Controllers
             return View(orders);
         }
 
-        [HttpPost]
+      /*  [HttpPost]
         public async Task<IActionResult> Confirm(int orderId)
         {
             var order = await _context.Orders.FindAsync(orderId);
@@ -39,7 +39,7 @@ namespace Restaurant.Controllers
             }
 
             return RedirectToAction("Index");
-        }
+        } */
         [HttpPost]
         public async Task<IActionResult> MarkasPaid(int orderId)
         {

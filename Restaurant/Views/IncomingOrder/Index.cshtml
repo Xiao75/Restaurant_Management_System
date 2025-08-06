@@ -34,13 +34,13 @@
                     <tr>
                         <td>@order.OrderId</td>
                         <td>Table @order.TableNumber</td>
-                        <td>@order.OrderDate?.ToString("g")</td>
+                        <td>@order.OrderDate.ToString("g")</td>
                         <td>
                             <span class="badge bg-@GetStatusColor(order.Status)">
                                 @order.Status
                             </span>
                         </td>
-                        <td>@order.TotalAmount.ToString("C")</td>
+                        <td>@order.TotalAmount.?ToString("C")</td>
                         <td>
                             <ul class="list-unstyled">
                                 @foreach (var item in order.OrderItems)

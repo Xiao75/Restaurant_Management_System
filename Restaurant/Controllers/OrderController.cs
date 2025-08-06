@@ -183,7 +183,8 @@ namespace Restaurant.Controllers
                 TotalAmount = totalAmount,
                 InvoiceId = GenerateInvoiceId(),
                 PaymentMethod = PaymentMethod,
-                AddressID = AddressId
+                AddressID = AddressId,
+                DeliveryAddress = address.FullAddress
             };
 
             _context.Orders.Add(order);
@@ -220,7 +221,7 @@ namespace Restaurant.Controllers
         }
 
 
-        // ✅ Order confirmation page
+        //  Order confirmation page
         public IActionResult OrderConfirmation(int orderId)
         {
             var order = _context.Orders.FirstOrDefault(o => o.OrderId == orderId);
@@ -234,7 +235,7 @@ namespace Restaurant.Controllers
             return View(order);
         }
 
-        // ✅ My Orders list
+        //  My Orders list
         public async Task<IActionResult> MyOrders()
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
@@ -251,7 +252,7 @@ namespace Restaurant.Controllers
             return View(orders);
         }
 
-        // ✅ Order Details
+        //  Order Details
         public async Task<IActionResult> Details(int id)
         {
             int? customerId = HttpContext.Session.GetInt32("CustomerId");
@@ -269,7 +270,7 @@ namespace Restaurant.Controllers
             return View(order);
         }
 
-        // ✅ Floating Cart Partial View
+        //  Floating Cart Partial View
         public async Task<IActionResult> CartPartial()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
@@ -293,7 +294,7 @@ namespace Restaurant.Controllers
             return PartialView("_CartPartial", cartItems);
         }
 
-        // ✅ Invoice helper
+        //  Invoice helper
         private string GenerateInvoiceId()
         {
             var date = DateTime.Now.ToString("yyyyMMdd");

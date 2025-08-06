@@ -24,12 +24,12 @@ namespace Restaurant.Models
         [ForeignKey("Address")]
         public int? AddressID { get; set; }
 
-        public Address Address { get; set; }
+        public string? DeliveryAddress { get; set; }
 
 
 
         [Column(TypeName = "datetime")]
-        public DateTime? OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [StringLength(50)]
         public string? Status { get; set; }
@@ -51,7 +51,7 @@ namespace Restaurant.Models
         // Navigation property to payments
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
-        public string InvoiceId { get; set; } = "";
+        public string? InvoiceId { get; set; } = "";
 
     }
 }

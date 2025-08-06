@@ -49,7 +49,7 @@
             <tr>
                 <td>@order.OrderId</td>
                 <td>@order.Customer?.Name</td>
-                <td>@order.OrderDate?.ToString("dd MMM yyyy hh:mm tt")</td>
+                <td>@order.OrderDate.ToString("dd MMM yyyy hh:mm tt")</td>
                 <td>@order.Status</td>
                 <td>@string.Format("{0:C}", order.TotalAmount)</td>
             </tr>

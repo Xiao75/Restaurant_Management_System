@@ -3,6 +3,94 @@
   "WorkspaceRootPath": "C:\\Users\\devra\\source\\repos\\Restaurant\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\order\\myorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\order\\myorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\filters\\tabletpinonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\filters\\tabletpinonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\incomingorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\incomingorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\staff\\offlineorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\staff\\offlineorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\staff\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\staff\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\account\\myaccount.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\account\\myaccount.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\address\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\address\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\address\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\address\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\menuitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\menuitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\incomingordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\incomingordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\menuitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\menuitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\tabletorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\tabletorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\tabletorder\\enterpin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\tabletorder\\enterpin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,20 +99,8 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\tabletordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\filters\\tabletpinonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\filters\\tabletpinonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\filters\\superadminonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\filters\\superadminonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\menuitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\menuitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\filters\\adminonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,36 +119,12 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\incomingordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\incomingordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -83,10 +135,6 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\areas\\superadmin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\incomingorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\incomingorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\areas\\superadmin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\areas\\superadmin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -95,24 +143,12 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\menuitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\menuitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\staff\\offlineorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\staff\\offlineorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\tabletorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\tabletorder\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -141,10 +177,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\tabletorder\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\tabletorder\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\menuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -199,10 +231,6 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\data\\rmscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\viewmodels\\cartaddviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\viewmodels\\cartaddviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -219,16 +247,8 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\order\\viewcart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\account\\myaccount.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\account\\myaccount.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\order\\myorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\order\\myorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\order\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -243,24 +263,12 @@
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\order\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\address\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\address\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\address\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\address\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\address\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\address\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\address\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\address\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -277,10 +285,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -305,10 +309,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\fakepayment\\process.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\fakepayment\\process.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\views\\staff\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\staff\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{435EABF5-BD49-47FA-BFC5-089667B98319}|Restaurant\\Restaurant.csproj|c:\\users\\devra\\source\\repos\\restaurant\\restaurant\\migrations\\20250715081431_addisadmintocustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -402,24 +402,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "Restaurant\\wwwroot\\css\\site.css",
               "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\wwwroot\\css\\site.css",
               "RelativeToolTip": "Restaurant\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAALcAAAAAAAAAAAAAAHEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAJoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-07-25T11:23:06.748Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Home\\Index.cshtml",
@@ -428,24 +429,51 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-28T09:09:34.601Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EnterPin.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-06T06:02:44.144Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Restaurant\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAqwLoAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T06:50:23.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyOrders.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\MyOrders.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\MyOrders.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\MyOrders.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Order\\MyOrders.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAADwvyQAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-14T06:02:58.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Order.cs",
+              "RelativeToolTip": "Restaurant\\Models\\Order.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAACYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T09:45:15.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TabletPinOnlyAttribute.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Filters\\TabletPinOnlyAttribute.cs",
               "RelativeDocumentMoniker": "Restaurant\\Filters\\TabletPinOnlyAttribute.cs",
@@ -458,7 +486,228 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "Orders.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\Orders.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Staff\\Orders.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\Orders.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Staff\\Orders.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAtwBMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-16T09:04:10.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OfflineOrders.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
+              "ViewState": "AgIAABQAAAAAAAAAAADgvyMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T08:37:13.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\Details.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\Details.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\Details.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Order\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-14T06:10:29.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\IncomingOrder\\Index.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\IncomingOrder\\Index.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\IncomingOrder\\Index.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\IncomingOrder\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAADgvyoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-18T08:06:22.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Admin\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Admin\\Dashboard.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAtwDMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-15T11:44:18.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MyAccount.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\MyAccount.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Account\\MyAccount.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\MyAccount.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Account\\MyAccount.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvxoAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-10T06:57:24.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MenuController.cs",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuController.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Controllers\\MenuController.cs",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuController.cs",
+              "RelativeToolTip": "Restaurant\\Controllers\\MenuController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T09:29:35.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MenuItemsController.cs",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuItemsController.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Controllers\\MenuItemsController.cs",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuItemsController.cs",
+              "RelativeToolTip": "Restaurant\\Controllers\\MenuItemsController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAADwv7UAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T10:06:43.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Create.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Address\\Create.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Create.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Address\\Create.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-29T07:29:29.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Index.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Address\\Index.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Index.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Address\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAApwCMAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-29T07:14:43.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Address.cs",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Address.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Models\\Address.cs",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Address.cs",
+              "RelativeToolTip": "Restaurant\\Models\\Address.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T07:06:34.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Menu\\Index.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Menu\\Index.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Menu\\Index.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Menu\\Index.cshtml",
+              "ViewState": "AgIAALQAAAAAAAAAAAAAABEBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-11T06:41:56.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IncomingOrderController.cs",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\IncomingOrderController.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Controllers\\IncomingOrderController.cs",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\IncomingOrderController.cs",
+              "RelativeToolTip": "Restaurant\\Controllers\\IncomingOrderController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T07:09:00.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAAAwAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-10T07:15:40.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\MenuItems\\Index.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\MenuItems\\Index.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\MenuItems\\Index.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\MenuItems\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-04T10:18:05.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\Index.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\Index.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\Index.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\TabletOrder\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-17T09:10:15.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "EnterPin.cshtml",
+              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
+              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\TabletOrder\\EnterPin.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAQAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-06T06:02:44.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "TabletOrderController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\TabletOrderController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\TabletOrderController.cs",
@@ -471,7 +720,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 24,
               "Title": "SuperAdminOnlyAttribute.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Filters\\SuperAdminOnlyAttribute.cs",
               "RelativeDocumentMoniker": "Restaurant\\Filters\\SuperAdminOnlyAttribute.cs",
@@ -484,33 +733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MenuItemsController.cs",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuItemsController.cs",
-              "RelativeDocumentMoniker": "Restaurant\\Controllers\\MenuItemsController.cs",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuItemsController.cs",
-              "RelativeToolTip": "Restaurant\\Controllers\\MenuItemsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T10:06:43.07Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Restaurant\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Restaurant\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwB4BAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T06:50:23.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 27,
               "Title": "FakePaymentController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\FakePaymentController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\FakePaymentController.cs",
@@ -523,7 +746,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 28,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\HomeController.cs",
@@ -536,7 +759,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 26,
               "Title": "StaffOnlyAttribute.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Filters\\StaffOnlyAttribute.cs",
               "RelativeDocumentMoniker": "Restaurant\\Filters\\StaffOnlyAttribute.cs",
@@ -549,7 +772,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 25,
               "Title": "AdminOnlyAttribute.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Filters\\AdminOnlyAttribute.cs",
               "RelativeDocumentMoniker": "Restaurant\\Filters\\AdminOnlyAttribute.cs",
@@ -562,56 +785,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Menu\\Index.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Menu\\Index.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Menu\\Index.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Menu\\Index.cshtml",
-              "ViewState": "AgIAAEoBAAAAAAAAAAAAABEBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-11T06:41:56.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAD0AAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-10T07:15:40.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "MenuController.cs",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuController.cs",
-              "RelativeDocumentMoniker": "Restaurant\\Controllers\\MenuController.cs",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\MenuController.cs",
-              "RelativeToolTip": "Restaurant\\Controllers\\MenuController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T09:29:35.532Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IncomingOrderController.cs",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\IncomingOrderController.cs",
-              "RelativeDocumentMoniker": "Restaurant\\Controllers\\IncomingOrderController.cs",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\IncomingOrderController.cs",
-              "RelativeToolTip": "Restaurant\\Controllers\\IncomingOrderController.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAkwDoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T07:09:00.488Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 29,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\AdminController.cs",
@@ -623,7 +797,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 30,
               "Title": "AddressController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\AddressController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\AddressController.cs",
@@ -635,7 +809,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 31,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\AccountController.cs",
@@ -647,19 +821,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\MenuItems\\Index.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\MenuItems\\Index.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\MenuItems\\Index.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\MenuItems\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-04T10:18:05.706Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 33,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Areas\\SuperAdmin\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Areas\\SuperAdmin\\Controllers\\DashboardController.cs",
@@ -671,7 +833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 32,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Areas\\SuperAdmin\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Areas\\SuperAdmin\\Views\\Dashboard\\Index.cshtml",
@@ -683,19 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\IncomingOrder\\Index.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\IncomingOrder\\Index.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\IncomingOrder\\Index.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\IncomingOrder\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-18T08:06:22.379Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 34,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Home\\Privacy.cshtml",
@@ -707,7 +857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 35,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\Customer.cs",
@@ -719,7 +869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 36,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Account\\Register.cshtml",
@@ -731,31 +881,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "OfflineOrders.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Staff\\OfflineOrders.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T08:37:13.768Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\Index.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\Index.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\Index.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\TabletOrder\\Index.cshtml",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAAAO8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T09:10:15.485Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 37,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Account\\Login.cshtml",
@@ -767,7 +893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 38,
               "Title": "TabletPartialCart.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\TabletPartialCart.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\TabletPartialCart.cshtml",
@@ -779,7 +905,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 39,
               "Title": "AccessDenied.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Home\\AccessDenied.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Home\\AccessDenied.cshtml",
@@ -791,7 +917,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 41,
               "Title": "PlaceOrderViewModel.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\ViewModels\\PlaceOrderViewModel.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\ViewModels\\PlaceOrderViewModel.cs",
@@ -803,7 +929,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 40,
               "Title": "SuperAdminDashboardViewModel.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\ViewModels\\SuperAdminDashboardViewModel.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\ViewModels\\SuperAdminDashboardViewModel.cs",
@@ -815,7 +941,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 42,
               "Title": "ViewCart.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\ViewCart.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\ViewCart.cshtml",
@@ -827,7 +953,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 43,
               "Title": "OrderConfirmation.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\TabletOrder\\OrderConfirmation.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\TabletOrder\\OrderConfirmation.cshtml",
@@ -839,19 +965,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "Restaurant\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Order.cs",
-              "RelativeToolTip": "Restaurant\\Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T09:45:15.704Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 44,
               "Title": "MenuItem.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\MenuItem.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\MenuItem.cs",
@@ -863,7 +977,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 45,
               "Title": "PaymentController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\PaymentController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\PaymentController.cs",
@@ -875,7 +989,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 46,
               "Title": "SuperAdminController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\SuperAdminController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\SuperAdminController.cs",
@@ -887,7 +1001,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 48,
               "Title": "StaffController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Controllers\\StaffController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Controllers\\StaffController.cs",
@@ -899,7 +1013,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 47,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\OrderItem.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\OrderItem.cs",
@@ -911,7 +1025,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 50,
               "Title": "CartItemViewModel.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\ViewModels\\CartItemViewModel.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\ViewModels\\CartItemViewModel.cs",
@@ -923,7 +1037,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 49,
               "Title": "OrderItemViewModel.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\ViewModels\\OrderItemViewModel.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\ViewModels\\OrderItemViewModel.cs",
@@ -935,7 +1049,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 51,
               "Title": "DineInOrderController.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\DineInOrderController.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\DineInOrderController.cs",
@@ -947,7 +1061,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 52,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\MenuItems\\Details.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\MenuItems\\Details.cshtml",
@@ -959,7 +1073,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 53,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\MenuItems\\Edit.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\MenuItems\\Edit.cshtml",
@@ -971,7 +1085,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 54,
               "Title": "LoginViewModel.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\LoginViewModel.cs",
@@ -983,7 +1097,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 56,
               "Title": "RmsContext.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Data\\RmsContext.cs",
               "RelativeDocumentMoniker": "Restaurant\\Data\\RmsContext.cs",
@@ -995,7 +1109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 55,
               "Title": "CartItem.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\CartItem.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\CartItem.cs",
@@ -1007,19 +1121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "Address.cs",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Address.cs",
-              "RelativeDocumentMoniker": "Restaurant\\Models\\Address.cs",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Address.cs",
-              "RelativeToolTip": "Restaurant\\Models\\Address.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-29T07:06:34.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 57,
               "Title": "CartAddViewModel.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\ViewModels\\CartAddViewModel.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\ViewModels\\CartAddViewModel.cs",
@@ -1031,7 +1133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 58,
               "Title": "PasswordHelper.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Helpers\\PasswordHelper.cs",
               "RelativeDocumentMoniker": "Restaurant\\Helpers\\PasswordHelper.cs",
@@ -1043,7 +1145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 59,
               "Title": "PartialCart.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Shared\\PartialCart.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Shared\\PartialCart.cshtml",
@@ -1055,7 +1157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 60,
               "Title": "ViewCart.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\ViewCart.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\ViewCart.cshtml",
@@ -1067,19 +1169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "MyAccount.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\MyAccount.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Account\\MyAccount.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\MyAccount.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Account\\MyAccount.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-10T06:57:24.821Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 61,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "Restaurant\\Models\\Payment.cs",
@@ -1091,19 +1181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "MyOrders.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\MyOrders.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\MyOrders.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\MyOrders.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Order\\MyOrders.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-14T06:02:58.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 62,
               "Title": "OrderConfirmation.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\OrderConfirmation.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\OrderConfirmation.cshtml",
@@ -1115,7 +1193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 63,
               "Title": "PlaceOrder.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Menu\\PlaceOrder.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Menu\\PlaceOrder.cshtml",
@@ -1127,7 +1205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 64,
               "Title": "Cart.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\Cart.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\Cart.cshtml",
@@ -1139,31 +1217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\Details.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Order\\Details.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Order\\Details.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Order\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-14T06:10:29.955Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Index.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Address\\Index.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Index.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Address\\Index.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAApwCMAAABtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-29T07:14:43.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 65,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Edit.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Address\\Edit.cshtml",
@@ -1175,7 +1229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 66,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Delete.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Address\\Delete.cshtml",
@@ -1187,19 +1241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Create.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Address\\Create.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Address\\Create.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Address\\Create.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-29T07:29:29.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 67,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\_ViewStart.cshtml",
@@ -1211,7 +1253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 68,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "Restaurant\\wwwroot\\js\\site.js",
@@ -1223,7 +1265,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 69,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Program.cs",
               "RelativeDocumentMoniker": "Restaurant\\Program.cs",
@@ -1235,7 +1277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 70,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Restaurant\\Properties\\launchSettings.json",
@@ -1247,19 +1289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Admin\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Admin\\Dashboard.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Admin\\Dashboard.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Admin\\Dashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-15T11:44:18.092Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 71,
               "Title": "AccessDenied.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Account\\AccessDenied.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\Account\\AccessDenied.cshtml",
@@ -1283,7 +1313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 72,
               "Title": "SessionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Extensions\\SessionExtensions.cs",
               "RelativeDocumentMoniker": "Restaurant\\Extensions\\SessionExtensions.cs",
@@ -1295,7 +1325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 73,
               "Title": "Restaurant.csproj",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Restaurant.csproj",
               "RelativeDocumentMoniker": "Restaurant\\Restaurant.csproj",
@@ -1307,7 +1337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 74,
               "Title": "Result.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\FakePayment\\Result.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\FakePayment\\Result.cshtml",
@@ -1319,7 +1349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 75,
               "Title": "FakePay.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\FakePayment\\FakePay.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\FakePayment\\FakePay.cshtml",
@@ -1331,7 +1361,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 76,
               "Title": "Process.cshtml",
               "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\FakePayment\\Process.cshtml",
               "RelativeDocumentMoniker": "Restaurant\\Views\\FakePayment\\Process.cshtml",
@@ -1340,18 +1370,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-19T07:23:30.471Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 76,
-              "Title": "Orders.cshtml",
-              "DocumentMoniker": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\Orders.cshtml",
-              "RelativeDocumentMoniker": "Restaurant\\Views\\Staff\\Orders.cshtml",
-              "ToolTip": "C:\\Users\\devra\\source\\repos\\Restaurant\\Restaurant\\Views\\Staff\\Orders.cshtml",
-              "RelativeToolTip": "Restaurant\\Views\\Staff\\Orders.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-16T09:04:10.483Z"
             },
             {
               "$type": "Document",

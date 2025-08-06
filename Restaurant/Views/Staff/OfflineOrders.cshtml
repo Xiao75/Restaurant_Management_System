@@ -31,9 +31,9 @@
                     <tr>
                         <td>@order.InvoiceId</td>
                         <td>Table @order.TableNumber</td>
-                        <td>@order.OrderDate?.ToString("g")</td>
+                        <td>@order.OrderDate.ToString("g")</td>
                         <td>@order.Status</td>
-                        <td>₹@order.TotalAmount.ToString("F2")</td>
+                        <td>₹@order.TotalAmount.?ToString("F2")</td>
                         <td>
                             <ul class="list-unstyled">
                                 @foreach (var item in order.OrderItems)
