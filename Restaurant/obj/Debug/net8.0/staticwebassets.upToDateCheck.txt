@@ -12,9 +12,11 @@ wwwroot\images\dinosaur-eggs.jpg
 wwwroot\images\Gulab jamun.webp
 wwwroot\images\jalebi.png
 wwwroot\images\Kimbap.webp
+wwwroot\images\location.jpg
 wwwroot\images\Logo\clover.jpg
 wwwroot\images\Mountain Dew.jpeg
 wwwroot\images\pizza.jpg
+wwwroot\images\profile.jpg
 wwwroot\images\rabbit.jpg
 wwwroot\images\Ramen.jpg
 wwwroot\images\ramsay.jpg

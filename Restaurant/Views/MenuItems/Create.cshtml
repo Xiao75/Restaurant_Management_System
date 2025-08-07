@@ -4,9 +4,54 @@
     ViewData["Title"] = "Create Menu Item";
 }
 
-<h1>Create Menu Item</h1>
+<style>
+    h1.page-title {
+        margin-top: 100px; /* Push heading down below fixed navbar */
+        color: #2e7d32; /* Green tone for the title */
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .form-control,
+    .form-select {
+        border: 1px solid #81c784; /* Light green border */
+        box-shadow: none;
+    }
+
+    .btn-primary {
+        background-color: #2e7d32; /* Darker green */
+        border-color: #2e7d32;
+    }
+
+        .btn-primary:hover {
+            background-color: #1b5e20; /* Even darker on hover */
+            border-color: #1b5e20;
+        }
+
+    .btn-secondary {
+        background-color: #a5d6a7; /* Light green for cancel/back */
+        border-color: #81c784;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #81c784;
+            color: white;
+        }
+
+    label {
+        font-weight: 500;
+        color: #2e7d32;
+    }
+
+    .form-check-label {
+        color: #2e7d32;
+    }
+</style>
+
+<h1 class="page-title">Create Menu Item</h1>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-6">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div class="form-group mb-3">
@@ -33,7 +78,6 @@
                     <option value="">-- Select Category --</option>
                 </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
-
             </div>
 
             <div class="form-check mb-3">
@@ -41,22 +85,19 @@
                 <label asp-for="Available" class="form-check-label"></label>
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-            </div>
-
             <div class="form-group mb-3">
                 <label for="ImageFile">Image</label>
                 <input type="file" name="ImageFile" class="form-control" />
             </div>
 
+            <div class="form-group d-flex gap-2">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

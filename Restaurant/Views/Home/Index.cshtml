@@ -3,6 +3,45 @@
 }
 
 <style>
+    @@keyframes rotateLogo {
+        0%
+
+    {
+        transform: rotate(0deg);
+        animation-timing-function: cubic-bezier(0.4, 0.0, 1, 1); /* Fast start */
+    }
+
+    70% {
+        transform: rotate(2160deg); /* Fast rotation: 4 turns */
+        animation-timing-function: ease-out; /* Slow finish */
+    }
+
+    100% {
+        transform: rotate(1620deg); /* Total: 4.5 turns */
+    }
+
+    }
+
+    .rotate-on-click {
+        animation: rotateLogo 2s forwards; /* total 2s duration */
+    }
+
+    .logo-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .logo-image {
+        width: 60px;
+        height: 60px;
+    }
+
     #mainVideo.fade-in {
         opacity: 1;
         transition: opacity 1s ease-in;
@@ -12,7 +51,6 @@
         opacity: 0;
         transition: opacity 1s ease-out;
     }
-
 </style>
 
 <!-- Video Container -->
@@ -29,6 +67,11 @@
         <a class="explore-link mt-4 d-inline-block" href="@Url.Action("Index", "Menu")">Explore Menu</a>
     </div>
 </div>
+
+<!-- Logo Button at Bottom Right -->
+<button class="logo-button" onclick="rotateLogo(this)">
+    <img src="~/images/Logo/clover.jpg" alt="Logo" class="logo-image" />
+</button>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -56,13 +99,20 @@
                     .catch(error => console.error("Video play error:", error));
 
                 currentIndex = (currentIndex + 1) % videos.length;
-            }, 1000); // 1 second transition
+            }, 1000);
         }
 
         videoElement.addEventListener('ended', playNextVideo);
-
-        // Start first video after page loads
         playNextVideo();
     });
+
+    function rotateLogo(button) {
+        const img = button.querySelector("img");
+        img.classList.remove("rotate-on-click");
+
+        // Force reflow to restart animation
+        void img.offsetWidth;
+
+        img.classList.add("rotate-on-click");
+    }
 </script>
-}

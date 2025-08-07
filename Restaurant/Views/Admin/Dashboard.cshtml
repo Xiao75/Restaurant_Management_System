@@ -1,58 +1,67 @@
 ﻿@model IEnumerable<Restaurant.Models.Order>
 @{
-    ViewData["Title"] = " Manager Dashboard";
+    ViewData["Title"] = "Manager Dashboard";
 }
 
-<h2 class="mb-4">Admin Dashboard</h2>
+<style>
+    body {
+        padding-top: 70px;
+    }
 
-<div class="row text-center mb-4">
+</style>
+
+<h2 class="mb-4 text-success">Manager Dashboard</h2>
+
+<div class="row g-4 text-center mb-5">
     <div class="col-md-3">
-        <div class="class bg-primary text-white">
+        <div class="card bg-success text-white shadow">
             <div class="card-body">
-                <h5>Total Orders</h5>
+                <h5 class="card-title">Total Orders</h5>
                 <p class="display-6">@ViewBag.TotalOrders</p>
             </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card bg-success text-white">
+        <div class="card bg-teal text-white shadow" style="background-color: #20c997;">
             <div class="card-body">
-                <h5>Total Revenue</h5>
+                <h5 class="card-title">Total Revenue</h5>
                 <p class="display-6">@String.Format("{0:C}", ViewBag.TotalRevenue)</p>
             </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card bg-info text-white">
+        <div class="card bg-dark-green text-white shadow" style="background-color: #14532d;">
             <div class="card-body">
-                <h5>Menu Items</h5>
+                <h5 class="card-title">Menu Items</h5>
                 <p class="display-6">@ViewBag.TotalMenuItems</p>
             </div>
         </div>
     </div>
 </div>
 
-<h4>Recent Orders</h4>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Order ID</th>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var order in Model)
-        {
+<h4 class="text-success">Recent Orders</h4>
+<div class="table-responsive">
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-success">
             <tr>
-                <td>@order.OrderId</td>
-                <td>@order.Customer?.Name</td>
-                <td>@order.OrderDate.ToString("dd MMM yyyy hh:mm tt")</td>
-                <td>@order.Status</td>
-                <td>@string.Format("{0:C}", order.TotalAmount)</td>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.Customer?.Name</td>
+                    <td>@order.OrderDate.ToString("dd MMM yyyy hh:mm tt")</td>
+                    <td>@order.Status</td>
+                    <td>@string.Format("{0:C}", order.TotalAmount)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

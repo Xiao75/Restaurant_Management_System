@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5 {
     .explore-link:hover::after {
         width: 100%;
     }
-a {
+a:not(.logo-link) {
     position: relative;
     color: black !important;
     font-family: 'Playfair Display', serif;
@@ -158,7 +158,7 @@ a {
     overflow: hidden;
 }
 
-    a::after {
+    a:not(.logo-link)::after {
         content: "";
         position: absolute;
         bottom: 0;
@@ -170,7 +170,7 @@ a {
         transform: translateX(-50%);
     }
 
-    a:hover::after {
+    a:not(.logo-link):hover::after {
         width: 100%;
     }
 

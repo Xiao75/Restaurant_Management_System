@@ -5,14 +5,15 @@
 }
 
 <div class="container mt-5 pt-4">
-    <h1>Menu Items</h1>
+    <h1 class="text-success">Menu Items</h1>
 
     <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <a asp-action="Create" class="btn btn-success">➕ Create New</a>
     </p>
 
-    <table class="table table-bordered table-striped text-center">
-        <thead class="table-dark">
+    <table class="table table-bordered text-center">
+        <thead style="background-color: #14532d; color: white;">
+            <!-- Dark green -->
             <tr>
                 <th>@Html.DisplayNameFor(model => model.First().Name)</th>
                 <th>@Html.DisplayNameFor(model => model.First().Price)</th>
@@ -28,9 +29,9 @@
                     <td>@String.Format("{0:C}", item.Price ?? 0)</td>
                     <td>@item.Category</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ItemId" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.ItemId" class="btn btn-sm btn-info">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.ItemId" class="btn btn-sm btn-danger">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.ItemId" class="btn btn-sm" style="background-color: #facc15; color: black;">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.ItemId" class="btn btn-sm" style="background-color: #4ade80; color: black;">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.ItemId" class="btn btn-sm" style="background-color: #dc2626; color: white;">Delete</a>
                     </td>
                 </tr>
             }

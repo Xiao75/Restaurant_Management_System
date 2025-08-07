@@ -3,41 +3,107 @@
     ViewData["Title"] = "Your Addresses";
 }
 
-<h2>Your Saved Addresses</h2>
+<style>
+    body {
+        padding-top: 70px; /* Avoid overlap with navbar */
+    }
 
-<a class="btn btn-primary mb-3" asp-action="Create">Add New Address</a>
+    h2 {
+        color: #2f6f4e; /* Dark green */
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
 
-@if (!Model.Any())
-{
-    <div class="alert alert-info">
-        No addresses saved yet. Click "Add New Address" to create one.
-    </div>
-}
-else
-{
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Label</th>
-                <th>Full Address</th>
-                <th>Created At</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var address in Model)
-            {
+    .btn-primary {
+        background-color: #2f6f4e;
+        border-color: #2f6f4e;
+    }
+
+        .btn-primary:hover {
+            background-color: #265c42;
+            border-color: #265c42;
+        }
+
+    .btn-info {
+        background-color: #28a745; /* green tone for Edit */
+        border-color: #28a745;
+    }
+
+        .btn-info:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .btn-danger {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+        .btn-danger:hover {
+            background-color: #bd2130;
+            border-color: #a71d2a;
+        }
+
+    .table th {
+        background-color: #e6f4ea; /* light greenish header */
+        color: #2f6f4e;
+        font-weight: 600;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+    .alert-info {
+        background-color: #dff5e1;
+        color: #2f6f4e;
+        border-color: #bfe6c8;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2>Your Saved Addresses</h2>
+
+    <a class="btn btn-primary mb-3" asp-action="Create">
+        <i class="bi bi-plus-circle me-1"></i> Add New Address
+    </a>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No addresses saved yet. Click "Add New Address" to create one.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>@address.Label</td>
-                    <td>@address.FullAddress</td>
-                    <td>@address.CreatedAt.ToString("dd MMM yyyy")</td>
-                    <td>
-                        <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@address.AddressID">Edit</a>
-                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@address.AddressID" 
-                           onclick="return confirm('Are you sure you want to delete this address?');">Delete</a>
-                    </td>
+                    <th>Label</th>
+                    <th>Full Address</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+                @foreach (var address in Model)
+                {
+                    <tr>
+                        <td>@address.Label</td>
+                        <td>@address.FullAddress</td>
+                        <td>@address.CreatedAt.ToString("dd MMM yyyy")</td>
+                        <td>
+                            <a class="btn btn-sm btn-info me-1" asp-action="Edit" asp-route-id="@address.AddressID">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@address.AddressID"
+                               onclick="return confirm('Are you sure you want to delete this address?');">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

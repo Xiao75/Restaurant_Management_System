@@ -4,37 +4,84 @@
     ViewData["Title"] = "Menu Item Details";
 }
 
-<h1>Menu Item Details</h1>
-<hr />
+<style>
+    .details-header {
+        margin-top: 6rem; /* Adjusts for navbar overlap */
+        color: #2e7d32; /* Green shade */
+        font-weight: bold;
+    }
 
-<div class="row">
-    <div class="col-md-6">
-        <dl class="row">
-            <dt class="col-sm-4">Name</dt>
-            <dd class="col-sm-8">@Model.Name</dd>
+    .details-box {
+        background-color: #f1f8e9; /* Light green background */
+        border: 1px solid #c5e1a5;
+        border-radius: 8px;
+        padding: 20px;
+    }
 
-            <dt class="col-sm-4">Description</dt>
-            <dd class="col-sm-8">@Model.Description</dd>
+        .details-box dt {
+            color: #388e3c; /* Darker green for labels */
+            font-weight: 600;
+        }
 
-            <dt class="col-sm-4">Price</dt>
-            <dd class="col-sm-8">@string.Format("{0:C}", Model.Price ?? 0)</dd>
+    .btn-primary {
+        background-color: #388e3c;
+        border-color: #388e3c;
+    }
 
-            <dt class="col-sm-4">Category</dt>
-            <dd class="col-sm-8">@Model.Category</dd>
+        .btn-primary:hover {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+        }
 
-            <dt class="col-sm-4">Available</dt>
-            <dd class="col-sm-8">@(Model.Available == true ? "Yes" : "No")</dd>
+    .btn-secondary {
+        background-color: #81c784;
+        border-color: #81c784;
+        color: #fff;
+    }
 
-            @if (!string.IsNullOrEmpty(Model.ImagePath))
-            {
-                <dt class="col-sm-4">Image</dt>
-                <dd class="col-sm-8">
-                    <img src="~/images/@Model.ImagePath" width="150" class="img-thumbnail" />
-                </dd>
-            }
-        </dl>
+        .btn-secondary:hover {
+            background-color: #66bb6a;
+            border-color: #66bb6a;
+        }
+</style>
 
-        <a asp-action="Edit" asp-route-id="@Model.ItemId" class="btn btn-primary">Edit</a>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+<div class="container mt-5">
+    <h1 class="details-header">Menu Item Details</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="details-box">
+                <dl class="row">
+                    <dt class="col-sm-4">Name</dt>
+                    <dd class="col-sm-8">@Model.Name</dd>
+
+                    <dt class="col-sm-4">Description</dt>
+                    <dd class="col-sm-8">@Model.Description</dd>
+
+                    <dt class="col-sm-4">Price</dt>
+                    <dd class="col-sm-8">@string.Format("{0:C}", Model.Price ?? 0)</dd>
+
+                    <dt class="col-sm-4">Category</dt>
+                    <dd class="col-sm-8">@Model.Category</dd>
+
+                    <dt class="col-sm-4">Available</dt>
+                    <dd class="col-sm-8">@(Model.Available == true ? "Yes" : "No")</dd>
+
+                    @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <dt class="col-sm-4">Image</dt>
+                        <dd class="col-sm-8">
+                            <img src="~/images/@Model.ImagePath" width="150" class="img-thumbnail" />
+                        </dd>
+                    }
+                </dl>
+            </div>
+
+            <div class="mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.ItemId" class="btn btn-primary me-2">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
     </div>
 </div>

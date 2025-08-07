@@ -5,18 +5,24 @@
     var grandTotal = Model.Sum(item => item.Price * item.Quantity);
 }
 
-<h2 class="text-center">Your Cart</h2>
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+
+<h2 class="text-center text-success fw-bold">Your Cart</h2>
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info text-center">
+    <div class="alert alert-success text-center">
         Your cart is empty.
     </div>
 }
 else
 {
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered border-success">
+        <thead class="table-success">
             <tr>
                 <th>Item</th>
                 <th>Price</th>
@@ -36,7 +42,7 @@ else
                     <td>
                         <form asp-action="DecreaseQuantity" method="post" style="display:inline">
                             <input type="hidden" name="itemId" value="@item.ItemId" />
-                            <button type="submit" class="btn btn-sm btn-warning">-</button>
+                            <button type="submit" class="btn btn-sm btn-outline-success">-</button>
                         </form>
                         <form asp-action="IncreaseQuantity" method="post" style="display:inline">
                             <input type="hidden" name="itemId" value="@item.ItemId" />
@@ -44,28 +50,28 @@ else
                         </form>
                         <form asp-action="RemoveFromCart" method="post" style="display:inline">
                             <input type="hidden" name="itemId" value="@item.ItemId" />
-                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
                         </form>
                     </td>
                 </tr>
             }
 
-            <tr>
+            <tr class="table-light">
                 <td colspan="3" class="text-end fw-bold">Total:</td>
-                <td colspan="2" class="fw-bold">@grandTotal.ToString("C")</td>
+                <td colspan="2" class="fw-bold text-success">@grandTotal.ToString("C")</td>
             </tr>
         </tbody>
     </table>
 
     <div class="text-center mt-4">
-        <form asp-action="PlaceOrderFromCart" asp-controller="order" method="post">
+        <form asp-action="PlaceOrderFromCart" asp-controller="Order" method="post">
             @Html.AntiForgeryToken()
 
             @if (ViewBag.Addresses != null && ((List<Restaurant.Models.Address>)ViewBag.Addresses).Count > 0)
             {
                 <div class="mb-3">
-                    <label for="AddressId" class="form-label fw-bold">Select Delivery Address:</label>
-                    <select class="form-select" name="AddressId" required>
+                    <label for="AddressId" class="form-label fw-bold text-success">Select Delivery Address:</label>
+                    <select class="form-select border-success" name="AddressId" required>
                         @foreach (var addr in ViewBag.Addresses)
                         {
                             <option value="@addr.AddressID">@addr.FullAddress</option>
@@ -76,13 +82,13 @@ else
             else
             {
                 <div class="alert alert-warning">
-                    No saved addresses found. <a href="/Address/Create">Add Address</a>
+                    No saved addresses found. <a href="/Address/Create" class="text-success fw-bold">Add Address</a>
                 </div>
             }
 
             <div class="mb-3">
-                <label for="paymentMethod" class="form-label fw-bold">Select Payment Method:</label>
-                <select class="form-select" name="PaymentMethod" required>
+                <label for="paymentMethod" class="form-label fw-bold text-success">Select Payment Method:</label>
+                <select class="form-select border-success" name="PaymentMethod" required>
                     <option value="Cash">Cash</option>
                     <option value="Online">Online</option>
                 </select>
@@ -90,14 +96,12 @@ else
 
             @if (ViewBag.Addresses != null && ((List<Restaurant.Models.Address>)ViewBag.Addresses).Count > 0)
             {
-                <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
+                <button type="submit" class="btn btn-success btn-lg">Place Order</button>
             }
         </form>
     </div>
-
 }
 
-<!-- 🔹 Script to refresh floating cart after page reload -->
 @section Scripts {
     <script>
         // On page load, refresh the floating sidebar cart

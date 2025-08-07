@@ -4,18 +4,76 @@
     ViewData["Title"] = "Login";
 }
 
-<style>
-    .login-card {
-        max-width: 500px;
-        margin-top: 60px;
-        width: 100%;
-    }
-</style>
+@section Styles {
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #e6f5e9, #cce8d8);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-card {
+            max-width: 450px;
+            margin-top: 60px;
+            border: none;
+            border-radius: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 128, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .login-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .login-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #2e7d32;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #a5d6a7;
+            transition: border-color 0.2s ease;
+        }
+
+            .form-control:focus {
+                border-color: #66bb6a;
+                box-shadow: 0 0 0 0.2rem rgba(102, 187, 106, 0.25);
+            }
+
+        .btn-green {
+            background-color: #388e3c;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+            .btn-green:hover {
+                background-color: #2e7d32;
+            }
+
+        .register-link {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+           
+    </style>
+}
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-start" style="padding-top: 80px;">
-    <div class="card shadow rounded-2 login-card">
-        <h4 class="text-center mt-4">@ViewData["Title"]</h4> <!-- Smaller heading -->
-        <div class="card-body">
+    <div class="card login-card">
+        <div class="login-header">@ViewData["Title"]</div>
+        <div class="card-body px-4">
             <form asp-action="Login" method="post">
                 <div class="form-group mb-3">
                     <label asp-for="Email" class="form-label"></label>
@@ -30,12 +88,14 @@
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-green">Login</button>
                 </div>
             </form>
 
             <div class="text-center mt-3">
-                <a asp-action="Register" asp-controller="Account">Don't have an account? Register</a>
+                <a asp-action="Register" asp-controller="Account" class="register-link">
+                    Don't have an account? Register
+                </a>
             </div>
         </div>
     </div>

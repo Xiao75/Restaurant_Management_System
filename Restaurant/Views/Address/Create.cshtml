@@ -4,28 +4,75 @@
     ViewData["Title"] = "Add New Address";
 }
 
-<h2 class="text-center mb-4">Add New Address</h2>
+<style>
+    body {
+        padding-top: 70px;
+    }
 
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <form asp-action="Create" method="post">
-            @Html.AntiForgeryToken()
+    .address-form-container {
+        background: #fff;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-            <div class="mb-3">
-                <label asp-for="FullAddress" class="form-label">Full Address</label>
-                <textarea asp-for="FullAddress" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="FullAddress" class="text-danger"></span>
+    h2 {
+        font-weight: 600;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .btn-green {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+        .btn-green:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="address-form-container">
+                <h2>Add New Address</h2>
+
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label asp-for="FullAddress" class="form-label">Full Address</label>
+                        <textarea asp-for="FullAddress" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="FullAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Label" class="form-label">Label (e.g., Home, Work)</label>
+                        <input asp-for="Label" class="form-control" placeholder="e.g., Home or Work" />
+                        <span asp-validation-for="Label" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-green w-100">Save Address</button>
+                    <a asp-action="Index" class="btn btn-secondary w-100 mt-2">Back to Address List</a>
+                </form>
             </div>
-
-            <div class="mb-3">
-                <label asp-for="Label" class="form-label">Label (e.g., Home, Work)</label>
-                <input asp-for="Label" class="form-control" placeholder="e.g., Home or Work" />
-                <span asp-validation-for="Label" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Save Address</button>
-            <a asp-action="Index" class="btn btn-secondary w-100 mt-2">Back to Address List</a>
-        </form>
+        </div>
     </div>
 </div>
 
