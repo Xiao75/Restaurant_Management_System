@@ -94,6 +94,33 @@ namespace Restaurant.Controllers
             return RedirectToAction("OfflineOrders");
         }
 
-    }
+        [HttpGet]
+        public IActionResult SearchByInvoice()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> SearchByInvoice(string invoiceId)
+        {
+            if (string.IsNullOrWhiteSpace(invoiceId))
+            {
+                TempData["Error"] = "Please enter a valid Invoice ID.";
+                return View();
+            }
+
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                    .ThenInclude(oi => oi.Item)
+                .FirstOrDefaultAsync(o => o.InvoiceId == invoiceId);
+
+            if (order == null)
+            {
+                TempData["Error"] = "Order not found.";
+                return View();
+            }
+
+            return View(order);
+        }
+    }
 }

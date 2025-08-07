@@ -1,0 +1,66 @@
+﻿@model Restaurant.Models.Order
+
+@{
+    ViewData["Title"] = "Search Order by Invoice ID";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Search Order by Invoice ID</h2>
+
+    <form asp-action="SearchByInvoice" method="post" class="mb-4">
+        <div class="form-group row">
+            <label for="invoiceId" class="col-sm-2 col-form-label">Invoice ID:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="invoiceId" name="invoiceId" placeholder="Enter Invoice ID" required />
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    @if (Model != null)
+    {
+        <div class="card">
+            <div class="card-header">
+                <strong>Order Date:</strong> @Model.OrderDate.ToString("dd MMM yyyy hh:mm tt") <br />
+                <strong>Status:</strong> @(string.IsNullOrWhiteSpace(Model.Status) ? "Unknown" : Model.Status) <br />
+                <strong>Invoice ID:</strong> @(string.IsNullOrWhiteSpace(Model.InvoiceId) ? "N/A" : Model.InvoiceId) <br />
+                <strong>Delivery Address:</strong> @(string.IsNullOrWhiteSpace(Model.DeliveryAddress) ? "Restaurant" : Model.DeliveryAddress)
+            </div>
+            <div class="card-body">
+                @if (Model.OrderItems != null && Model.OrderItems.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var item in Model.OrderItems)
+                        {
+                            var itemName = item?.Item?.Name ?? "Item Not Found";
+                            var itemQuantity = item?.Quantity ?? 0;
+                            var itemPrice = item?.Item?.Price ?? 0m;
+                            var itemTotal = itemPrice * itemQuantity;
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>@($"{itemName} (x{itemQuantity})")</span>
+                                <span>₹@itemTotal.ToString("0.00")</span>
+                            </li>
+                        }
+                    </ul>
+                    <div class="mt-3">
+                        <strong>Total:</strong> ₹@Model.TotalAmount.ToString("0.00") <br />
+                        <strong>Payment Method:</strong> @(string.IsNullOrWhiteSpace(Model.PaymentMethod) ? "Unknown" : Model.PaymentMethod)
+                    </div>
+                }
+                else
+                {
+                    <p>No items found in this order.</p>
+                }
+            </div>
+        </div>
+    }
+    else if (ViewBag.NotFound != null)
+    {
+        <div class="alert alert-warning text-center">
+            @ViewBag.NotFound
+        </div>
+    }
+</div>
