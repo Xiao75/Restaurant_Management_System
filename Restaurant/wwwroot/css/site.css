@@ -195,3 +195,8 @@ a:not(.logo-link) {
 #mainNavbar {
     transition: background-color 0.4s ease, box-shadow 0.3s ease;
 }
+
+::selection {
+    background-color: darkgreen;
+    color: white;
+}
