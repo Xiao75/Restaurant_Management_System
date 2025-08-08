@@ -6,12 +6,17 @@
 
 <!-- 🔹 CSS for Floating Cart -->
 <style>
+    body {
+        background: linear-gradient(to bottom right, #e6f5e9, #cce8d8);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
     .menu-hamburger {
         position: fixed;
         top: 20px;
         right: 20px;
         z-index: 1100;
-        background: #0d6efd;
+        background: #388e3c;
         color: #fff;
         border: none;
         border-radius: 4px;
@@ -22,7 +27,7 @@
     }
 
         .menu-hamburger:hover {
-            background: #0b5ed7;
+            background: #2e7d32;
         }
 
     .menu-sidebar {
@@ -31,8 +36,8 @@
         right: 20px;
         width: 360px;
         max-height: 80vh;
-        background: #fff;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
+        background: #ffffff;
+        box-shadow: 0 8px 16px rgba(0, 128, 0, 0.2);
         border-radius: 10px;
         overflow-y: auto;
         transition: top 0.4s ease;
@@ -50,22 +55,26 @@
         border: none;
         font-size: 1.3rem;
         line-height: 1;
-        color: #6c757d;
+        color: #66bb6a;
         cursor: pointer;
         position: absolute;
         top: 10px;
         right: 15px;
+        transition: color 0.3s ease;
     }
 
         .menu-sidebar-close:hover {
-            color: #0d6efd;
+            color: #2e7d32;
         }
 
     .menu-sidebar-header {
         padding: 1rem;
         font-weight: 600;
         font-size: 1.15rem;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid #c8e6c9;
+        color: #2e7d32;
+        background-color: #e8f5e9;
+        border-radius: 10px 10px 0 0;
     }
 
     .menu-sidebar-body {
@@ -75,28 +84,116 @@
 
     .menu-sidebar-footer {
         padding: 1rem;
-        border-top: 1px solid #dee2e6;
+        border-top: 1px solid #c8e6c9;
         text-align: right;
+        background-color: #f1f8f5;
     }
 
     .menu-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, .45);
+        background: transparent !important;
         z-index: 1040;
         display: none;
     }
 
         .menu-overlay.show {
-            display: block;
+            display: none !important;
         }
 
+    .toast.text-bg-success {
+        background-color: #4caf50 !important;
+        color: white;
+    }
+
     .btn-close.red-bg {
-        background-color: red;
-        color: ghostwhite;
-        border-radius: 20%;
+        background-color: #c62828;
+        color: white;
+        border-radius: 50%;
         opacity: 1;
     }
+
+    /* Buttons */
+
+    .btn-green, .btn-primary {
+        background-color: #388e3c;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-green:hover, .btn-primary:hover {
+            background-color: #2e7d32;
+            color: white;
+        }
+
+    .btn-warning {
+        background-color: #81c784;
+        border-color: #81c784;
+        color: #2e7d32;
+        font-weight: 600;
+    }
+
+        .btn-warning:hover {
+            background-color: #66bb6a;
+            border-color: #66bb6a;
+            color: white;
+        }
+
+    .btn-green:focus,
+    .btn-primary:focus {
+        background-color: #388e3c; /* your original green */
+        border-color: #388e3c;
+        outline: none; /* kill the default blue outline */
+    }
+
+    /* Form controls */
+
+    .form-select, .form-control {
+        border-color: #a5d6a7;
+        font-weight: 600;
+        color: #2e7d32;
+    }
+
+        .form-select:focus, .form-control:focus {
+            border-color: #66bb6a;
+            box-shadow: 0 0 0 0.2rem rgba(102, 187, 106, 0.25);
+            outline: none;
+        }
+
+    /* Card Titles & Badges */
+
+    .card-title {
+        color: #2e7d32;
+        font-weight: 600;
+    }
+
+    .badge.bg-secondary {
+        background-color: #81c784 !important;
+        color: #1b5e20;
+    }
+
+    .badge.bg-danger {
+        background-color: #c62828 !important;
+        color: white;
+    }
+
+    /* Input Group Buttons */
+
+    .input-group .btn-outline-secondary {
+        border-color: #a5d6a7;
+        color: #2e7d32;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .input-group .btn-outline-secondary:hover {
+            background-color: #66bb6a;
+            border-color: #66bb6a;
+            color: white;
+        }
+
 </style>
 
 <!-- 🔹 Toast -->

@@ -1,3 +1,4 @@
+wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\Blue Mojito.jpg
 wwwroot\images\ChatGPT Image Jul 30, 2025, 03_43_33 PM.png
@@ -83,4 +84,3 @@ wwwroot\lib\jquery\LICENSE.txt
 wwwroot\vIdeos\intro1.mp4
 wwwroot\vIdeos\intro2.mp4
 wwwroot\vIdeos\intro3.mp4
-wwwroot\css\site.css

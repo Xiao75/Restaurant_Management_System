@@ -4,19 +4,118 @@
     ViewData["Title"] = "Incoming Orders (Kitchen)";
 }
 
-<!-- Add padding or margin to avoid overlap with fixed navbar -->
+<style>
+    body {
+        padding-top: 70px;
+        background-color: #f7faf6; /* very light greenish */
+        font-family: 'Open Sans', sans-serif;
+        color: #2f6f4e; /* dark green */
+    }
+
+    h2 {
+        color: #2f6f4e;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    table {
+        background-color: #e6f4ea; /* light green background */
+        border: 1px solid #c1d9c7;
+        border-radius: 8px;
+    }
+
+    thead.table-dark {
+        background-color: #2f6f4e !important; /* override bootstrap dark */
+        color: #fff;
+        font-weight: 700;
+        border-radius: 8px 8px 0 0;
+    }
+
+    th, td {
+        vertical-align: middle !important;
+        border: 1px solid #c1d9c7 !important;
+        color: #2f6f4e;
+    }
+
+    ul.list-unstyled {
+        margin-bottom: 0;
+        padding-left: 0;
+        color: #2f6f4e;
+        font-weight: 600;
+    }
+
+    /* Badge colors based on status */
+    .badge.bg-secondary {
+        background-color: #6c757d; /* Bootstrap secondary gray */
+        color: white;
+    }
+
+    .badge.bg-warning {
+        background-color: #ffc107; /* Bootstrap warning yellow */
+        color: #2f6f4e;
+        font-weight: 600;
+    }
+
+    .badge.bg-success {
+        background-color: #28a745; /* Bootstrap success green */
+        color: white;
+        font-weight: 600;
+    }
+
+    .badge.bg-dark {
+        background-color: #343a40;
+        color: white;
+        font-weight: 600;
+    }
+
+    /* Buttons */
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        font-weight: 600;
+        padding: 4px 10px;
+    }
+
+        .btn-success:hover:not(:disabled) {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #2f6f4e;
+        font-weight: 600;
+        padding: 4px 10px;
+    }
+
+        .btn-warning:hover:not(:disabled) {
+            background-color: #e0a800;
+            border-color: #d39e00;
+            color: #1c3d1a;
+        }
+
+    .btn-sm {
+        font-size: 0.8rem;
+    }
+
+    /* Container max width */
+    .container {
+        max-width: 1100px;
+    }
+</style>
+
 <div class="container mt-5 pt-4">
     <h2>Counter</h2>
 
     @if (!Model.Any())
     {
-        <div class="alert alert-info">No tablet orders found.</div>
+        <div class="alert alert-info text-center">No tablet orders found.</div>
     }
     else
     {
         <table class="table table-bordered text-center">
-            <!-- Remove this file path or put it inside a comment if needed -->
-            <!-- <a href="c:\users\devra\source\repos\restaurant\restaurant\views\menu\index.cshtml">c:\users\devra\source\repos\restaurant\restaurant\views\menu\index.cshtml</a> -->
             <thead class="table-dark">
                 <tr>
                     <th>Order ID</th>
@@ -40,9 +139,9 @@
                                 @order.Status
                             </span>
                         </td>
-                        <td>@order.TotalAmount.?ToString("C")</td>
+                        <td>@order.TotalAmount.ToString("C")</td>
                         <td>
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled mb-0">
                                 @foreach (var item in order.OrderItems)
                                 {
                                     <li>@item.Item?.Name x @item.Quantity</li>

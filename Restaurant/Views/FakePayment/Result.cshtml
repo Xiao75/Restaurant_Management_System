@@ -2,8 +2,39 @@
     ViewData["Title"] = "Payment Result";
 }
 
-<div class="text-center mt-5">
+<style>
+    .payment-result-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        text-align: center;
+    }
+
+        .payment-result-container h2 {
+            color: #28a745; /* Green theme color */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+    .btn-theme-green {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-theme-green:hover {
+            background-color: #218838;
+            color: white;
+        }
+</style>
+
+<div class="payment-result-container">
     <h2>@ViewBag.Status</h2>
-    <p>Order ID: @ViewBag.OrderId</p>
-    <a href="@Url.Action("Index", "Menu")" class="btn btn-primary">Back to Menu</a>
+    <a href="@Url.Action("Index", "Menu")" class="btn btn-theme-green">Back to Menu</a>
 </div>

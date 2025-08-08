@@ -15,6 +15,8 @@ namespace Restaurant.Models
 
         public int CustomerId { get; set; }
 
+        public bool IsVisible { get; set; } = true;
+
         public DateTime CreatedAt { get; set; }
     }
 }

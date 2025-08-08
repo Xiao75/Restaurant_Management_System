@@ -5,18 +5,24 @@
     var grandTotal = Model.Sum(item => item.Price * item.Quantity);
 }
 
-<h2 class="text-center">Your Table's Order</h2>
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+
+<h2 class="text-center text-success fw-bold">Your Cart</h2>
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info text-center">
-        No items have been added yet.
+    <div class="alert alert-success text-center">
+        Your cart is empty.
     </div>
 }
 else
 {
-    <table class="table table-bordered table-striped text-center">
-        <thead class="table-dark">
+    <table class="table table-bordered border-success">
+        <thead class="table-success">
             <tr>
                 <th>Item</th>
                 <th>Price</th>
@@ -34,33 +40,41 @@ else
                     <td>@item.Quantity</td>
                     <td>@((item.Price * item.Quantity).ToString("C"))</td>
                     <td>
-                        <form asp-controller="TabletOrder" asp-action="DecreaseQuantity" method="post" style="display:inline">
-                            <input type="hidden" name="itemId" value="@item.ItemId" />
-                            <button type="submit" class="btn btn-sm btn-warning">-</button>
-                        </form>
-                        <form asp-controller="TabletOrder" asp-action="IncreaseQuantity" method="post" style="display:inline">
-                            <input type="hidden" name="itemId" value="@item.ItemId" />
-                            <button type="submit" class="btn btn-sm btn-success">+</button>
-                        </form>
-                        <form asp-controller="TabletOrder" asp-action="RemoveFromCart" method="post" style="display:inline">
-                            <input type="hidden" name="itemId" value="@item.ItemId" />
-                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
-                        </form>
+                        <button type="button"
+                                class="btn btn-sm btn-outline-success"
+                                onclick="changeQty('@item.ItemId', -1)">
+                            -
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-sm btn-success"
+                                onclick="changeQty('@item.ItemId', 1)">
+                            +
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="removeItem('@item.ItemId')">
+                            Remove
+                        </button>
                     </td>
                 </tr>
             }
-            <tr>
+
+            <tr class="table-light">
                 <td colspan="3" class="text-end fw-bold">Total:</td>
-                <td colspan="2" class="fw-bold">@grandTotal.ToString("C")</td>
+                <td colspan="2" class="fw-bold text-success">@grandTotal.ToString("C")</td>
             </tr>
         </tbody>
     </table>
 
     <div class="text-center mt-4">
         <form asp-controller="TabletOrder" asp-action="PlaceOrder" method="post">
+            @Html.AntiForgeryToken()
+
             <div class="mb-3">
-                <label for="tableNumber" class="form-label">Select Table Number:</label>
-                <select name="tableNumber" id="tableNumber" class="form-select" required>
+                <label for="tableNumber" class="form-label fw-bold text-success">Select Table Number:</label>
+                <select name="tableNumber" id="tableNumber" class="form-select border-success" required>
                     <option value="">--Select Table--</option>
                     @for (int i = 1; i <= 20; i++)
                     {
@@ -68,14 +82,40 @@ else
                     }
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">Confirm Order</button>
+
+            <button type="submit" class="btn btn-success btn-lg">Place Order</button>
         </form>
     </div>
 }
 
 @section Scripts {
     <script>
-        // Refresh the floating cart when this page is visited
+        function changeQty(itemId, delta) {
+    fetch('/TabletOrder/ChangeQuantity', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+        },
+        body: new URLSearchParams({ itemId, delta })
+    })
+    .then(() => loadTabletCart())   // refresh sidebar
+    .then(() => location.reload()); // optional: refresh totals row on this page
+}
+
+function removeItem(itemId) {
+    fetch('/TabletOrder/RemoveFromCart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+        },
+        body: new URLSearchParams({ itemId })
+    })
+    .then(() => loadTabletCart())
+    .then(() => location.reload());
+}
+        // Refresh the floating sidebar cart
         document.addEventListener('DOMContentLoaded', function () {
             loadTabletCart();
         });

@@ -4,8 +4,101 @@
     ViewData["Title"] = "Search Order by Invoice ID";
 }
 
+<style>
+    body {
+        padding-top: 70px;
+        background-color: #f7faf6; /* very light greenish background */
+        font-family: 'Open Sans', sans-serif;
+        color: #2f6f4e; /* dark green text */
+    }
+
+    h2 {
+        color: #2f6f4e; /* dark green */
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    /* Form */
+    form.mb-4 {
+        background: #e6f4ea; /* light green background */
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #c1d9c7;
+    }
+
+    label.col-form-label {
+        font-weight: 600;
+        color: #2f6f4e;
+    }
+
+    input.form-control {
+        border: 1px solid #2f6f4e;
+        box-shadow: none;
+    }
+
+        input.form-control:focus {
+            border-color: #265c42;
+            box-shadow: 0 0 5px #265c42;
+        }
+
+    button.btn-primary {
+        background-color: #2f6f4e;
+        border-color: #2f6f4e;
+        font-weight: 600;
+    }
+
+        button.btn-primary:hover {
+            background-color: #265c42;
+            border-color: #265c42;
+        }
+
+    /* Card */
+    .card {
+        border: 1px solid #c1d9c7;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(47,111,78,0.15);
+    }
+
+    .card-header {
+        background-color: #d9efdb; /* lighter green */
+        color: #2f6f4e;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #c1d9c7;
+        padding: 15px 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+        color: #2f6f4e;
+    }
+
+    .list-group-item {
+        border: none;
+        border-bottom: 1px solid #c1d9c7;
+        background-color: #f7faf6;
+        color: #2f6f4e;
+        font-weight: 500;
+    }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-group-item span {
+            font-weight: 600;
+        }
+
+    .alert-warning {
+        background-color: #f9f7d9;
+        border-color: #f0e87f;
+        color: #7b7700;
+        font-weight: 600;
+    }
+</style>
+
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Search Order by Invoice ID</h2>
+    <h2 class="text-center">@ViewData["Title"]</h2>
 
     <form asp-action="SearchByInvoice" method="post" class="mb-4">
         <div class="form-group row">

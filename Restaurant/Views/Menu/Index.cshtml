@@ -167,6 +167,9 @@
 
     .badge.bg-danger {
         background-color: #c62828 !important;
+
+
+
     }
 </style>
 
@@ -316,15 +319,24 @@
                     @if (item.Available)
                     {
                         <div class="card-footer text-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <input type="number"
-                                       id="qty-@item.ItemId"
-                                       value="1"
-                                       min="1"
-                                       class="form-control form-control-sm me-2"
-                                       style="width: 60px;" />
-                                <button type="button" onclick="addToCart(@item.ItemId)" class="btn btn-primary btn-sm">
-                                    Add to Order
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+
+                                <!-- Quantity Controls -->
+                                <div class="input-group input-group-sm" style="max-width: 110px;">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="changeQty(@item.ItemId, -1)">−</button>
+                                    <input type="text"
+                                           id="qty-@item.ItemId"
+                                           value="1"
+                                           class="form-control text-center"
+                                           readonly />
+                                    <button class="btn btn-outline-secondary" type="button" onclick="changeQty(@item.ItemId, 1)">+</button>
+                                </div>
+
+                                <!-- Add to Cart -->
+                                <button type="button"
+                                        onclick="addToCart(@item.ItemId)"
+                                        class="btn btn-success btn-sm px-3">
+                                    <i class="bi bi-cart-plus"></i> Add
                                 </button>
                             </div>
                         </div>
@@ -469,6 +481,13 @@
 
 
 
+                function changeQty(itemId, change) {
+            let qtyInput = document.getElementById(`qty-${itemId}`);
+            let currentQty = parseInt(qtyInput.value) || 1;
+            let newQty = currentQty + change;
+            if (newQty < 1) newQty = 1;
+            qtyInput.value = newQty;
+        }
 
 
 
