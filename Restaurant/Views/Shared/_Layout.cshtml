@@ -2,6 +2,9 @@
     var userRole = Context.Session.GetString("UserRole") ?? "Guest";
     var isLoggedIn = Context.Session.GetInt32("CustomerId") != null;
 
+    // Hide navbar if route contains "TabletOrder"
+    var currentPath = Context.Request.Path.ToString();
+    var hideNavbar = currentPath.Contains("/TabletOrder", StringComparison.OrdinalIgnoreCase);
 }
 
 <!DOCTYPE html>
@@ -11,20 +14,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Restaurant</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Restaurant.styles.css" asp-append-version="true" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-     @RenderSection("Styles", required: false)
-
-
-
+    @RenderSection("Styles", required: false)
 </head>
 
 <script>
-      function loadCart() {
+    function loadCart() {
         fetch('/Menu/GetCart')
             .then(res => res.text())
             .then(html => {
@@ -34,195 +33,131 @@
     }
 
     document.addEventListener("DOMContentLoaded", loadCart);
-
 </script>
 
 <body>
-        <!-- Loading Screen -->
-        <div id="loading-screen" style="position: fixed; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; justify-content: center; align-items: center;">
-            <img src="~/images/Logo/clover.jpg" alt="Clover Logo" style="height: 100px;" />
-        </div>
+    <!-- Loading Screen -->
+    <div id="loading-screen" style="position: fixed; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <img src="~/images/Logo/clover.jpg" alt="Clover Logo" style="height: 100px;" />
+    </div>
 
-        <script>
-                window.addEventListener('load', function () {
-                const loadingScreen = document.getElementById('loading-screen');
-                if (loadingScreen) {
+    <script>
+        window.addEventListener('load', function () {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
                 loadingScreen.style.opacity = '0';
                 loadingScreen.style.transition = 'opacity 2s ease-in-out';
                 setTimeout(() => loadingScreen.style.display = 'none', 2000);
-                }
-                });
-        </script>
+            }
+        });
+    </script>
 
-
-    <header>
-       <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-transparent fixed-top">
-           <nav id="mainNavbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-transparent fixed-top">
-            <div class="container-fluid">
-              <a class="navbar-brand logo-link" asp-area="" asp-controller="Home" asp-action="Index">
-              <img src="~/images/Logo/clover.jpg" alt="Clover Logo" style="height: 50px;" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    @{
-                        var isAdmin = Context.Session.GetInt32("IsAdmin") == 1;
-                        var isSuperAdmin = Context.Session.GetInt32("IsSuperAdmin") == 1;
-                    }
-
-                    <ul class="navbar-nav flex-grow-1">
-                      
-
-                        @* SuperAdmin *@
-                       @if (isSuperAdmin)
-                    {
-                      <li class="nav-item">
-                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                      </li>
-                      <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="SuperAdmin" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
-                      </li>
-                      <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="MenuItems" asp-action="Index">Manage Menu</a>
-                      </li>
-                      <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Staff" asp-action="SearchByInvoice">Search Orders</a>
-                      </li>
-                      <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                      </li>
-                    }
-
-                        @* Admin only *@
-                        else if (isAdmin)
-                        {
-                           
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="IncomingOrder" asp-action="Index">Incoming Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Staff" asp-action="OfflineOrders">Offline Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="MenuItems" asp-action="Index">Manage Menu</a>
-                            </li>
-                            <li class="nav-item">
-                             <a class="nav-link text-dark" asp-controller="Staff" asp-action="SearchByInvoice">Search Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
+    @if (!hideNavbar)
+    {
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-transparent fixed-top" id="mainNavbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand logo-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/Logo/clover.jpg" alt="Clover Logo" style="height: 50px;" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        @{
+                            var isAdmin = Context.Session.GetInt32("IsAdmin") == 1;
+                            var isSuperAdmin = Context.Session.GetInt32("IsSuperAdmin") == 1;
                         }
 
-
-                        @* Staff role only *@
-                        else if (userRole == "Staff")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                           
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Staff" asp-action="OfflineOrders">Offline Orders</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Staff" asp-action="SearchByInvoice">Search Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
-                            </li>
-                        }
-                        @* Logged in customer *@
-                        else if (userRole == "Customer" && isLoggedIn)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Menu" asp-action="Index">Menus</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="MyAccount">
-                                    <img src="~/images/profile.jpg" alt="My Account" style="height: 25px;" /></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Address" asp-action="Index">
-                                    <img src="~/images/location.jpg" alt="Delivery Address" style="height: 27px;"/></a>
-                            </li>
-                        }
-                        @* Guest user *@
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Menu" asp-action="Index">Menus</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
-                            </li>
-                        }
-                    </ul>
-
-
+                        <ul class="navbar-nav flex-grow-1">
+                            @* SuperAdmin *@
+                            @if (isSuperAdmin)
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="SuperAdmin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="MenuItems" asp-action="Index">Manage Menu</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Staff" asp-action="SearchByInvoice">Search Orders</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                            }
+                            else if (isAdmin)
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="IncomingOrder" asp-action="Index">Incoming Orders</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Staff" asp-action="OfflineOrders">Offline Orders</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Admin" asp-action="Dashboard">Sales Report</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="MenuItems" asp-action="Index">Manage Menu</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Staff" asp-action="SearchByInvoice">Search Orders</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                            }
+                            else if (userRole == "Staff")
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Staff" asp-action="OfflineOrders">Offline Orders</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Staff" asp-action="SearchByInvoice">Search Orders</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                            }
+                            else if (userRole == "Customer" && isLoggedIn)
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Menu" asp-action="Index">Menus</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="MyAccount"><img src="~/images/profile.jpg" alt="My Account" style="height: 25px;" /></a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Address" asp-action="Index"><img src="~/images/location.jpg" alt="Delivery Address" style="height: 27px;" /></a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Menu" asp-action="Index">Menus</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a></li>
+                            }
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
+    }
 
-    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-   
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 
-
     <script>
         // Hide cart on every page load
-       window.addEventListener('load', () => {
+        window.addEventListener('load', () => {
             const cartPanel = document.getElementById("cartPanel");
             if (cartPanel) {
                 cartPanel.style.display = "none";
-                cartPanel.classList.remove("show"); // if you're using CSS transitions
+                cartPanel.classList.remove("show");
             }
-        }); 
-    </script> 
+        });
+    </script>
     <script>
-    const navbar = document.getElementById('mainNavbar');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.remove('bg-transparent');
-            navbar.classList.add('bg-white', 'navbar-light', 'shadow');
-        } else {
-            navbar.classList.remove('bg-white', 'navbar-light', 'shadow');
-            navbar.classList.add('bg-transparent');
-        }
-    });
-</script>
-
-   
+        const navbar = document.getElementById('mainNavbar');
+        window.addEventListener('scroll', () => {
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('bg-transparent');
+                    navbar.classList.add('bg-white', 'navbar-light', 'shadow');
+                } else {
+                    navbar.classList.remove('bg-white', 'navbar-light', 'shadow');
+                    navbar.classList.add('bg-transparent');
+                }
+            }
+        });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

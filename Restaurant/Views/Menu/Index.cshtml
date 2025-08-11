@@ -4,7 +4,8 @@
     ViewData["Title"] = "Our Menu";
     var categories = ViewBag.Categories as List<string>;
     var selectedCategory = ViewBag.SelectedCategory as string;
-}
+
+ }
 
 <!-- 🔹 CSS for Floating Cart -->
 <style>
@@ -171,6 +172,17 @@
 
 
     }
+
+    #menu-category-filter .btn {
+        background-color: #28a745; /* green */
+        color: white;
+        border-color: #28a745;
+    }
+
+        #menu-category-filter .btn:hover {
+            background-color: #218838; /* darker green */
+            border-color: #1e7e34;
+        }
 </style>
 
 <div class="position-fixed top-0 end-0 p-3" style="z-index: 2000">
@@ -258,11 +270,6 @@
         <div class="alert alert-success text-center">@TempData["Message"]</div>
     }
 
-    <!-- 🔹 Category Filter -->
-    <div class="mb-4 d-flex justify-content-end">
-        <!-- filter form -->
-    </div>
-
     <!-- 🔹 Menu Grid -->
     <div class="container-fluid mt-4">
         <!-- menu items here -->
@@ -276,8 +283,8 @@
 }
 
 <!-- 🔹 Category Filter -->
-<div class="mb-4 d-flex justify-content-end">
-    <form method="get" asp-action="Index" class="d-flex align-items-center">
+<div id="menu-category-filter" class="mb-4 d-flex justify-content-end">
+    <form method="get" asp-action="Index" class="d-flex align-items-center flex-wrap flex-md-nowrap overflow-auto gap-2">
         <label class="me-2 mb-0">Filter:</label>
         <select name="category" onchange="this.form.submit()" class="form-select w-auto">
             <option value="">All Categories</option>
@@ -288,6 +295,8 @@
         </select>
     </form>
 </div>
+
+
 
 <!-- 🔹 Menu Grid -->
 <div class="container-fluid mt-4">
