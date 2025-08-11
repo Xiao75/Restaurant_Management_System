@@ -5,6 +5,7 @@ using Restaurant.Extensions;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
 using Restaurant.Filters;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Restaurant.Controllers
@@ -41,7 +42,7 @@ namespace Restaurant.Controllers
             else cart.Add(new CartItem { ItemId = itemId, Quantity = quantity });
 
             HttpContext.Session.SetObjectAsJson("TabletCart", cart);
-            return RedirectToAction("Index");          // keep for non-JS fallback
+            return RedirectToAction("Index");
         }
 
         /* -------------  CART DISPLAY ------------- */
@@ -49,40 +50,39 @@ namespace Restaurant.Controllers
             View(await BuildTabletCartViewModelsAsync());
 
         /* -------------  AJAX READY ACTIONS ------------- */
-        // Single endpoint for +1 / -1
+        // +1
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ChangeQuantity(int itemId, int delta)
+        public IActionResult IncreaseQuantity(int itemId)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("TabletCart") ?? new();
             var item = cart.FirstOrDefault(i => i.ItemId == itemId);
             if (item == null) return NotFound();
-
-            item.Quantity += delta;
-            if (item.Quantity <= 0) cart.Remove(item);
-
+            item.Quantity++;
             HttpContext.Session.SetObjectAsJson("TabletCart", cart);
-
-            // If it is an AJAX call (fetch) we return 204 – caller refreshes itself
-            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
-                return NoContent();
-
-            // fallback for non-JS
-            return RedirectToAction("ViewCart");
+            return NoContent();
         }
 
+        // -1
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        public IActionResult DecreaseQuantity(int itemId)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("TabletCart") ?? new();
+            var item = cart.FirstOrDefault(i => i.ItemId == itemId);
+            if (item == null) return NotFound();
+            item.Quantity--;
+            if (item.Quantity <= 0) cart.Remove(item);
+            HttpContext.Session.SetObjectAsJson("TabletCart", cart);
+            return NoContent();
+        }
+
+        // remove completely
+        [HttpPost]
         public IActionResult RemoveFromCart(int itemId)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("TabletCart") ?? new();
             cart.RemoveAll(i => i.ItemId == itemId);
             HttpContext.Session.SetObjectAsJson("TabletCart", cart);
-
-            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
-                return NoContent();
-
-            return RedirectToAction("ViewCart");
+            return NoContent();
         }
 
         // returns the partial used by the sidebar
@@ -146,21 +146,20 @@ namespace Restaurant.Controllers
         private async Task<List<CartItemViewModel>> BuildTabletCartViewModelsAsync()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("TabletCart") ?? new();
-            var result = new List<CartItemViewModel>();
+            var ids = cart.Select(c => c.ItemId).ToList();
+            var menuItems = await _context.MenuItems
+                                          .Where(m => ids.Contains(m.ItemId))
+                                          .ToListAsync();
 
-            foreach (var ci in cart)
-            {
-                var menuItem = await _context.MenuItems.FindAsync(ci.ItemId);
-                if (menuItem != null)
-                    result.Add(new CartItemViewModel
+            return (from ci in cart
+                    join mi in menuItems on ci.ItemId equals mi.ItemId
+                    select new CartItemViewModel
                     {
-                        ItemId = menuItem.ItemId,
-                        Name = menuItem.Name,
-                        Price = menuItem.Price ?? 0,
+                        ItemId = mi.ItemId,
+                        Name = mi.Name,
+                        Price = mi.Price ?? 0,
                         Quantity = ci.Quantity
-                    });
-            }
-            return result;
+                    }).ToList();
         }
 
         private string GenerateInvoiceId()
@@ -171,7 +170,9 @@ namespace Restaurant.Controllers
         }
 
         /* -------------  PIN ENTRY ------------- */
-        [HttpGet] public IActionResult EnterPin() => View();
+        [HttpGet]
+        public IActionResult EnterPin() => View();
+
         [HttpPost]
         public IActionResult EnterPin(string pin)
         {

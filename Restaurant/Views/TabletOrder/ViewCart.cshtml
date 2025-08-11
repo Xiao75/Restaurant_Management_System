@@ -1,5 +1,4 @@
 ﻿@model List<Restaurant.Models.ViewModels.CartItemViewModel>
-
 @{
     ViewData["Title"] = "Tablet Cart";
     var grandTotal = Model.Sum(item => item.Price * item.Quantity);
@@ -7,17 +6,14 @@
 
 <style>
     body {
-        padding-top: 70px;
-    }
-</style>
+        padding-top: 70px
+    }</style>
 
 <h2 class="text-center text-success fw-bold">Your Cart</h2>
 
 @if (!Model.Any())
 {
-    <div class="alert alert-success text-center">
-        Your cart is empty.
-    </div>
+    <div class="alert alert-success text-center">Your cart is empty.</div>
 }
 else
 {
@@ -31,104 +27,69 @@ else
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="cart-body">
             @foreach (var item in Model)
             {
-                <tr>
+                <tr data-item-id="@item.ItemId">
                     <td>@item.Name</td>
                     <td>@item.Price.ToString("C")</td>
-                    <td>@item.Quantity</td>
-                    <td>@((item.Price * item.Quantity).ToString("C"))</td>
+                    <td class="qty">@item.Quantity</td>
+                    <td class="sub">@((item.Price * item.Quantity).ToString("C"))</td>
                     <td>
-                        <button type="button"
-                                class="btn btn-sm btn-outline-success"
-                                onclick="changeQty('@item.ItemId', -1)">
-                            -
-                        </button>
-
-                        <button type="button"
-                                class="btn btn-sm btn-success"
-                                onclick="changeQty('@item.ItemId', 1)">
-                            +
-                        </button>
-
-                        <button type="button"
-                                class="btn btn-sm btn-outline-danger"
-                                onclick="removeItem('@item.ItemId')">
-                            Remove
-                        </button>
+                        <button class="btn btn-sm btn-outline-success" onclick="adj(@item.ItemId,-1)">-</button>
+                        <button class="btn btn-sm btn-success" onclick="adj(@item.ItemId,1)">+</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="del(@item.ItemId)">Remove</button>
                     </td>
                 </tr>
             }
-
             <tr class="table-light">
                 <td colspan="3" class="text-end fw-bold">Total:</td>
-                <td colspan="2" class="fw-bold text-success">@grandTotal.ToString("C")</td>
+                <td colspan="2" id="grand" class="fw-bold text-success">@grandTotal.ToString("C")</td>
             </tr>
         </tbody>
     </table>
 
     <div class="text-center mt-4">
-        <form asp-controller="TabletOrder" asp-action="PlaceOrder" method="post">
+        <form asp-action="PlaceOrder" asp-controller="TabletOrder" method="post">
             @Html.AntiForgeryToken()
-
             <div class="mb-3">
-                <label for="tableNumber" class="form-label fw-bold text-success">Select Table Number:</label>
-                <select name="tableNumber" id="tableNumber" class="form-select border-success" required>
-                    <option value="">--Select Table--</option>
+                <label class="form-label fw-bold text-success">Select Table:</label>
+                <select name="tableNumber" class="form-select border-success" required>
+                    <option value="">-- Select --</option>
                     @for (int i = 1; i <= 20; i++)
                     {
                         <option value="@i">Table @i</option>
                     }
                 </select>
             </div>
-
             <button type="submit" class="btn btn-success btn-lg">Place Order</button>
         </form>
     </div>
 }
 
-@section Scripts {
+@section Scripts
+{
     <script>
-        function changeQty(itemId, delta) {
-    fetch('/TabletOrder/ChangeQuantity', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-        },
-        body: new URLSearchParams({ itemId, delta })
-    })
-    .then(() => loadTabletCart())   // refresh sidebar
-    .then(() => location.reload()); // optional: refresh totals row on this page
-}
+        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
-function removeItem(itemId) {
-    fetch('/TabletOrder/RemoveFromCart', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-        },
-        body: new URLSearchParams({ itemId })
-    })
-    .then(() => loadTabletCart())
-    .then(() => location.reload());
-}
-        // Refresh the floating sidebar cart
-        document.addEventListener('DOMContentLoaded', function () {
-            loadTabletCart();
-        });
+        async function post(url, body) {
+            await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'RequestVerificationToken': token
+                },
+                body: new URLSearchParams(body)
+            });
+            location.reload(); // simplest refresh (or use JS to update totals)
+        }
 
-        function loadTabletCart() {
-            fetch('/TabletOrder/GetTabletCart')
-                .then(response => response.text())
-                .then(html => {
-                    const sidebarBody = document.querySelector('.menu-sidebar-body');
-                    if (sidebarBody) {
-                        sidebarBody.innerHTML = html;
-                    }
-                });
+        function adj(id, d) {
+            post(`/TabletOrder/${d > 0 ? 'IncreaseQuantity' : 'DecreaseQuantity'}`, { itemId: id });
+        }
+
+        function del(id) {
+            post('/TabletOrder/RemoveFromCart', { itemId: id });
         }
     </script>
 }
