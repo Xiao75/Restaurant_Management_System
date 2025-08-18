@@ -1,0 +1,160 @@
+﻿@model Restaurant.Models.Order
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt - Order #@Model.InvoiceId</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .receipt {
+            width: 350px;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+            .header h2 {
+                margin: 0;
+                font-size: 22px;
+            }
+
+            .header p {
+                margin: 0;
+                font-size: 14px;
+                color: #666;
+            }
+
+        .info {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 8px;
+            font-size: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+
+        .total {
+            font-weight: bold;
+            text-align: right;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .print-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .print-btn button {
+                background: #1b6ec2;
+                color: #fff;
+                border: none;
+                padding: 8px 16px;
+                font-size: 14px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+                .print-btn button:hover {
+                    background: #155a9c;
+                }
+
+        @@media print {
+    body {
+        background: none !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .receipt {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 auto;
+        width: 100% !important;
+    }
+
+    .print-btn {
+        display: none !important;
+    }
+
+    /* Optional: remove page margins for compact receipt */
+    @@page {
+        margin: 10mm;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <div class="header">
+            <h2>Clover</h2>
+            <p>Order Receipt</p>
+        </div>
+
+        <div class="info">
+            <p><b>Date:</b> @Model.OrderDate.ToString("dd MMM yyyy hh:mm tt")</p>
+            <p><b>Invoice Id:</b>@Model.InvoiceId</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderItems)
+                {
+                    <tr>
+                        <td>@item.Item.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Quantity* item.Item.Price)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <p class="total">Total: ₹@Model.TotalAmount</p>
+
+        <div class="print-btn">
+            <button onclick="window.print()">🖨 Print Receipt</button>
+        </div>
+    </div>
+</body>
+</html>

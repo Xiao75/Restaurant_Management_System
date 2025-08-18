@@ -28,18 +28,20 @@ namespace Restaurant.Controllers
             return View(orders);
         }
 
-      /*  [HttpPost]
-        public async Task<IActionResult> Confirm(int orderId)
+        public async Task<IActionResult> Print(int orderId)
         {
-            var order = await _context.Orders.FindAsync(orderId);
-            if (order != null && order.Status == "Pending")
-            {
-                order.Status = "Confirmed";
-                await _context.SaveChangesAsync();
-            }
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Item)
+                .FirstOrDefaultAsync(o => o.OrderId == orderId);
 
-            return RedirectToAction("Index");
-        } */
+            if (order == null)
+                return NotFound();
+
+            return View(order);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> MarkasPaid(int orderId)
         {

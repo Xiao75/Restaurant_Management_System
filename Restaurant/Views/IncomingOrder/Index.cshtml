@@ -104,6 +104,29 @@
     .container {
         max-width: 1100px;
     }
+
+    .btn-print {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+        font-weight: 600;
+        padding: 4px 10px; /* same as your other buttons */
+        font-size: 0.8rem; /* consistent with .btn-sm */
+        line-height: 1.2; /* same height */
+        display: inline-flex; /* align icon + text */
+        align-items: center; /* vertical center */
+        gap: 4px; /* space between icon + text */
+        font-style: normal; /* prevent italics */
+        border-radius: 4px; /* match Bootstrap buttons */
+    }
+
+        .btn-print:hover:not(:disabled) {
+            background-color: #138496;
+            border-color: #117a8b;
+            color: white;
+        }
+
+
 </style>
 
 <div class="container mt-5 pt-4">
@@ -148,6 +171,7 @@
                                 }
                             </ul>
                         </td>
+
                         <td>
                             <!-- Confirm Button (commented out) -->
                             <!--
@@ -156,11 +180,23 @@
                                 <button type="submit" class="btn btn-warning btn-sm" @(order.Status != "Pending" ? "disabled" : "")>Confirm</button>
                             </form>
                             -->
+                            <!-- Print Button -->
+                            <a asp-action="Print" asp-controller="IncomingOrder" asp-route-orderId="@order.OrderId"
+                               class="btn btn-primary btn-sm" target="_blank">
+                                🖨 Print
+                            </a>
+
+
                             <!-- Mark Paid Button -->
-                            <form method="post" asp-action="MarkAsPaid" asp-controller="IncomingOrder" style="display:inline">
+                            <form method="post" asp-action="MarkAsPaid" asp-controller="IncomingOrder" class="d-inline">
                                 <input type="hidden" name="orderId" value="@order.OrderId" />
-                                <button type="submit" class="btn btn-success btn-sm" @(order.Status == "Paid" ? "disabled" : "")>Mark Paid</button>
+                                <button type="submit"
+                                        class="btn btn-success btn-sm d-inline-flex align-items-center"
+                                        @(order.Status == "Paid" ? "disabled" : "")>
+                                    Mark Paid
+                                </button>
                             </form>
+
                         </td>
                     </tr>
                 }

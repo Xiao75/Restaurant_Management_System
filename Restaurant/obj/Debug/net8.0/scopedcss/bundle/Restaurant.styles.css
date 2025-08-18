@@ -12,11 +12,15 @@ a[b-dfffm0vbnq] {
   color: #0077cc;
 }
 
-.btn-primary[b-dfffm0vbnq] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn-primary[b-dfffm0vbnq],
+.btn-success[b-dfffm0vbnq],
+.btn-warning[b-dfffm0vbnq] {
+    color: #fff;
+    padding: .25rem .5rem; /* match Bootstrap's .btn-sm */
+    font-size: .875rem;
+    border-radius: .2rem;
 }
+
 
 .nav-pills .nav-link.active[b-dfffm0vbnq], .nav-pills .show > .nav-link[b-dfffm0vbnq] {
   color: #fff;
